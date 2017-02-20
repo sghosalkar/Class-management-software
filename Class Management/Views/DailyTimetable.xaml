@@ -1,0 +1,197 @@
+﻿<UserControl x:Class="Class_Management.Views.DailyTimetable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Class_Management.Views"
+             mc:Ignorable="d" 
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             Loaded="UserControl_Loaded"
+             Unloaded="UserControl_Unloaded"
+             d:DesignHeight="800" d:DesignWidth="1500">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style x:Key="DraggableLlistBoxItem" TargetType="ListBoxItem">
+                <EventSetter Event="MouseMove" Handler="Drag" />
+            </Style>
+            
+            <Style x:Key="DroppableDataGridCell" TargetType="DataGridCell">
+                <Setter Property="AllowDrop" Value="True" />
+                <EventSetter Event="DragDrop.Drop" Handler="Cell_Drop" />
+            </Style>
+            
+            <Style x:Key="StyleDataGridCell" TargetType="DataGridCell">
+
+            </Style>
+
+            <Style x:Key="tablebtn" TargetType="Button" BasedOn="{StaticResource MetroFlatButton}">
+                <Setter Property="Grid.Row" Value="1"></Setter>
+                <Setter Property="Grid.Column" Value="1"></Setter>
+                <Setter Property="Height" Value="40"></Setter>
+                <Setter Property="Width" Value="100"></Setter>
+                <Setter Property="BorderBrush" Value="White"></Setter>
+                <Setter Property="BorderThickness" Value="1,0,1,1"></Setter>
+                <EventSetter Event="Click" Handler="table_Click"></EventSetter>
+            </Style>
+
+            <Style x:Key="btn" TargetType="Button" BasedOn="{StaticResource MetroFlatButton}">
+                <Setter Property="Grid.Row" Value="1"></Setter>
+                <Setter Property="Grid.Column" Value="0"></Setter>
+                <Setter Property="Height" Value="35"></Setter>
+                <Setter Property="BorderBrush" Value="White"></Setter>
+                <Setter Property="BorderThickness" Value="1"></Setter>
+                <Setter Property="Background" Value="White"></Setter>
+            </Style>
+
+            <Style x:Key="deletebtn" TargetType="Button" BasedOn="{StaticResource MetroFlatButton}">
+                <Setter Property="Height" Value="30"></Setter>
+                <Setter Property="Width" Value="30"></Setter>
+                <Setter Property="Background" Value="Transparent"></Setter>
+                <Setter Property="Foreground" Value="BlueViolet"></Setter>
+            </Style>
+
+            <Style x:Key="ChkboxSty" TargetType="CheckBox" BasedOn="{StaticResource MetroCheckBox}">
+                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Viewbox>
+        <Grid Height="798" Width="1550">
+            <Grid Background="Black" Opacity="0.6" />
+            <Grid Background="DarkSlateBlue" Height="800" Width="1550">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="7*" />
+                </Grid.ColumnDefinitions>
+                <Label x:Name="label" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                       Content="Daily Timetable" Margin="0,10,0,0" 
+                       HorizontalAlignment="Center" VerticalAlignment="Top" 
+                       Foreground="White" FontSize="30"/>
+                <TextBox x:Name="searchBox"
+                         Grid.Row="1"
+                         Height="35"
+                         AllowDrop="True"
+                         DragDrop.Drop="searchBox_Drop"
+                         Controls:TextBoxHelper.ClearTextButton="True"
+                         Controls:TextBoxHelper.UseFloatingWatermark="True"
+                         Controls:TextBoxHelper.Watermark="Search..."
+                         BorderBrush="Transparent"
+                         BorderThickness="0"
+                         VerticalAlignment="Top"
+                         VerticalContentAlignment="Center"
+                         Margin="5"
+                         TextChanged="searchBox_TextChanged"/>
+                <ListBox x:Name="teachersList"
+                         Grid.Row="1"
+                         BorderBrush="Transparent"
+                         BorderThickness="0"
+                         Margin="5,45,5,60"
+                         ItemsSource="{Binding teacher_code}" >
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Height" Value="35" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+                <ComboBox x:Name="DayComboBox"
+                          Height="35"
+                          Width="130"
+                          Grid.Column="1"
+                          Grid.Row="1"
+                          FontSize="13"
+                          BorderBrush="Transparent"
+                          BorderThickness="0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Margin="5,5,0,0"
+                          SelectionChanged="DayComboBox_SelectionChanged">
+                    <ComboBoxItem>Monday</ComboBoxItem>
+                    <ComboBoxItem>Tuesday</ComboBoxItem>
+                    <ComboBoxItem>Wednesday</ComboBoxItem>
+                    <ComboBoxItem>Thursday</ComboBoxItem>
+                    <ComboBoxItem>Friday</ComboBoxItem>
+                    <ComboBoxItem>Saturday</ComboBoxItem>
+                    <ComboBoxItem>Sunday</ComboBoxItem>
+                </ComboBox>
+                <Button x:Name="SetSelectedDay"
+                        Grid.Column="1" Grid.Row="1"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        FontSize="13"
+                        Width="230"
+                        Margin="140,5,0,0"
+                        Style="{StaticResource btn}"
+                        Click="SetSelectedDay_Click"/>
+                <Button x:Name="Eraser"
+                        Grid.Column="1" Grid.Row="1"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        FontSize="13"
+                        Width="100"
+                        Margin="5,5,0,0"
+                        Visibility="Collapsed"
+                        Style="{StaticResource btn}"
+                        Click="Eraser_Click">
+                    <Grid>
+                        <TextBlock Margin="0,3,25,0" HorizontalAlignment="Center">Eraser</TextBlock>
+                        <Controls:PackIconMaterial HorizontalAlignment="Center" Margin="40,3,0,0" Kind="Eraser" Height="20" Width="20"></Controls:PackIconMaterial>
+                    </Grid>
+                </Button>
+                <DataGrid x:Name="dailyTimetable"
+                          Grid.Column="1" Grid.Row="1"
+                          AllowDrop="True"
+                          CanUserAddRows="False" 
+                          CanUserDeleteRows="False"
+                          CanUserReorderColumns="False" 
+                          CanUserResizeColumns="True"
+                          CanUserResizeRows="False" 
+                          CanUserSortColumns="False"
+                          AutoGenerateColumns="False"
+                          RowHeight="35"           
+                          IsReadOnly="True"
+                          BorderBrush="Transparent"
+                          BorderThickness="0"
+                          Margin="5,45,5,100"                          
+                          SelectionUnit="FullRow"
+                          GridLinesVisibility="All" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Batch Name" x:Name="batch_name" MinWidth="120" Binding="{Binding batch_name}" />
+                        <DataGridTextColumn Header="Timing" x:Name="batch_time" MinWidth="120" Binding="{Binding batch_time}" />
+                        <DataGridTextColumn Header="Lectures" Width="400" CellStyle="{StaticResource DroppableDataGridCell}" Binding="{Binding lectures}"/>
+                        <DataGridTemplateColumn Width="35" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox x:Name="chk" Style="{StaticResource ChkboxSty}" Checked="chk_Checked" Unchecked="chk_Checked"></CheckBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Lec duration" MinWidth="120" Binding="{Binding per_lec_duration}"/>
+                        <DataGridTextColumn Width="1*" Header="Suggestions" x:Name="SuggestionColumn"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Right" 
+                            Height="40" Width="300" 
+                            VerticalAlignment="Bottom" 
+                            Grid.Column="1" Grid.Row="1" 
+                            Margin="0,0,5,60" Background="White">
+                    <Button x:Name="dailytimetable1" Style="{StaticResource tablebtn}">Table1</Button>
+                    <Button x:Name="dailytimetable2" Style="{StaticResource tablebtn}">Table2</Button>
+                    <Button x:Name="dailytimetable3" Style="{StaticResource tablebtn}">Table3</Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1" Margin="5,605,310,60" Background="White"></StackPanel>
+
+                <Button x:Name="closeUC" Grid.Row="0" Grid.Column="1" Width="30" Height="30" Click="closeUC_Click"
+                        Background="Transparent" Foreground="White"
+                        HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MetroFlatButton}" >
+                    <Controls:PackIconMaterial x:Name="CloseIcon" Kind="WindowClose" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Button>
+            </Grid>
+            <Grid x:Name="DialogSpace" Height="800" Width="1500"></Grid>
+        </Grid>
+    </Viewbox>
+</UserControl>
