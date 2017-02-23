@@ -19,7 +19,7 @@
                 <Setter Property="HorizontalAlignment" Value="Left"></Setter>
                 <Setter Property="Grid.Column" Value="0"></Setter>
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Foreground" Value="#3F51B5" />
             </Style>
 
             <Style x:Key="formtextbox"
@@ -31,7 +31,7 @@
                 <Setter Property="TextWrapping" Value="Wrap"></Setter>
                 <Setter Property="FontSize" Value="15"></Setter>
                 <Setter Property="Background" Value="White" />
-                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="Foreground" Value="#263238" />
                 <Setter Property="BorderBrush" Value="White" />
                 <Setter Property="BorderThickness" Value="0" />
                 <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -47,7 +47,7 @@
                 <Setter Property="FontSize" Value="15" />
                 <Setter Property="Height" Value="35" />
                 <Setter Property="Width" Value="120" />
-                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Background" Value="#3F51B5" />
                 <Setter Property="Foreground" Value="White" />
             </Style>
 
@@ -60,7 +60,7 @@
                 <Setter Property="Height" Value="30" />
                 <Setter Property="Width" Value="50" />
                 <Setter Property="Background" Value="White" />
-                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="Foreground" Value="#263238" />
                 <Setter Property="BorderBrush" Value="White" />
                 <Setter Property="BorderThickness" Value="0" />
                 <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -77,7 +77,7 @@
     <Viewbox>
         <Grid Height="798" Width="1550">
             <Grid Background="Black" Opacity="0.6" />
-            <Grid Background="DarkSlateBlue" >
+            <Grid Background="#ECEFF1" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="140" />
                     <RowDefinition Height="85" />
@@ -97,31 +97,31 @@
                 <Label x:Name="label"  Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" 
                        Content="Add a New Batch" Margin="0,10,0,0" 
                        HorizontalAlignment="Center" VerticalAlignment="Top" 
-                       Foreground="White" FontSize="30"/>
+                       Foreground="#3F51B5" FontSize="30"/>
                 <Label Grid.Column="0" Grid.Row="0" 
-                       Content="Batch Details" Margin="40,90,0,0" 
+                       Content="Batch Details" Margin="100,90,0,0" 
                        HorizontalAlignment="Left" VerticalAlignment="Top" 
-                       Foreground="White" FontSize="25"/>
+                       Foreground="#3F51B5" FontSize="25"/>
                 <Label Grid.Column="1" Grid.Row="0" 
                        Content="Subject Details" Margin="40,90,0,0" 
                        HorizontalAlignment="Left" VerticalAlignment="Top" 
-                       Foreground="White" FontSize="25"/>
-                <Label x:Name="label1" Content="Batch Name"     Grid.Row="1" Margin="40,10,0,0" Style="{StaticResource formlabel}" />
-                <Label x:Name="label2" Content="General Timing" Grid.Row="2" Margin="40,10,0,0" Style="{StaticResource formlabel}" />
-                <Label x:Name="label4" Content="To" Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="194,40,0,0" Height="30" Width="40" Style="{StaticResource formlabel}" />
+                       Foreground="#3F51B5" FontSize="25"/>
+                <Label x:Name="label1" Content="Batch Name"     Grid.Row="1" Margin="100,10,0,0" Style="{StaticResource formlabel}" />
+                <Label x:Name="label2" Content="General Timing" Grid.Row="2" Margin="100,10,0,0" Style="{StaticResource formlabel}" />
+                <Label x:Name="label4" Content="To" Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="254,40,0,0" Height="30" Width="40" Style="{StaticResource formlabel}" />
                 <Label x:Name="label5" Content="Select Subject" Grid.Row="1" Grid.Column="1" Margin="40,10,0,0" Style="{StaticResource formlabel}" />
                 <Label x:Name="label6" Content="Subjects" Grid.Column="1" Grid.Row="2" Margin="40,10,0,0" Style="{StaticResource formlabel}" />
 
-                <TextBox x:Name="batch_name" Margin="44,42,0,0" Grid.Row="1" Width="200" Style="{StaticResource formtextbox}" CharacterCasing="Upper" />
-                <ComboBox x:Name="from_h"   Margin="44,42,0,0" Style="{StaticResource timepicker}"></ComboBox>
-                <ComboBox x:Name="from_m"   Margin="94,42,0,0" Style="{StaticResource timepicker}"></ComboBox>
-                <ComboBox x:Name="from_ampm"   Margin="144,42,0,0" Style="{StaticResource timepicker}">
+                <TextBox x:Name="batch_name" Margin="104,42,0,0" Grid.Row="1" Width="200" Style="{StaticResource formtextbox}" CharacterCasing="Upper" />
+                <ComboBox x:Name="from_h"   Margin="104,42,0,0" Style="{StaticResource timepicker}"></ComboBox>
+                <ComboBox x:Name="from_m"   Margin="154,42,0,0" Style="{StaticResource timepicker}"></ComboBox>
+                <ComboBox x:Name="from_ampm"   Margin="204,42,0,0" Style="{StaticResource timepicker}">
                     <ComboBoxItem IsSelected="True">AM</ComboBoxItem>
                     <ComboBoxItem>PM</ComboBoxItem>
                 </ComboBox>
-                <ComboBox x:Name="to_h" Margin="234,42,0,0" Style="{StaticResource timepicker}"></ComboBox>
-                <ComboBox x:Name="to_m"   Margin="284,42,0,0" Style="{StaticResource timepicker}"></ComboBox>
-                <ComboBox x:Name="to_ampm"   Margin="334,42,0,0" Style="{StaticResource timepicker}">
+                <ComboBox x:Name="to_h" Margin="294,42,0,0" Style="{StaticResource timepicker}"></ComboBox>
+                <ComboBox x:Name="to_m"   Margin="344,42,0,0" Style="{StaticResource timepicker}"></ComboBox>
+                <ComboBox x:Name="to_ampm"   Margin="394,42,0,0" Style="{StaticResource timepicker}">
                     <ComboBoxItem IsSelected="True">AM</ComboBoxItem>
                     <ComboBoxItem>PM</ComboBoxItem>
                 </ComboBox>
@@ -130,12 +130,12 @@
                           Height="35" Width="200"   HorizontalAlignment="Left" VerticalAlignment="Top"></ComboBox>
                 <Button x:Name="add_selected_subject" Margin="254,42,0,0" Grid.Column="1" Grid.Row="1"
                         Height="35" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                        BorderBrush="White" BorderThickness="2"
+                        BorderBrush="#3F51B5" BorderThickness="2"
                         Style="{StaticResource btn}" Click="add_selected_subject_Click" >
                     <Controls:PackIconMaterial x:Name="AddIcon" Kind="Plus" Height="10" Width="10" />
                 </Button>
                 <Button x:Name="refresh_subject" Margin="314,42,0,0" Grid.Column="1" Grid.Row="1"
-                        BorderBrush="White" BorderThickness="2"
+                        BorderBrush="#3F51B5" BorderThickness="2"
                         Height="35" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" 
                         Style="{StaticResource btn}" Click="FillComboBox">
                     <Controls:PackIconMaterial x:Name="RefreshIcon" Kind="Refresh" Height="10" Width="10" />
@@ -151,11 +151,12 @@
                 </Button>
                 <ListBox x:Name="batch_subjects" Margin="44,52,0,0" Background="Transparent" Foreground="White"
                          Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="2" FontSize="15"
-                         BorderBrush="White" BorderThickness="2"
+                         BorderBrush="#263238" BorderThickness="2"
                          Height="200" Width="300" HorizontalAlignment="Left" VerticalAlignment="Top" >
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="ListBoxItem">
                             <Setter Property="Height" Value="30" />
+                            <Setter Property="Foreground" Value="#263238" />
                         </Style>
                     </ListBox.ItemContainerStyle>
                 </ListBox>
@@ -171,11 +172,11 @@
                     </DataGrid.Columns>
                 </DataGrid>
 
-                <Button x:Name="save" Content="Save" BorderBrush="White" BorderThickness="2"
+                <Button x:Name="save" Content="Save" BorderBrush="#3F51B5" BorderThickness="2"
                         Margin="224,40,0,0" Style="{StaticResource btn}" Click="save_Click" />
 
                 <Button x:Name="closeUC" Grid.Row="0" Width="30" Height="30" Click="closeUC_Click"
-                        Background="Transparent" Foreground="White" Grid.ColumnSpan="3"
+                        Background="#3F51B5" Foreground="White" Grid.ColumnSpan="3"
                         HorizontalAlignment="Right" Style="{StaticResource btn}">
                     <Controls:PackIconMaterial x:Name="CloseIcon" Kind="WindowClose" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Button>

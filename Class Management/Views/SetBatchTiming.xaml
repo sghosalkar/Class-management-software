@@ -17,7 +17,7 @@
                 <Setter Property="HorizontalAlignment" Value="Left"></Setter>
                 <Setter Property="Grid.Column" Value="0"></Setter>
                 <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Foreground" Value="#3F51B5" />
             </Style>
 
             <Style x:Key="formtextbox"
@@ -40,8 +40,8 @@
                 <Setter Property="FontSize" Value="15" />
                 <Setter Property="Height" Value="35" />
                 <Setter Property="Width" Value="120" />
-                <Setter Property="Background" Value="White" />
-                <Setter Property="Foreground" Value="#CD5555" />
+                <Setter Property="Background" Value="#3F51B5" />
+                <Setter Property="Foreground" Value="White" />
             </Style>
 
             <Style x:Key="editBtn"
@@ -69,7 +69,7 @@
     <Viewbox>
         <Grid Height="798" Width="1550">
             <Grid Background="Black" Opacity="0.6" />
-            <Grid Background="DarkSlateBlue" Height="800" Width="1550">
+            <Grid Background="#ECEFF1" Height="800" Width="1550">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100" />
                     <RowDefinition Height="50" />
@@ -84,17 +84,18 @@
                 <Label x:Name="label"  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" 
                        Content="Set Batch Timing" Margin="0,10,0,0" 
                        HorizontalAlignment="Center" VerticalAlignment="Top" 
-                       Foreground="White" FontSize="30"/>
+                       Style="{StaticResource formlabel}" FontSize="30"/>
 
                 <Label Grid.Column="0" Grid.Row="1" 
                        Content="Timing for Timetable" Margin="50,10,0,0" 
                        HorizontalAlignment="Left" VerticalAlignment="Top" 
-                       Foreground="White" FontSize="20"/>
+                       Style="{StaticResource formlabel}" FontSize="20"/>
                 <DataGrid x:Name="current_timing" Height="470" Width="670" Grid.Row="2" MinColumnWidth="50" Grid.Column="0"
                           IsReadOnly="True" HorizontalScrollBarVisibility="Visible" RowHeight="40" 
                           SelectionUnit="FullRow" SelectionMode="Extended" HorizontalContentAlignment="Center"
                           AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False"
-                          HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,10,0,0" >
+                          HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,10,0,0" 
+                          BorderBrush="#3F51B5" BorderThickness="2">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn>
                             <DataGridTemplateColumn.CellTemplate>
@@ -112,12 +113,13 @@
                 <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" 
                        Content="General Timing" Margin="10,10,0,0" 
                        HorizontalAlignment="Left" VerticalAlignment="Top" 
-                       Foreground="White" FontSize="20"/>
+                       Style="{StaticResource formlabel}" FontSize="20"/>
                 <DataGrid x:Name="general_timing" Height="470" Width="670" Grid.Row="2" MinColumnWidth="50" Grid.Column="1"
                           IsReadOnly="True" HorizontalScrollBarVisibility="Visible" RowHeight="40" 
                           SelectionUnit="FullRow" SelectionMode="Extended" HorizontalContentAlignment="Center"
                           AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False"
-                          HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" >
+                          HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" 
+                          BorderBrush="#3F51B5" BorderThickness="2">
                     <DataGrid.Columns>
                         <DataGridTextColumn CellStyle="{StaticResource cellsty}" Header="Batch Name"  Binding="{Binding batch_name}" />
                         <DataGridTextColumn Header="Timing From" MinWidth="120" Binding="{Binding general_timing_from}" />
@@ -126,7 +128,7 @@
                 </DataGrid>
 
                 <Button x:Name="closeUC" Grid.Row="0" Width="30" Height="30" Click="closeUC_Click"
-                        Background="Transparent" Foreground="White"
+                        Background="#3F51B5" Foreground="White"
                         HorizontalAlignment="Right" Style="{StaticResource btn}">
                     <Controls:PackIconMaterial x:Name="CloseIcon" Kind="WindowClose" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Button>

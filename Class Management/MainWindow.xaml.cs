@@ -123,6 +123,16 @@ namespace Class_Management
             res.Loaded += (sdr, evt) => res.BeginStoryboard(Application.Current.Resources["sb"] as Storyboard);
         }
 
+        private void HandleTileClick(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            var btnName = btn.Name;
+            btnName = btnName.Substring(0, (btnName.Length - 4));
+            var res = MagicallyCreateInstance(btnName);
+            mainContent.Children.Clear();
+            mainContent.Children.Add(res);
+            res.Loaded += (sdr, evt) => res.BeginStoryboard(Application.Current.Resources["sb"] as Storyboard);
+        }
 
         private async void ShowAbout(object sender, RoutedEventArgs e)
         {

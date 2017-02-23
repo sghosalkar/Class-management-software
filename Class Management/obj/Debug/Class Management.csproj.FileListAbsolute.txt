@@ -236,3 +236,66 @@ G:\Class_management\Edit2\Class Management\Class Management\obj\Debug\Views\Week
 G:\Class_management\Edit2\Class Management\Class Management\obj\Debug\Class Management.g.resources
 G:\Class_management\Edit2\Class Management\Class Management\obj\Debug\Class_Management.Properties.Resources.resources
 G:\Class_management\Edit2\Class Management\Class Management\obj\Debug\Class Management.csproj.GenerateResource.Cache
+G:\My-Projects\Class Management\Class Management\bin\Debug\Class Management.exe.config
+G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.exe
+G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.pdb
+G:\My-Projects\Class Management\Class Management\bin\Debug\Class Management.exe
+G:\My-Projects\Class Management\Class Management\bin\Debug\Class Management.pdb
+G:\My-Projects\Class Management\Class Management\bin\Debug\EntityFramework.dll
+G:\My-Projects\Class Management\Class Management\bin\Debug\EntityFramework.SqlServer.dll
+G:\My-Projects\Class Management\Class Management\bin\Debug\MahApps.Metro.dll
+G:\My-Projects\Class Management\Class Management\bin\Debug\System.Data.SQLite.dll
+G:\My-Projects\Class Management\Class Management\bin\Debug\System.Data.SQLite.EF6.dll
+G:\My-Projects\Class Management\Class Management\bin\Debug\System.Data.SQLite.Linq.dll
+G:\My-Projects\Class Management\Class Management\bin\Debug\System.Windows.Interactivity.dll
+G:\My-Projects\Class Management\Class Management\bin\Debug\WPFTextBoxAutoComplete.dll
+G:\My-Projects\Class Management\Class Management\bin\Debug\EntityFramework.xml
+G:\My-Projects\Class Management\Class Management\bin\Debug\EntityFramework.SqlServer.xml
+G:\My-Projects\Class Management\Class Management\bin\Debug\MahApps.Metro.pdb
+G:\My-Projects\Class Management\Class Management\bin\Debug\MahApps.Metro.xml
+G:\My-Projects\Class Management\Class Management\bin\Debug\MahApps.Metro.Resources.pdb
+G:\My-Projects\Class Management\Class Management\bin\Debug\System.Data.SQLite.xml
+G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.csprojResolveAssemblyReference.cache
+G:\My-Projects\Class Management\Class Management\obj\Debug\Resources\Icons.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\Resources\IconsNonShared.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\ActionDialog.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\MainWindow.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\MessageDialog.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddBatch.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddStudent.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddTeacher.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AutoTimetable.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\DailyTimetable.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\LectureSchedules.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ManualTimetable.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\SetBatchTiming.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\SetTeacherTiming.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\TestSchedules.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ViewBatch.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ViewStudent.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ViewTeacher.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\WeeklyTimetable.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\App.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management_MarkupCompile.cache
+G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management_MarkupCompile.lref
+G:\My-Projects\Class Management\Class Management\obj\Debug\App.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\ActionDialog.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\MainWindow.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\MessageDialog.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddBatch.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddStudent.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddTeacher.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AutoTimetable.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\DailyTimetable.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\LectureSchedules.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ManualTimetable.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\SetBatchTiming.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\SetTeacherTiming.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\TestSchedules.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ViewBatch.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ViewStudent.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ViewTeacher.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\WeeklyTimetable.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.g.resources
+G:\My-Projects\Class Management\Class Management\obj\Debug\Class_Management.Properties.Resources.resources
+G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.csproj.GenerateResource.Cache

@@ -139,7 +139,7 @@ namespace Class_Management.Views
             Button selbtn = FindName(ActiveTable) as Button;
             ClearTableBtn();
             selbtn.Background = Brushes.White;
-            selbtn.Foreground = Brushes.BlueViolet;
+            selbtn.Foreground = Brushes.DarkSlateBlue;
             try
             {
                 
@@ -298,11 +298,11 @@ namespace Class_Management.Views
 
         public void ClearTableBtn()
         {
-            dailytimetable1.Background = Brushes.BlueViolet;
+            dailytimetable1.Background = Brushes.DarkSlateBlue;
             dailytimetable1.Foreground = Brushes.White;
-            dailytimetable2.Background = Brushes.BlueViolet;
+            dailytimetable2.Background = Brushes.DarkSlateBlue;
             dailytimetable2.Foreground = Brushes.White; 
-            dailytimetable3.Background = Brushes.BlueViolet;
+            dailytimetable3.Background = Brushes.DarkSlateBlue;
             dailytimetable3.Foreground = Brushes.White;
         }        
 

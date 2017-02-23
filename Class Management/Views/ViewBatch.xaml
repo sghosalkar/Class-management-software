@@ -38,7 +38,7 @@
                 <Setter Property="FontSize" Value="15" />
                 <Setter Property="Height" Value="30" />
                 <Setter Property="Width" Value="70" />
-                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Background" Value="#3F51B5" />
                 <Setter Property="Foreground" Value="White" />
             </Style>
 
@@ -48,7 +48,7 @@
     <Viewbox>
         <Grid Height="798" Width="1550" >
             <Grid Background="Black" Opacity="0.6" />
-            <Grid Background="DarkSlateBlue" Height="800" Width="1550">
+            <Grid Background="#ECEFF1" Height="800" Width="1550">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100" />
                     <RowDefinition Height="50" />
@@ -63,13 +63,14 @@
                 <Label x:Name="label" Grid.Row="0" 
                        Content="Batch List" Margin="0,10,0,0" 
                        HorizontalAlignment="Center" VerticalAlignment="Top" 
-                       Foreground="White" FontSize="30"/>
+                       Foreground="#3F51B5" FontSize="30"/>
 
                 <DataGrid x:Name="batch_list" Height="470" Width="1400" Grid.Row="2"
                           IsReadOnly="True" HorizontalScrollBarVisibility="Visible" RowHeight="30" 
                           SelectionUnit="FullRow" SelectionMode="Extended" MouseDoubleClick="batch_list_MouseDoubleClick"
                           AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False"
-                          HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,10,0,0" >
+                          HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,10,0,0" 
+                          BorderBrush="#3F51B5" BorderThickness="2">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn>
                             <DataGridTemplateColumn.CellTemplate>
@@ -97,13 +98,13 @@
                         Click="delete_all_Click" />
 
                 <ComboBox x:Name="segregator" Grid.Row="1" Margin="50,20,0,0" 
-                          BorderBrush="White" BorderThickness="0" 
+                          BorderBrush="#3F51B5" BorderThickness="1" 
                           SelectionChanged="segregator_SelectionChanged" Visibility="Visible" 
                           HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="150" >
                 </ComboBox>
 
                 <Button x:Name="closeUC" Grid.Row="0" Width="30" Height="30" Click="closeUC_Click"
-                        Background="Transparent" Foreground="White"
+                        Background="#3F51B5" Foreground="White"
                         HorizontalAlignment="Right" Style="{StaticResource btn}">
                     <Controls:PackIconMaterial x:Name="CloseIcon" Kind="WindowClose" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Button>

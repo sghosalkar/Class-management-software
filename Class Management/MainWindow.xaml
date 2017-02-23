@@ -104,6 +104,19 @@
                 <Setter Property="Margin" Value="0" />
             </Style>
 
+            <Style x:Key="MainTileStyle" TargetType="Controls:Tile">
+                <Setter Property="Height" Value="auto" />
+                <Setter Property="Width" Value="auto" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="Background" Value="RoyalBlue" />
+                <EventSetter Event="Click" Handler="HandleTileClick" />
+            </Style>
+
+            <Style x:Key="MainTileLabelStyle" TargetType="Label">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="FontSize" Value="24" />
+            </Style>
+
             <!-- About us dialog -->
             <Dialogs:CustomDialog x:Key="AboutUsDialog"
                                   x:Name="AboutUsDialog"
@@ -364,7 +377,7 @@
             </VisualBrush>
         </Grid.Background> -->
 
-            <Grid>
+            <Grid Margin="2,3,2,38">
                 <!--<Grid VerticalAlignment="Top" Background="Teal" Height="35">
                     <Button x:Name="NotificationButton" HorizontalAlignment="Right" Width="50" Margin="0" 
                             Click="NotificationFlyoutEvent"
@@ -372,7 +385,30 @@
                         <Controls:PackIconMaterial Kind="MessageAlert" Height="20" Width="30" />
                     </Button>
                 </Grid>-->
-                <Grid VerticalAlignment="Bottom" Background="RoyalBlue" Height="35"></Grid>
+                <Grid Margin="100, 100, 370, 100" Background="White">
+                    <Grid Margin="50">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Controls:Tile x:Name="ViewStudentTile" Grid.Column="0" Grid.Row="0" Style="{StaticResource MainTileStyle}">
+                            <Label Style="{StaticResource MainTileLabelStyle}">Student</Label>
+                        </Controls:Tile>
+                        <Controls:Tile x:Name="ViewTeacherTile" Grid.Column="1" Grid.Row="0" Style="{StaticResource MainTileStyle}">
+                            <Label Style="{StaticResource MainTileLabelStyle}">Teacher</Label>
+                        </Controls:Tile>
+                        <Controls:Tile x:Name="ViewBatchTile" Grid.Column="0" Grid.Row="1" Style="{StaticResource MainTileStyle}">
+                            <Label Style="{StaticResource MainTileLabelStyle}">Batch</Label>
+                        </Controls:Tile>
+                        <Controls:Tile x:Name="DailyTimetableTile" Grid.Column="1" Grid.Row="1" Style="{StaticResource MainTileStyle}">
+                            <Label Style="{StaticResource MainTileLabelStyle}">Timetable</Label>
+                        </Controls:Tile>
+                    </Grid>
+                </Grid>
                 <Grid Height="250" Width="250" Margin="0,10,10,0" HorizontalAlignment="Right" VerticalAlignment="Top">
                     <Viewbox>
                         <Calendar x:Name="ReminderCalendar" 
@@ -388,11 +424,10 @@
                          Width="250" 
                          HorizontalAlignment="Right"
                          Background="Azure">
-
                 </ListBox>
-
             </Grid>
-            <Grid x:Name="mainContent"  Margin="2,3,2,38" />
+            <Grid x:Name="mainContent"  Margin="2,3,2,38" ></Grid>
+            <Grid VerticalAlignment="Bottom" Background="RoyalBlue" Height="35"></Grid>
         </Grid>
     </Viewbox>
     

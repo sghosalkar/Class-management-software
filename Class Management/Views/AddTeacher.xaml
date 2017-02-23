@@ -18,7 +18,7 @@
                 <Setter Property="HorizontalAlignment" Value="Left"></Setter>
                 <Setter Property="Grid.Column" Value="0"></Setter>
                 <Setter Property="Background" Value="Transparent"></Setter>
-                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Foreground" Value="#3F51B5" />
             </Style>
 
             <Style x:Key="formtextbox"
@@ -46,7 +46,7 @@
                 <Setter Property="FontSize" Value="15" />
                 <Setter Property="Height" Value="35" />
                 <Setter Property="Width" Value="120" />
-                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Background" Value="#3F51B5" />
                 <Setter Property="Foreground" Value="White" />
             </Style>
 
@@ -61,7 +61,7 @@
     <Viewbox>
         <Grid Height="798" Width="1550">
             <Grid Background="Black" Opacity="0.6" />
-            <Grid Background="DarkSlateBlue" >
+            <Grid Background="#ECEFF1" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="140" />
                     <RowDefinition Height="85" />
@@ -82,15 +82,15 @@
                 <Label x:Name="label"  Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" 
                        Content="Teacher's Page" Margin="0,10,0,0" 
                        HorizontalAlignment="Center" VerticalAlignment="Top" 
-                       Foreground="White" FontSize="30"/>
+                       Style="{StaticResource formlabel}" FontSize="30"/>
                 <Label Grid.Column="0" Grid.Row="0" 
                        Content="Personal Details" Margin="40,90,0,0" 
                        HorizontalAlignment="Left" VerticalAlignment="Top" 
-                       Foreground="White" FontSize="25"/>
+                       Style="{StaticResource formlabel}" FontSize="25"/>
                 <Label Grid.Column="1" Grid.Row="0" 
                        Content="Class Details" Margin="40,90,0,0" 
                        HorizontalAlignment="Left" VerticalAlignment="Top" 
-                       Foreground="White" FontSize="25"/>
+                       Style="{StaticResource formlabel}" FontSize="25"/>
                 <Label x:Name="label1" Content="Teacher's Name"   Grid.Row="1" Margin="40,10,0,0" Style="{StaticResource formlabel}" />
                 <Label x:Name="label2" Content="Contact Number"   Grid.Row="2" Margin="40,10,0,0" Style="{StaticResource formlabel}" />
                 <Label x:Name="label3" Content="Qualification"    Grid.Row="3" Margin="40,10,0,0" Style="{StaticResource formlabel}" />
@@ -137,7 +137,7 @@
                         Margin="274,40,0,0" Style="{StaticResource btn}" Click="save_Click" />
 
                 <Button x:Name="closeUC" Grid.Row="0" Width="30" Height="30" Click="closeUC_Click"
-                        Background="Transparent" Foreground="White" Grid.ColumnSpan="2"
+                        Background="#3F51B5" Foreground="White" Grid.ColumnSpan="2"
                         HorizontalAlignment="Right" Style="{StaticResource btn}">
                     <Controls:PackIconMaterial x:Name="CloseIcon" Kind="WindowClose" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Button>
