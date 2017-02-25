@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Class_Management.Views.ReminderBlock"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Class_Management.Views"
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="200">
+    <UserControl.Resources>
+        <Style x:Key="textBox" TargetType="TextBox" BasedOn="{StaticResource MetroTextBox}">
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="Width" Value="180"></Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid Height="200" Width="200" Background="RoyalBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="0" Style="{StaticResource textBox}" Controls:TextBoxHelper.Watermark="Reminder title"></TextBox>
+        <TextBox Grid.Row="1" Height="90" Style="{StaticResource textBox}" Controls:TextBoxHelper.Watermark="Reminder description"></TextBox>
+        <Button Grid.Row="2" Height="30" Width="100" Style="{StaticResource MetroFlatButton}">Save</Button>
+    </Grid>
+</UserControl>

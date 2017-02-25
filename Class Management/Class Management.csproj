@@ -123,6 +123,9 @@
     <Compile Include="Views\ManualTimetable.xaml.cs">
       <DependentUpon>ManualTimetable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ReminderBlock.xaml.cs">
+      <DependentUpon>ReminderBlock.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SetBatchTiming.xaml.cs">
       <DependentUpon>SetBatchTiming.xaml</DependentUpon>
     </Compile>
@@ -197,6 +200,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ManualTimetable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReminderBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -293,7 +293,9 @@ namespace Class_Management
                     using (SQLiteDataReader dr = command1.ExecuteReader())
                     {
                         dr.Read();
-                        temp = dr.GetString(0);
+                        try {
+                            temp = dr.GetString(0);
+                        } catch(Exception e) { }
                         if (temp == null)
                         {
                             CreateNotification(ele);

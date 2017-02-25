@@ -299,3 +299,5 @@ G:\My-Projects\Class Management\Class Management\obj\Debug\Views\WeeklyTimetable
 G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.g.resources
 G:\My-Projects\Class Management\Class Management\obj\Debug\Class_Management.Properties.Resources.resources
 G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.csproj.GenerateResource.Cache
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ReminderBlock.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ReminderBlock.baml

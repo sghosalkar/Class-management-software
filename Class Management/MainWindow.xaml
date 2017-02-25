@@ -108,7 +108,7 @@
                 <Setter Property="Height" Value="auto" />
                 <Setter Property="Width" Value="auto" />
                 <Setter Property="Margin" Value="10" />
-                <Setter Property="Background" Value="RoyalBlue" />
+                <Setter Property="Background" Value="#00897B" />
                 <EventSetter Event="Click" Handler="HandleTileClick" />
             </Style>
 
