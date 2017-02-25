@@ -205,7 +205,6 @@
                     <Button x:Name="Teacher" Content="Teacher" Style="{StaticResource FlyoutBtn}" />
                     <Button x:Name="Batch" Content="Batch" Style="{StaticResource FlyoutBtn}" />
                     <Button x:Name="Timetable" Content="Time Table" Style="{StaticResource FlyoutBtn}" />
-                    <!--<Button x:Name="Schedules" Content="Schedules" Style="{StaticResource FlyoutBtn}" />-->
                 </StackPanel>
             </Controls:Flyout>
             <Controls:Flyout x:Name="StudentFlyout" Position="Top" Theme="Accent" CloseButtonVisibility="Hidden" Height="80">

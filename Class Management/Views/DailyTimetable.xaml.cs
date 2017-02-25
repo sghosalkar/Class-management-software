@@ -452,7 +452,7 @@ namespace Class_Management.Views
                         string ttl = null;
                         foreach (string ele in tchrs)
                         {
-                            ttl += ele;
+                            ttl += " " + ele;
                         }
                         //MessageBox.Show(ttl);
                         DisplayInDataGridCell(batch, ttl);

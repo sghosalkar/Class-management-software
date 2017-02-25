@@ -111,29 +111,17 @@
     <Compile Include="Views\AddTeacher.xaml.cs">
       <DependentUpon>AddTeacher.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AutoTimetable.xaml.cs">
-      <DependentUpon>AutoTimetable.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\DailyTimetable.xaml.cs">
       <DependentUpon>DailyTimetable.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LectureSchedules.xaml.cs">
-      <DependentUpon>LectureSchedules.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ManualTimetable.xaml.cs">
       <DependentUpon>ManualTimetable.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReminderBlock.xaml.cs">
-      <DependentUpon>ReminderBlock.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SetBatchTiming.xaml.cs">
       <DependentUpon>SetBatchTiming.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SetTeacherTiming.xaml.cs">
       <DependentUpon>SetTeacherTiming.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TestSchedules.xaml.cs">
-      <DependentUpon>TestSchedules.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewBatch.xaml.cs">
       <DependentUpon>ViewBatch.xaml</DependentUpon>
@@ -187,23 +175,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AutoTimetable.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\DailyTimetable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LectureSchedules.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\ManualTimetable.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ReminderBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -212,10 +188,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SetTeacherTiming.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TestSchedules.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
