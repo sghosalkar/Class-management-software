@@ -66,52 +66,21 @@
             </Style>
 
             <!--Reminder-->
-            <Style x:Key="RemTitleTextBox" TargetType="TextBox" BasedOn="{StaticResource MetroTextBox}">
-                <Setter Property="Height" Value="40" />
-                <Setter Property="Controls:TextBoxHelper.Watermark" Value="Title" />
-                <Setter Property="Width" Value="225" />
-                <Setter Property="VerticalContentAlignment" Value="Center" />
-                <Setter Property="TextWrapping" Value="Wrap" />
-                <Setter Property="Controls:TextBoxHelper.UseFloatingWatermark" Value="True" />
-                <Setter Property="Margin" Value="5" />
-                <Setter Property="BorderBrush" Value="Teal" />
-                <Setter Property="BorderThickness" Value="0,0,0,2" />
-                <Setter Property="Background" Value="Transparent" />
-            </Style>
-
-            <Style x:Key="RemMsgTextBox" TargetType="TextBox" BasedOn="{StaticResource MetroTextBox}">
-                <Setter Property="Height" Value="70" />
-                <Setter Property="Controls:TextBoxHelper.Watermark" Value="Text" />
-                <Setter Property="Width" Value="225" />
-                <Setter Property="VerticalContentAlignment" Value="Center" />
-                <Setter Property="TextWrapping" Value="Wrap" />
-                <Setter Property="Controls:TextBoxHelper.UseFloatingWatermark" Value="True" />
-                <Setter Property="Margin" Value="5" />
-                <Setter Property="BorderBrush" Value="Teal" />
-                <Setter Property="BorderThickness" Value="0,0,0,2" />
-                <Setter Property="Background" Value="Transparent" />
-            </Style>
-
-            <Style x:Key="ReminderBtnStyle" TargetType="Button" BasedOn="{StaticResource MetroFlatButton}">
-                <Setter Property="Background" Value="RoyalBlue" />
-                <Setter Property="Foreground" Value="White" />
-                <Setter Property="Margin" Value="5" />
-            </Style>
-
-            <Style x:Key="ReminderRowStyle" TargetType="Button" BasedOn="{StaticResource MetroFlatButton}">
-                <Setter Property="Background" Value="White" />
-                <Setter Property="Foreground" Value="RoyalBlue" />
-                <Setter Property="Margin" Value="0" />
-            </Style>
-
-            <Style x:Key="ReminderRowStyle1" TargetType="ListBoxItem">
+            <Style x:Key="ReminderRowStyle" TargetType="ListBoxItem">
                 <Setter Property="Background" Value="White" />
                 <Setter Property="Foreground" Value="RoyalBlue" />
                 <Setter Property="Margin" Value="0" />
                 <Setter Property="Height" Value="40" />
                 <Setter Property="FontSize" Value="18" />
                 <Setter Property="HorizontalContentAlignment" Value="Center" />
-                <!-- <EventSetter Event="MouseDoubleClick" Handler="TestListItem_MouseDoubleClick" /> -->
+            </Style>
+
+            <Style x:Key="AddReminderBtnStyle" TargetType="Button" BasedOn="{StaticResource MetroFlatButton}">
+                <Setter Property="Background" Value="RoyalBlue" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Height" Value="40" />
+                <Setter Property="Margin" Value="0 0 5 0" />
             </Style>
 
             <Style x:Key="MainTileStyle" TargetType="Controls:Tile">
@@ -430,18 +399,12 @@
                     </Viewbox>
                 </Grid>
                 <ListBox x:Name="ReminderList" 
-                         Margin="0,260,10,35" 
-                         Width="250" 
-                         HorizontalAlignment="Right"
-                         Background="Azure">
-                </ListBox>
-                <ListBox x:Name="TestList" 
-                         Margin="0,260,300,35" 
+                         Margin="0,260,10,0" 
                          Width="250" 
                          HorizontalAlignment="Right"
                          Background="Beige"
                          BorderBrush="Black"
-                         BorderThickness="2">
+                         BorderThickness="1">
                 </ListBox>
             </Grid>
             <Grid x:Name="mainContent"  Margin="2,3,2,38" ></Grid>

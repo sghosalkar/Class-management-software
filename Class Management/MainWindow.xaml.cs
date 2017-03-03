@@ -362,34 +362,17 @@ namespace Class_Management
         {
             string CurrentDate = ReminderCalendar.SelectedDate.Value.ToShortDateString();
             FillReminders(CurrentDate);
-            FillReminders1(CurrentDate);
         }
 
-        private void FillReminders(string Rdate)
+        public class Reminder
+        {
+            string currentDate, title, text;
+        }
+
+        public void FillReminders(string Rdate)
         {
             string sql = "SELECT * FROM reminder WHERE remin_date='" + Rdate + "';";
             ReminderList.Items.Clear();
-            using (SQLiteCommand command1 = new SQLiteCommand(sql, conn))
-            {
-                using (SQLiteDataReader dr = command1.ExecuteReader())
-                {
-                    string title, txt;
-                    while (dr.Read())
-                    {
-                        title = dr.GetString(0);
-                        txt = dr.GetString(1);
-                        ListBoxItem litm = new ListBoxItem();
-                        litm.Content = EditReminderStackpanel(title);
-                        ReminderList.Items.Add(litm);
-                    }
-                }
-            }
-            ReminderList.Items.Add(AddReminderStackpanel());
-        }
-        private void FillReminders1(string Rdate)
-        {
-            string sql = "SELECT * FROM reminder WHERE remin_date='" + Rdate + "';";
-            TestList.Items.Clear();
             using (SQLiteCommand command1 = new SQLiteCommand(sql, conn))
             {
                 using (SQLiteDataReader dr = command1.ExecuteReader())
@@ -402,224 +385,33 @@ namespace Class_Management
                         currentDate = dr.GetString(2);
                         ListBoxItem litm = new ListBoxItem();
                         litm.Content = title;
-                        litm.Style = Resources["ReminderRowStyle1"] as Style;
+                        litm.Style = Resources["ReminderRowStyle"] as Style;
                         litm.MouseDoubleClick += (sdr, e) =>
                         {
                             ReminderDialog reminderDialog = new ReminderDialog();
-                            reminderDialog.SetParameters(currentDate, title, txt);
+                            reminderDialog.SetUpdateParameters(this, currentDate, title, txt);
                             DialogSpace.Children.Add(reminderDialog);
                         };
-                        TestList.Items.Add(litm);
+                        ReminderList.Items.Add(litm);
                     }
                 }
             }
-            TestList.Items.Add(AddReminderStackpanel());
+            ReminderList.Items.Add(AddReminderBtn());
         }
 
-        private void TestListItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private Button AddReminderBtn()
         {
-            
-        }
-
-        private StackPanel AddReminderStackpanel()
-        {
-            StackPanel AddReminderStack = new StackPanel();
-            AddReminderStack.Margin = new Thickness(0);
-            AddReminderStack.Orientation = Orientation.Vertical;
-            AddReminderStack.Background = Brushes.AliceBlue;
-            Button AddReminderBtn = new Button();
-            AddReminderBtn.Margin = new Thickness(5);
-            AddReminderBtn.Style = Resources["ReminderBtnStyle"] as Style;
-            AddReminderBtn.Content = "Add Reminder";
-            AddReminderBtn.Visibility = Visibility.Visible;
-            AddReminderBtn.Height = 40;           
-            TextBox RemTitle = new TextBox();
-            RemTitle.Style = Resources["RemTitleTextBox"] as Style;
-            RemTitle.Visibility = Visibility.Collapsed;
-            TextBox RemText = new TextBox();
-            RemText.Style = Resources["RemMsgTextBox"] as Style;
-            RemText.Visibility = Visibility.Collapsed;
-            Button ReminderSaveBtn = new Button();
-            ReminderSaveBtn.Content = "Save";
-            ReminderSaveBtn.Style = Resources["ReminderBtnStyle"] as Style;
-            ReminderSaveBtn.Height = 35;
-            ReminderSaveBtn.Width = 100;
-            ReminderSaveBtn.Visibility = Visibility.Collapsed;
-            AddReminderBtn.Click += (sdr, e) =>
+            string currentDate = ReminderCalendar.SelectedDate.Value.ToShortDateString();
+            Button btn = new Button();
+            btn.Style = Resources["AddReminderBtnStyle"] as Style;
+            btn.Content = "Add Reminder";
+            btn.Click += (sdr, e) =>
             {
-                RemTitle.Visibility = Visibility.Visible;
-                RemText.Visibility = Visibility.Visible;
-                ReminderSaveBtn.Visibility = Visibility.Visible;
-                AddReminderBtn.Visibility = Visibility.Collapsed;
+                ReminderDialog reminderDialog = new ReminderDialog();
+                reminderDialog.SetUpdateParameters(this, currentDate, null, null);
+                DialogSpace.Children.Add(reminderDialog);
             };
-            ReminderSaveBtn.Click += (sdr, e) =>
-            {
-                AddReminderBtn.Visibility = Visibility.Visible;
-                RemTitle.Visibility = Visibility.Collapsed;
-                RemText.Visibility = Visibility.Collapsed;
-                ReminderSaveBtn.Visibility = Visibility.Collapsed;
-                SaveReimnderInDatabase(RemTitle.Text, RemText.Text, "save");
-            };
-            AddReminderStack.Children.Add(AddReminderBtn);
-            AddReminderStack.Children.Add(RemTitle);
-            AddReminderStack.Children.Add(RemText);
-            AddReminderStack.Children.Add(ReminderSaveBtn);
-            return AddReminderStack;
-        }
-
-        private void SaveReimnderInDatabase(string RemTitle, string RemText, string f1)
-        {
-            string sql;
-            string CurrentDate = ReminderCalendar.SelectedDate.Value.ToShortDateString();
-            if (RemTitle != "" && CurrentDate != "")
-            {   
-                if(f1 == "save")
-                {
-                    sql = "INSERT INTO reminder VALUES('" + RemTitle + "', '" + RemText + "', '" + CurrentDate + "');";
-                }             
-                else
-                {
-                    sql = "UPDATE reminder SET title='" + RemTitle + "', msg_text='" + RemText + "', remin_date='" + CurrentDate 
-                        + "' WHERE title='" + RemTitle + "' AND remin_date='" + CurrentDate + "';";
-                }
-            }
-            else
-            {
-                ErrorDialog("Enter title for reminder");
-                return;
-            }
-            using (SQLiteCommand command1 = new SQLiteCommand(sql, conn))
-            {
-                command1.ExecuteNonQuery();
-            }
-            FillReminders(CurrentDate);
-        }
-
-        private StackPanel EditReminderStackpanel(string title)
-        {
-            StackPanel EditReminderStack = new StackPanel();
-            EditReminderStack.Margin = new Thickness(0);
-            EditReminderStack.Orientation = Orientation.Vertical;
-            EditReminderStack.Background = Brushes.AliceBlue;
-            Button ReminderRowBtn = new Button();
-            ReminderRowBtn.Margin = new Thickness(0);
-            ReminderRowBtn.Style = Resources["ReminderRowStyle"] as Style;
-            ReminderRowBtn.Content = title;
-            ReminderRowBtn.Visibility = Visibility.Visible;
-            ReminderRowBtn.Height = 40;
-            TextBox RemTitle = new TextBox();
-            RemTitle.Style = Resources["RemTitleTextBox"] as Style;
-            RemTitle.Visibility = Visibility.Collapsed;
-            TextBox RemText = new TextBox();
-            RemText.Style = Resources["RemMsgTextBox"] as Style;
-            RemText.Visibility = Visibility.Collapsed;
-            Button ReminderUpdateBtn = new Button();
-            ReminderUpdateBtn.Content = "Update";
-            ReminderUpdateBtn.Style = Resources["ReminderBtnStyle"] as Style;
-            ReminderUpdateBtn.Height = 35;
-            ReminderUpdateBtn.Width = 100;
-            ReminderUpdateBtn.Visibility = Visibility.Collapsed;
-            ReminderRowBtn.Click += (sdr, e) =>
-            {
-                RemTitle.Visibility = Visibility.Visible;
-                RemText.Visibility = Visibility.Visible;
-                ReminderUpdateBtn.Visibility = Visibility.Visible;
-                ReminderRowBtn.Visibility = Visibility.Collapsed;
-            };
-            ReminderUpdateBtn.Click += (sdr, e) =>
-            {
-                ReminderRowBtn.Visibility = Visibility.Visible;
-                SaveReimnderInDatabase(RemTitle.Text, RemText.Text, "update");
-                RemTitle.Visibility = Visibility.Collapsed;
-                RemText.Visibility = Visibility.Collapsed;
-                ReminderUpdateBtn.Visibility = Visibility.Collapsed;
-            };
-            EditReminderStack.Children.Add(ReminderRowBtn);
-            EditReminderStack.Children.Add(RemTitle);
-            EditReminderStack.Children.Add(RemText);
-            EditReminderStack.Children.Add(ReminderUpdateBtn);
-            return EditReminderStack;
-        }
-
-        private void CreateReminderRow(string title)
-        {
-            StackPanel CreateReminderStackPanel = new StackPanel();
-            CreateReminderStackPanel.Margin = new Thickness(5);
-            CreateReminderStackPanel.Orientation = Orientation.Vertical;
-            CreateReminderStackPanel.Background = Brushes.AliceBlue;
-            Button ReminderRow = new Button();
-            ReminderRow.Margin = new Thickness(0);
-            ReminderRow.Background = Brushes.AliceBlue;
-            ReminderRow.Content = title;
-            ReminderRow.Visibility = Visibility.Visible;
-            TextBox RemTitle = new TextBox();
-            RemTitle.Style = Resources["RemTitleTextBox"] as Style;
-            RemTitle.Visibility = Visibility.Collapsed;
-            TextBox RemText = new TextBox();
-            RemText.Style = Resources["RemMsgTextBox"] as Style;
-            RemText.Visibility = Visibility.Collapsed;
-            Button UpdateRemBtn = new Button();
-            UpdateRemBtn.Content = "Update";
-            UpdateRemBtn.Style = Resources["RemSaveBtnStyle"] as Style;
-            UpdateRemBtn.Visibility = Visibility.Collapsed;
-            ReminderRow.Click += (sdr, e) =>
-            {
-                RemTitle.Visibility = Visibility.Visible;
-                RemText.Visibility = Visibility.Visible;
-                UpdateRemBtn.Visibility = Visibility.Visible;
-                ReminderRow.Visibility = Visibility.Collapsed;
-            };            
-            UpdateRemBtn.Click += (sdr, e) =>
-            {
-                RemTitle.Visibility = Visibility.Collapsed;
-                RemText.Visibility = Visibility.Collapsed;
-                UpdateRemBtn.Visibility = Visibility.Collapsed;
-                ReminderRow.Visibility = Visibility.Visible;
-            };
-            CreateReminderStackPanel.Children.Add(ReminderRow);
-            CreateReminderStackPanel.Children.Add(RemTitle);
-            CreateReminderStackPanel.Children.Add(RemText);
-            CreateReminderStackPanel.Children.Add(UpdateRemBtn);           
-            //int f1 = ReminderStack.Children.Count - 1;
-            //ReminderStack.Children.Insert(f1, CreateReminderStackPanel);
-        }
-
-        private void EditReminder_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void AddReminder_Click(object sender, RoutedEventArgs e)
-        {
-            //RemTitle.Visibility = Visibility.Visible;
-            //RemText.Visibility = Visibility.Visible;
-            //SaveRemBtn.Visibility = Visibility.Visible;
-            //AddReminder.Visibility = Visibility.Collapsed;
-        }
-
-        private void CreateEditReminder(object sender, RoutedEventArgs e)
-        {
-            string sql;
-            string CurrentDate = ReminderCalendar.SelectedDate.Value.ToShortDateString();
-            /*if (RemTitle.Text != "" && CurrentDate != "")
-            {                
-                sql = "INSERT INTO reminder VALUES('" + RemTitle.Text + "', '" + RemText.Text + "', '" + CurrentDate + "');";
-            }
-            else
-            {
-                ErrorDialog("Enter title for reminder");
-                return;
-            }
-            using (SQLiteCommand command1 = new SQLiteCommand(sql, conn))
-            {
-                command1.ExecuteNonQuery();
-            }
-            CreateReminderRow(RemTitle.Text);
-            AddReminder.Visibility = Visibility.Visible;
-            RemTitle.Visibility = Visibility.Collapsed;
-            RemText.Visibility = Visibility.Collapsed;
-            SaveRemBtn.Visibility = Visibility.Collapsed;
-            */
+            return btn;
         }
 
         private void red_Click(object sender, RoutedEventArgs e)

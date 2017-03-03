@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              Loaded="UserControl_Loaded"
+             Unloaded="UserControl_Unloaded"
              d:DesignHeight="798" d:DesignWidth="1550">
     <UserControl.Resources>
         <Storyboard x:Key="openblack">
@@ -37,14 +38,34 @@
                         <ColumnDefinition Width="250"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="message_text" Grid.Row="0" FontSize="18" Margin="10,30" />
-                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="RoyalBlue">Reminder</Label>
-                    <Grid Height="220" Width="220" Grid.Row="1" Grid.Column="0">
+                    <Grid Grid.Row="1" Grid.Column="0" 
+                          Height="40" Width="200" 
+                          VerticalAlignment="Top" 
+                          Margin="0 20 0 0">
+                        <Viewbox>
+                            <DatePicker x:Name="reminderDatePicker"
+                                        FontSize="18"
+                                        Width="180"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="0"
+                                        VerticalContentAlignment="Center"></DatePicker>
+                        </Viewbox>
+                    </Grid>
+                    <Label Grid.Row="0" 
+                           Grid.Column="0" 
+                           Grid.ColumnSpan="2" 
+                           FontSize="24" 
+                           VerticalAlignment="Center" 
+                           HorizontalAlignment="Center" 
+                           Foreground="RoyalBlue">Reminder</Label>
+                    <Grid Height="220" Width="220" Grid.Row="1" Grid.Column="0" Visibility="Collapsed">
                         <Viewbox>
                             <Calendar x:Name="ReminderCalendar" 
-                              Height="180" Width="180" 
-                              BorderBrush="Teal"
-                              HorizontalAlignment="Center" VerticalAlignment="Center">
+                                      Height="180" Width="180" 
+                                      BorderBrush="Teal"
+                                      HorizontalAlignment="Center" 
+                                      VerticalAlignment="Center"
+                                      >
                             </Calendar>
                         </Viewbox>
                     </Grid>
@@ -78,13 +99,26 @@
                             Content="Save" Width="70" Height="35"
                             HorizontalAlignment="Right" VerticalAlignment="Top"
                             Margin="0,0,150,0" Grid.Row="2" Grid.Column="1"
-                            Click="HideDialog" />
+                            Click="SaveReminder" />
                     <Button Style="{StaticResource MetroFlatButton}"
                             x:Name="Cancel"
                             Content="Cancel" Width="70" Height="35"
                             HorizontalAlignment="Right" VerticalAlignment="Top"
                             Margin="0,0,50,0" Grid.Row="2" Grid.Column="1"
-                            Click="HideDialog" />
+                            Click="CancelClick" />
+                    <Button Style="{StaticResource MetroFlatButton}"
+                            x:Name="Delete"
+                            Content="Delete" Width="70" Height="35"
+                            HorizontalAlignment="Right" VerticalAlignment="Top"
+                            Margin="0,0,250,0" Grid.Row="2" Grid.Column="1"
+                            Visibility="Collapsed"
+                            Click="DeleteClick" />
+                    <Label x:Name="errorLabel"
+                           Grid.Column="1" Grid.Row="2" 
+                           VerticalAlignment="Top" 
+                           HorizontalAlignment="Left"
+                           FontSize="14"
+                           Foreground="Red"></Label>
                 </Grid>
             </Grid>
         </Grid>
