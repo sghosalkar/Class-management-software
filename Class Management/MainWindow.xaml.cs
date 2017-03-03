@@ -362,6 +362,7 @@ namespace Class_Management
         {
             string CurrentDate = ReminderCalendar.SelectedDate.Value.ToShortDateString();
             FillReminders(CurrentDate);
+            FillReminders1(CurrentDate);
         }
 
         private void FillReminders(string Rdate)
@@ -384,6 +385,40 @@ namespace Class_Management
                 }
             }
             ReminderList.Items.Add(AddReminderStackpanel());
+        }
+        private void FillReminders1(string Rdate)
+        {
+            string sql = "SELECT * FROM reminder WHERE remin_date='" + Rdate + "';";
+            TestList.Items.Clear();
+            using (SQLiteCommand command1 = new SQLiteCommand(sql, conn))
+            {
+                using (SQLiteDataReader dr = command1.ExecuteReader())
+                {
+                    string title, txt, currentDate;
+                    while (dr.Read())
+                    {
+                        title = dr.GetString(0);
+                        txt = dr.GetString(1);
+                        currentDate = dr.GetString(2);
+                        ListBoxItem litm = new ListBoxItem();
+                        litm.Content = title;
+                        litm.Style = Resources["ReminderRowStyle1"] as Style;
+                        litm.MouseDoubleClick += (sdr, e) =>
+                        {
+                            ReminderDialog reminderDialog = new ReminderDialog();
+                            reminderDialog.SetParameters(currentDate, title, txt);
+                            DialogSpace.Children.Add(reminderDialog);
+                        };
+                        TestList.Items.Add(litm);
+                    }
+                }
+            }
+            TestList.Items.Add(AddReminderStackpanel());
+        }
+
+        private void TestListItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            
         }
 
         private StackPanel AddReminderStackpanel()
@@ -594,5 +629,7 @@ namespace Class_Management
             app.ChangeAccent(accentUrl);
             //MainFlyout.Theme = FlyoutTheme.Accent;
         }
+
+
     }
 }

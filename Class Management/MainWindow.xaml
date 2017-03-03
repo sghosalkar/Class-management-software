@@ -104,6 +104,16 @@
                 <Setter Property="Margin" Value="0" />
             </Style>
 
+            <Style x:Key="ReminderRowStyle1" TargetType="ListBoxItem">
+                <Setter Property="Background" Value="White" />
+                <Setter Property="Foreground" Value="RoyalBlue" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="Height" Value="40" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <!-- <EventSetter Event="MouseDoubleClick" Handler="TestListItem_MouseDoubleClick" /> -->
+            </Style>
+
             <Style x:Key="MainTileStyle" TargetType="Controls:Tile">
                 <Setter Property="Height" Value="auto" />
                 <Setter Property="Width" Value="auto" />
@@ -123,11 +133,12 @@
                                   Height="330"
                                   FontSize="{StaticResource DialogMessageFontSize}">
                 <StackPanel Orientation="Vertical">
-                    <TextBlock FontSize="40" Height="70" Foreground="#FF008BFF" FontFamily="Microsoft JhengHei">MyClass</TextBlock>
-                    <TextBlock>MyClass Class Management Software</TextBlock>
+                    <TextBlock FontSize="40" Height="70" Foreground="#FF008BFF" FontFamily="Microsoft JhengHei">CMS</TextBlock>
+                    <TextBlock>Class Management Software</TextBlock>
                     <TextBlock>Version 1.0.0</TextBlock>
                     <TextBlock>Copyright © 2016 StudyLeague Education Services</TextBlock>
                     <TextBlock>All Rights Reserved</TextBlock>
+                    <TextBlock>Developer: Shubham Ghosalkar</TextBlock>
                     <TextBlock>
                         Visit us at: 
                         <Hyperlink NavigateUri="http://www.studyleague.com"
@@ -424,8 +435,17 @@
                          HorizontalAlignment="Right"
                          Background="Azure">
                 </ListBox>
+                <ListBox x:Name="TestList" 
+                         Margin="0,260,300,35" 
+                         Width="250" 
+                         HorizontalAlignment="Right"
+                         Background="Beige"
+                         BorderBrush="Black"
+                         BorderThickness="2">
+                </ListBox>
             </Grid>
             <Grid x:Name="mainContent"  Margin="2,3,2,38" ></Grid>
+            <Grid x:Name="DialogSpace"  Margin="2,3,2,38" ></Grid>
             <Grid VerticalAlignment="Bottom" Background="RoyalBlue" Height="35"></Grid>
         </Grid>
     </Viewbox>

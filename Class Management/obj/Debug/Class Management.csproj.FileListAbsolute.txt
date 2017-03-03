@@ -291,3 +291,6 @@ G:\My-Projects\Class Management\Class Management\obj\Debug\Class_Management.Prop
 G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.csproj.GenerateResource.Cache
 G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.exe
 G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.pdb
+G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.csprojResolveAssemblyReference.cache
+G:\My-Projects\Class Management\Class Management\obj\Debug\ReminderDialog.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\ReminderDialog.baml

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 G:\My-Projects\Class Management\Class Management\App.xaml
-16-628847134
+17-533124062
 
-18-359735900
+19-174987681
 25317149615
-ActionDialog.xaml;MainWindow.xaml;MessageDialog.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;Views\AddBatch.xaml;Views\AddStudent.xaml;Views\AddTeacher.xaml;Views\DailyTimetable.xaml;Views\ManualTimetable.xaml;Views\SetBatchTiming.xaml;Views\SetTeacherTiming.xaml;Views\ViewBatch.xaml;Views\ViewStudent.xaml;Views\ViewTeacher.xaml;Views\WeeklyTimetable.xaml;
+ActionDialog.xaml;MainWindow.xaml;MessageDialog.xaml;ReminderDialog.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;Views\AddBatch.xaml;Views\AddStudent.xaml;Views\AddTeacher.xaml;Views\DailyTimetable.xaml;Views\ManualTimetable.xaml;Views\SetBatchTiming.xaml;Views\SetTeacherTiming.xaml;Views\ViewBatch.xaml;Views\ViewStudent.xaml;Views\ViewTeacher.xaml;Views\WeeklyTimetable.xaml;
 
 False
 

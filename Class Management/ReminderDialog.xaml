@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="Class_Management.ReminderDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Class_Management"
+             mc:Ignorable="d" 
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             Loaded="UserControl_Loaded"
+             d:DesignHeight="798" d:DesignWidth="1550">
+    <UserControl.Resources>
+        <Storyboard x:Key="openblack">
+            <DoubleAnimation From="0.2" To="0.8" Duration="0:0:0.3" Storyboard.TargetName="outer" Storyboard.TargetProperty="Opacity" />
+        </Storyboard>
+        <Storyboard x:Key="openwhite">
+            <DoubleAnimation From="0" To="1" Duration="0:0:0.6" Storyboard.TargetName="inner" Storyboard.TargetProperty="Opacity" />
+        </Storyboard>
+        <Storyboard x:Key="closeblack">
+            <DoubleAnimation From="0.8" To="0.2" BeginTime="0:0:0.3" Duration="0:0:0.6" Storyboard.TargetName="outer" Storyboard.TargetProperty="Opacity" Completed="DoubleAnimation_Completed" />
+        </Storyboard>
+        <Storyboard x:Key="closewhite">
+            <DoubleAnimation From="1" To="0" Duration="0:0:0.3" Storyboard.TargetName="inner" Storyboard.TargetProperty="Opacity" />
+        </Storyboard>
+    </UserControl.Resources>
+    <Viewbox>
+        <Grid>
+            <Grid Height="798" Width="1550" Background="Black" x:Name="outer">
+            </Grid>
+            <Grid Width="1550" Height="400" Background="White" x:Name="inner">
+                <Grid Height="400" Width="800" Background="Beige">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="75" />
+                        <RowDefinition Height="250" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="message_text" Grid.Row="0" FontSize="18" Margin="10,30" />
+                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="RoyalBlue">Reminder</Label>
+                    <Grid Height="220" Width="220" Grid.Row="1" Grid.Column="0">
+                        <Viewbox>
+                            <Calendar x:Name="ReminderCalendar" 
+                              Height="180" Width="180" 
+                              BorderBrush="Teal"
+                              HorizontalAlignment="Center" VerticalAlignment="Center">
+                            </Calendar>
+                        </Viewbox>
+                    </Grid>
+                    <TextBox x:Name="titleTextbox"  
+                             BorderBrush="Transparent"
+                             BorderThickness="0"
+                             Height="50"
+                             FontSize="18"
+                             VerticalContentAlignment="Center"
+                             Width="500"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top"
+                             Controls:TextBoxHelper.UseFloatingWatermark="True"
+                             Controls:TextBoxHelper.Watermark="Title"
+                             Grid.Row="1" Grid.Column="1"
+                             Margin="10 20 0 0"></TextBox>
+                    <TextBox x:Name="textTextbox" 
+                             BorderBrush="Transparent"
+                             BorderThickness="0"
+                             Width="500"
+                             FontSize="14"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top"
+                             Controls:TextBoxHelper.UseFloatingWatermark="True"
+                             Controls:TextBoxHelper.Watermark="Description"
+                             Grid.Row="1" Grid.Column="1"
+                             Height="150"
+                             Margin="10 80 0 0"></TextBox>
+                    <Button Style="{StaticResource MetroFlatButton}"
+                            x:Name="Save"
+                            Content="Save" Width="70" Height="35"
+                            HorizontalAlignment="Right" VerticalAlignment="Top"
+                            Margin="0,0,150,0" Grid.Row="2" Grid.Column="1"
+                            Click="HideDialog" />
+                    <Button Style="{StaticResource MetroFlatButton}"
+                            x:Name="Cancel"
+                            Content="Cancel" Width="70" Height="35"
+                            HorizontalAlignment="Right" VerticalAlignment="Top"
+                            Margin="0,0,50,0" Grid.Row="2" Grid.Column="1"
+                            Click="HideDialog" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Viewbox>
+</UserControl>

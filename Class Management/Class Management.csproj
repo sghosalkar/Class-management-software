@@ -102,6 +102,9 @@
     <Compile Include="MessageDialog.xaml.cs">
       <DependentUpon>MessageDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ReminderDialog.xaml.cs">
+      <DependentUpon>ReminderDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddBatch.xaml.cs">
       <DependentUpon>AddBatch.xaml</DependentUpon>
     </Compile>
@@ -152,6 +155,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MessageDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReminderDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
