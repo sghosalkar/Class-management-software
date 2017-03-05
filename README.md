@@ -9,10 +9,4 @@
 * Reminders
 
 ## Screenshots
-![Alt text](Screenshots/LoginPage.png "Login page")
-
-![Alt text](Screenshots/MainWindow.png "Main window")
-
-![Alt text](Screenshots/StudentForm.png "Student Form")
-
-![Alt text](Screenshots/Timetable.png "Timetable")
+![Alt text](Screenshots/Demo.gif "Demo")

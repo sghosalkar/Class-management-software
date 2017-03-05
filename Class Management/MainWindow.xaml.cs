@@ -24,10 +24,10 @@ namespace Class_Management
         public MainWindow()
         {
             InitializeComponent();
-            this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.9);
-            this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.9);
-            LoginFlyout.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.9);
-            LoginFlyout.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.9);
+            this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.89);
+            this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.89);
+            LoginFlyout.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.89);
+            LoginFlyout.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.89);
             //Resources.Add("WindowHeight", SystemParameters.PrimaryScreenHeight);
             //Resources.Add("WindowWidth", SystemParameters.PrimaryScreenWidth);
             MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
@@ -388,9 +388,7 @@ namespace Class_Management
                         litm.Style = Resources["ReminderRowStyle"] as Style;
                         litm.MouseDoubleClick += (sdr, e) =>
                         {
-                            ReminderDialog reminderDialog = new ReminderDialog();
-                            reminderDialog.SetUpdateParameters(this, currentDate, title, txt);
-                            DialogSpace.Children.Add(reminderDialog);
+                            OpenReminderDialog(currentDate, title, txt);
                         };
                         ReminderList.Items.Add(litm);
                     }
@@ -398,6 +396,8 @@ namespace Class_Management
             }
             ReminderList.Items.Add(AddReminderBtn());
         }
+
+
 
         private Button AddReminderBtn()
         {
@@ -407,11 +407,16 @@ namespace Class_Management
             btn.Content = "Add Reminder";
             btn.Click += (sdr, e) =>
             {
-                ReminderDialog reminderDialog = new ReminderDialog();
-                reminderDialog.SetUpdateParameters(this, currentDate, null, null);
-                DialogSpace.Children.Add(reminderDialog);
+                OpenReminderDialog(currentDate, null, null);
             };
             return btn;
+        }
+
+        private void OpenReminderDialog(string currentDate, string title, string txt)
+        {
+            ReminderDialog reminderDialog = new ReminderDialog();
+            reminderDialog.SetUpdateParameters(this, currentDate, title, txt);
+            DialogSpace.Children.Add(reminderDialog);
         }
 
         private void red_Click(object sender, RoutedEventArgs e)
@@ -422,6 +427,10 @@ namespace Class_Management
             //MainFlyout.Theme = FlyoutTheme.Accent;
         }
 
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string currentDate = ReminderCalendar.SelectedDate.Value.ToShortDateString();
+            OpenReminderDialog(currentDate, null, null);
+        }
     }
 }
