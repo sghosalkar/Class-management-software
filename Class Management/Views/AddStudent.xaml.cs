@@ -46,15 +46,11 @@ namespace Class_Management.Views
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
-            //SQLiteConnection.CreateFile("MainDatabase.db");
             try
             {
                 SQLiteConnection conn;
                 conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
                 conn.Open();
-                //MessageBox.Show(date_of_birth.SelectedDate.Value.ToString("dd-MM-yyyy"));
-                //string sql = "CREATE TABLE student ( student_name TEXT, contact_no1 TEXT, studying_at TEXT, studying_at_name TEXT, address TEXT, student_email TEXT, parent_name TEXT, contact_no2 TEXT, reg_no TEXT PRIMARY KEY, batch TEXT, subjects TEXT, other_details TEXT, balance_fees TEXT)";
-                //string sql = "DROP TABLE sellerinfo";
                 if (student_name.Text == "" || contact_no1.Text == "" || reg_no.Text == "" || batch.Text == "")
                 {
                     ErrorDialog("Student Name, Contact number, Registration Number and Batch are mandatory.");
@@ -139,10 +135,8 @@ namespace Class_Management.Views
                 SQLiteConnection conn;
                 conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
                 conn.Open();
-                //MessageBox.Show("Connected");
                 string sql = ("select * from student where reg_no='" + updateStudent + "'; ");
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
-                // command.ExecuteNonQuery();
                 SQLiteDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
@@ -182,7 +176,6 @@ namespace Class_Management.Views
                 SQLiteConnection conn;
                 conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
                 conn.Open();
-                //MessageBox.Show("Connected");
                 string sql = "SELECT batch_name FROM batch;";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 command.ExecuteNonQuery();
@@ -207,7 +200,6 @@ namespace Class_Management.Views
                 SQLiteConnection conn;
                 conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
                 conn.Open();
-                //MessageBox.Show("Connected");
                 string sql = "SELECT student_name, reg_no FROM student;";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 command.ExecuteNonQuery();

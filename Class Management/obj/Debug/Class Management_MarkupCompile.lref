@@ -3,6 +3,7 @@ FG:\My-Projects\Class Management\Class Management\App.xaml;;
 FG:\My-Projects\Class Management\Class Management\ActionDialog.xaml;;
 FG:\My-Projects\Class Management\Class Management\MainWindow.xaml;;
 FG:\My-Projects\Class Management\Class Management\MessageDialog.xaml;;
+FG:\My-Projects\Class Management\Class Management\ReminderDialog.xaml;;
 FG:\My-Projects\Class Management\Class Management\Views\AddBatch.xaml;;
 FG:\My-Projects\Class Management\Class Management\Views\AddStudent.xaml;;
 FG:\My-Projects\Class Management\Class Management\Views\AddTeacher.xaml;;
@@ -14,5 +15,4 @@ FG:\My-Projects\Class Management\Class Management\Views\ViewBatch.xaml;;
 FG:\My-Projects\Class Management\Class Management\Views\ViewStudent.xaml;;
 FG:\My-Projects\Class Management\Class Management\Views\ViewTeacher.xaml;;
 FG:\My-Projects\Class Management\Class Management\Views\WeeklyTimetable.xaml;;
-FG:\My-Projects\Class Management\Class Management\ReminderDialog.xaml;;
 

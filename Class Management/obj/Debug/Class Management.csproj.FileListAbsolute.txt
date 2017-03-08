@@ -252,11 +252,13 @@ G:\My-Projects\Class Management\Class Management\bin\Debug\EntityFramework.SqlSe
 G:\My-Projects\Class Management\Class Management\bin\Debug\MahApps.Metro.pdb
 G:\My-Projects\Class Management\Class Management\bin\Debug\MahApps.Metro.xml
 G:\My-Projects\Class Management\Class Management\bin\Debug\System.Data.SQLite.xml
+G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.csprojResolveAssemblyReference.cache
 G:\My-Projects\Class Management\Class Management\obj\Debug\Resources\Icons.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\Resources\IconsNonShared.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\ActionDialog.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\MainWindow.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\MessageDialog.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\ReminderDialog.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddBatch.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddStudent.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddTeacher.g.cs
@@ -275,6 +277,7 @@ G:\My-Projects\Class Management\Class Management\obj\Debug\App.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\ActionDialog.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\MainWindow.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\MessageDialog.baml
+G:\My-Projects\Class Management\Class Management\obj\Debug\ReminderDialog.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddBatch.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddStudent.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddTeacher.baml
@@ -291,6 +294,3 @@ G:\My-Projects\Class Management\Class Management\obj\Debug\Class_Management.Prop
 G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.csproj.GenerateResource.Cache
 G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.exe
 G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.pdb
-G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.csprojResolveAssemblyReference.cache
-G:\My-Projects\Class Management\Class Management\obj\Debug\ReminderDialog.g.cs
-G:\My-Projects\Class Management\Class Management\obj\Debug\ReminderDialog.baml

@@ -51,7 +51,6 @@ namespace Class_Management.Views
                 SQLiteConnection conn;
                 conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
                 conn.Open();
-                //string sql = "CREATE TABLE batch ( batch_name TEXT UNIQUE, general_timing_from TEXT, general_timing_to TEXT, selected_subjects TEXT, batch_type TEXT)";
                 string general_timing_from = from_h.Text + ":" + from_m.Text + ":" + from_ampm.Text;
                 string general_timing_to = to_h.Text + ":" + to_m.Text + ":" + to_ampm.Text;
                 if (batch_name.Text == "" || general_timing_from == "::" || general_timing_to == "::")
@@ -149,11 +148,8 @@ namespace Class_Management.Views
                 SQLiteConnection conn;
                 conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
                 conn.Open();
-                //MessageBox.Show("Connected");
-
                 string sql = ("select * from batch where batch_name='" + igotbatch + "'; ");
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
-                // command.ExecuteNonQuery();
                 SQLiteDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
@@ -295,8 +291,5 @@ namespace Class_Management.Views
                 ErrorDialog(msg);
             }
         }
-
-
     }
-
 }

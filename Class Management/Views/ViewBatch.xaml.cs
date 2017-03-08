@@ -55,8 +55,6 @@ namespace Class_Management.Views
                 SQLiteConnection conn;
                 conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
                 conn.Open();
-                //MessageBox.Show("Connected");
-
                 string sql = "SELECT * FROM batch;";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 command.ExecuteNonQuery();
@@ -99,12 +97,6 @@ namespace Class_Management.Views
                     CheckDeleteBtn();
                 }
                 else { }
-                /*string msg = "";
-                foreach (string ele in delete_list)
-                {
-                    msg += ele;
-                }
-                MessageBox.Show(msg);*/
             }
             catch (Exception ex)
             {
@@ -173,10 +165,7 @@ namespace Class_Management.Views
             }
         }
 
-        private void delete_all_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        private void delete_all_Click(object sender, RoutedEventArgs e){ }
 
         private void batch_list_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -187,7 +176,6 @@ namespace Class_Management.Views
                 adbatch.stringcmode(selb);
                 (this.Parent as Grid).Children.Add(adbatch);
                 (this.Parent as Grid).Children.Remove(this);
-                //DialogSpace.Children.Add(adbatch);
             }
             catch (Exception)
             {
@@ -210,7 +198,6 @@ namespace Class_Management.Views
                     SQLiteConnection conn;
                     conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
                     conn.Open();
-                    //MessageBox.Show("Connected");
                     string sql = "SELECT * FROM batch WHERE batch_name='" + bname + "';";
                     SQLiteCommand command = new SQLiteCommand(sql, conn);
                     command.ExecuteNonQuery();
@@ -236,7 +223,6 @@ namespace Class_Management.Views
                 SQLiteConnection conn;
                 conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
                 conn.Open();
-                //MessageBox.Show("Connected");
                 string sql = "SELECT batch_name FROM batch;";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 command.ExecuteNonQuery();

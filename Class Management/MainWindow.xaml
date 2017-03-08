@@ -106,8 +106,6 @@
                     <TextBlock>Class Management Software</TextBlock>
                     <TextBlock>Version 1.0.0</TextBlock>
                     <TextBlock>Copyright © 2016 StudyLeague Education Services</TextBlock>
-                    <TextBlock>All Rights Reserved</TextBlock>
-                    <TextBlock>Developer: Shubham Ghosalkar</TextBlock>
                     <TextBlock>
                         Visit us at: 
                         <Hyperlink NavigateUri="http://www.studyleague.com"
@@ -234,19 +232,6 @@
                     <!--<Button x:Name="ManualTimetable" Content="Manual Timetable" Style="{StaticResource SubFlyoutBtn}" />-->
                 </StackPanel>
             </Controls:Flyout>
-            <!--
-            <Controls:Flyout x:Name="SchedulesFlyout" Position="Top" Theme="Accent" CloseButtonVisibility="Hidden" Height="80">
-                <Controls:Flyout.HeaderTemplate>
-                    <DataTemplate>
-                        <TextBlock Margin="50,25,0,0">Schedules</TextBlock>
-                    </DataTemplate>
-                </Controls:Flyout.HeaderTemplate>
-                <StackPanel Orientation="Horizontal" Style="{StaticResource FlyoutStackpanel}">
-                    <Button x:Name="LectureSchedules" Content="Lecture Schedules" Style="{StaticResource SubFlyoutBtn}" />
-                    <Button x:Name="TestSchedules" Content="Test Schedules" Style="{StaticResource SubFlyoutBtn}" />
-                </StackPanel>
-            </Controls:Flyout>
-            -->
             <Controls:Flyout x:Name="ToolsFlyout" Header="Tools" Position="Right" Theme="Dark" CloseButtonVisibility="Visible" Width="300" IsModal="True">
                 <Viewbox>
                     <Grid Width="300" Height="780">
@@ -275,15 +260,6 @@
                                 Style="{StaticResource MetroFlatButton}" Click="change_subject_Click">
                             <Controls:PackIconMaterial x:Name="DeleteSubject" Kind="Delete" Height="15" Width="15" />
                         </Button>
-                        <!--<ListView x:Name="subject_list" Height="200" Width="250" Margin="10,10,0,0"
-                                  Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
-                                  Style="{StaticResource VirtualisedMetroListView}">
-                                <ListView.View>
-                                    <GridView>
-                                        <GridViewColumn Header="Subject list" Width="" DisplayMemberBinding="{Binding subject}" />
-                                    </GridView>
-                                </ListView.View>
-                            </ListView> -->
                         <TextBox x:Name="subject_textbox" Width="190" Height="25" Margin="10,10,0,0"
                                  Grid.Column="0" Grid.Row="2" CharacterCasing="Upper"
                                  HorizontalAlignment="Left" VerticalAlignment="Top" />
@@ -348,22 +324,7 @@
 
     <Viewbox>
         <Grid Background="AliceBlue" Height="855" Width="1590">
-            <!-- <Grid.Background>
-            <VisualBrush>
-                <VisualBrush.Visual>
-                    <Image Source="Assets\Class.jpg" />
-                </VisualBrush.Visual>
-            </VisualBrush>
-        </Grid.Background> -->
-
             <Grid Margin="2,3,2,38">
-                <!--<Grid VerticalAlignment="Top" Background="Teal" Height="35">
-                    <Button x:Name="NotificationButton" HorizontalAlignment="Right" Width="50" Margin="0" 
-                            Click="NotificationFlyoutEvent"
-                            Style="{StaticResource TransparentBtn}">
-                        <Controls:PackIconMaterial Kind="MessageAlert" Height="20" Width="30" />
-                    </Button>
-                </Grid>-->
                 <Grid Margin="100, 100, 370, 100" Background="White">
                     <Grid Margin="50">
                         <Grid.RowDefinitions>

@@ -28,10 +28,7 @@ namespace Class_Management
             this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.89);
             LoginFlyout.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.89);
             LoginFlyout.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.89);
-            //Resources.Add("WindowHeight", SystemParameters.PrimaryScreenHeight);
-            //Resources.Add("WindowWidth", SystemParameters.PrimaryScreenWidth);
-            MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
-            
+            MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;      
         }
 
         SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
@@ -46,7 +43,6 @@ namespace Class_Management
             FillSubjects();
             FillNotification();
             ReminderCalendar.SelectedDate = DateTime.Today.Date;
-            //FillReminders(DateTime.Now.ToShortDateString());
         }
         private void mainWindow_Unloaded(object sender, RoutedEventArgs e)
         {
@@ -185,9 +181,6 @@ namespace Class_Management
         {
             try
             {
-                //MessageBox.Show(date_of_birth.SelectedDate.Value.ToString("dd-MM-yyyy"));
-                //string sql = "CREATE TABLE subjects ( subject TEXT)";
-                //string sql = "DROP TABLE sellerinfo";
                 string sql;
                 var btn = sender as Button;
                 if(btn.Name == "add_subject")
@@ -252,7 +245,6 @@ namespace Class_Management
             await this.ShowMetroDialogAsync(dialog);
             var txtblock = dialog.FindChild<TextBlock>("message_text");
             txtblock.Text = msg;
-            //var dialo = (BaseMetroDialog)this.Resources["CustomDialogTest"];
         }
 
         private void LoginFlyoutBtn_Click(object sender, RoutedEventArgs e)
@@ -295,7 +287,7 @@ namespace Class_Management
                         dr.Read();
                         try {
                             temp = dr.GetString(0);
-                        } catch(Exception e) { }
+                        } catch(Exception) { }
                         if (temp == null)
                         {
                             CreateNotification(ele);
@@ -355,18 +347,12 @@ namespace Class_Management
                 mainContent.Children.Add(res);
                 NotificationFlyout.IsOpen = false;
             }
-            //MessageBox.Show(msg);
         }
 
         private void ReminderCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             string CurrentDate = ReminderCalendar.SelectedDate.Value.ToShortDateString();
             FillReminders(CurrentDate);
-        }
-
-        public class Reminder
-        {
-            string currentDate, title, text;
         }
 
         public void FillReminders(string Rdate)
@@ -424,13 +410,6 @@ namespace Class_Management
             var app = App.Current as App;
             string accentUrl = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/" + (sender as Button).Name + ".xaml";
             app.ChangeAccent(accentUrl);
-            //MainFlyout.Theme = FlyoutTheme.Accent;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            string currentDate = ReminderCalendar.SelectedDate.Value.ToShortDateString();
-            OpenReminderDialog(currentDate, null, null);
         }
     }
 }

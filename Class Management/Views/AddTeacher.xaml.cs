@@ -51,7 +51,6 @@ namespace Class_Management.Views
                 SQLiteConnection conn;
                 conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
                 conn.Open();
-                //string sql = "CREATE TABLE teacher ( teacher_name TEXT, teacher_contact_no TEXT, qualification TEXT, other_details TEXT, teacher_email TEXT, teacher_code TEXT UNIQUE, teacher_subject TEXT, timing_optional TEXT )";
                 if (teacher_name.Text == "" || teacher_contact_no.Text == "" || teacher_subject.Text == "" || teacher_code.Text == "")
                 {
                     string msg = "Enter Teacher Name, Contact Number, Subject and Teacher Code (Mandatory)";
@@ -115,7 +114,6 @@ namespace Class_Management.Views
             }
             catch (SQLiteException eg)
             {
-                //string msg = "Please check input again(This teacher code might already be in use)";
                 ErrorDialog(eg.Message);
             }
             catch (Exception ex)
@@ -133,10 +131,8 @@ namespace Class_Management.Views
                 SQLiteConnection conn;
                 conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
                 conn.Open();
-                //MessageBox.Show("Connected");
                 string sql = ("select * from teacher where teacher_code='" + updateTeacher + "'; ");
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
-                // command.ExecuteNonQuery();
                 SQLiteDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {

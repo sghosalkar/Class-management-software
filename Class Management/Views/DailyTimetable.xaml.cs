@@ -160,7 +160,6 @@ namespace Class_Management.Views
             DataGridRow dgr = tuple.Item2 as DataGridRow;
             DataRowView drv = dgr.Item as DataRowView;
             string row = drv["batch_name"].ToString();
-            //string col = sdr.Column.Header.ToString().ToLower();
             string AllLecs = "";
             string sql;
             try
@@ -192,7 +191,6 @@ namespace Class_Management.Views
             {
                 ErrorDialog(ex.GetType().Name + " " + ex.Message + "celldrop");
             }
-            //MessageBox.Show(row + " " + col);
             SetLecDuration(AllLecs, row);
             txtblock.Text = AllLecs;
             txtblock.VerticalAlignment = VerticalAlignment.Center;
@@ -293,7 +291,6 @@ namespace Class_Management.Views
             Button btn = sender as Button;
             ActiveTable = btn.Name;
             FillDataGrid(ActiveTable);
-            //MessageBox.Show(ActiveTable);
         }
 
         public void ClearTableBtn()
@@ -343,7 +340,6 @@ namespace Class_Management.Views
 
         private void SetSelectedDay_Click(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show(DayComboBox.Text);
             try
             {
                 string sql;
@@ -436,8 +432,6 @@ namespace Class_Management.Views
         public void FillSuggestions(string CurrentDay)
         {
             List<string> tchrs = new List<string>();
-            //List<Tuple<string, string>> tr = new List<Tuple<string, string>>();
-            //MessageBox.Show(CurrentDay);
             string sql = "SELECT batch_name, batch_time FROM " + ActiveTable;
             using (SQLiteCommand command = new SQLiteCommand(sql, conn))
             {
@@ -454,7 +448,6 @@ namespace Class_Management.Views
                         {
                             ttl += " " + ele;
                         }
-                        //MessageBox.Show(ttl);
                         DisplayInDataGridCell(batch, ttl);
                     }
                     dr.Close();
@@ -471,44 +464,7 @@ namespace Class_Management.Views
                 if (batch == bth)
                 {
                     ((TextBlock)(GetCell(i, 5).Content)).Text = ttl;
-
-                    /*
-                    var row = dailyTimetable.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
-                    DataGridCellInfo dgci = new DataGridCellInfo(dailyTimetable.Items[i], dailyTimetable.Columns[5]);
-                    dailyTimetable.SelectedCells.Clear();
-                    dailyTimetable.SelectedCells.Add(dgci);
-                    dailyTimetable.CurrentCell = dgci;
-                    DataGridCell dcell = dailyTimetable.SelectedItem as DataGridCell;
-                    DataTemplate dttem = dcell.ContentTemplate;
-                    dttem.DataType = typeof(TextBlock);
-                    TextBlock txt = dcell.Content as TextBlock;
-                    txt.Text = ttl;
-                    /*
-                    var cellContent = dgci.Column.GetCellContent(dgci.Item);
-                    if(cellContent != null)
-                    {
-                        DataGridCell dcell = cellContent.Parent as DataGridCell;
-                        TextBlock txt = dcell.Content as TextBlock;
-                        txt.Text = ttl;
-                    }
-                    
-                    /*TextBlock cellContent = dailyTimetable.Columns[0].GetCellContent(row) as TextBlock;
-                    cellContent.Text = ttl;*/
                 }
-                /*DataRowView drv = dailyTimetable.Items[i] as DataRowView;
-                string str = drv["batch_name"].ToString();
-                MessageBox.Show(str);*/
-                /*DataGridRow row = (DataGridRow)dailyTimetable.ItemContainerGenerator.ContainerFromIndex(i);
-                TextBlock cellContent = dailyTimetable.Columns[0].GetCellContent(row) as TextBlock;
-                if (cellContent != null)
-                {
-                    //MessageBox.Show(cellContent.Text + "here bro");
-                    object item = dailyTimetable.Items[i];
-                    dailyTimetable.SelectedItem = item;
-                    dailyTimetable.ScrollIntoView(item);
-                    row.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
-                    break;
-                }*/
             }
         }
 
@@ -564,7 +520,6 @@ namespace Class_Management.Views
 
         private List<string> GetMatchingTeachers(string batch, string timing, string CurrentDay)
         {
-            //MessageBox.Show(batch + timing + CurrentDay);
             List<string> tchrs = new List<string>();
             int[] bTime = new int[2];
             int[] tTime = new int[2];
@@ -608,8 +563,5 @@ namespace Class_Management.Views
             }
             return minConv;            
         }
-
-        
     }
-
 }

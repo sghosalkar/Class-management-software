@@ -77,7 +77,6 @@ namespace Class_Management
             old_title = title;
             old_text = text;
             old_date = reminderDate;
-            //ReminderCalendar.SelectedDate = DateTime.Parse(reminderDate);
             reminderDatePicker.SelectedDate = DateTime.Parse(reminderDate);
             if(title != null || text != null)
             {

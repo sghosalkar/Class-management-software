@@ -218,7 +218,6 @@ namespace Class_Management.Views
                 t_ampm7.Items.Add("PM");
 
                 //for ambu
-
                 /*for(int i = 1; i<=7; i++)
                 {
                     var combox1 = FindName("f_ampm" + i.ToString()) as ComboBox;
@@ -242,8 +241,6 @@ namespace Class_Management.Views
                 SQLiteConnection conn;
                 conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
                 conn.Open();
-                //MessageBox.Show("Connected");
-
                 string sql = "SELECT * FROM teachertiming;";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 command.ExecuteNonQuery();
@@ -395,18 +392,15 @@ namespace Class_Management.Views
                         ch1 = 0;
                         foreach (UIElement ele in gd.Children)
                         {
-                            //Console.WriteLine(gd.Name);
                             if (ele is ComboBox)
                             {
                                 ComboBox cb = (ComboBox)ele;
-                                //Console.WriteLine("l= " + cb.SelectedIndex.ToString().Length + "a");
                                 if (cb.SelectedIndex == 0 || cb.SelectedIndex == -1)
                                 {
                                     ch1++;
                                 }
                             }
                         }
-                        //Console.WriteLine("ye " + ch1 + " " + gd.Name);
                         if (ch1 != 6 && ch1 != 0)
                             return gd.Name;
 
@@ -423,7 +417,6 @@ namespace Class_Management.Views
         private void done_Click(object sender, RoutedEventArgs e)
         {
             string c = check();
-            //Console.WriteLine(c + " ca");
             if (c == "")
             {
                 try

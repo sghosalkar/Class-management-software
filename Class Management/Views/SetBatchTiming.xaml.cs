@@ -55,8 +55,6 @@ namespace Class_Management.Views
                 SQLiteConnection conn;
                 conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
                 conn.Open();
-                //MessageBox.Show("Connected");
-
                 string sql = "SELECT batch_name, timing_from, timing_to FROM batchtiming;";
                 string sql1 = "SELECT batch_name, general_timing_from, general_timing_to FROM batch;";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);

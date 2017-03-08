@@ -62,7 +62,6 @@ namespace Class_Management.Views
                 SQLiteConnection conn;
                 conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
                 conn.Open();
-                //MessageBox.Show("Connected");
                 string sql = "SELECT * FROM teacher;";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 command.ExecuteNonQuery();
@@ -98,12 +97,6 @@ namespace Class_Management.Views
                     CheckDeleteBtn();
                 }
                 else { }
-                /*string msg = "";
-                foreach (string ele in delete_list)
-                {
-                    msg += ele;
-                }
-                MessageBox.Show(msg);*/
             }
             catch (Exception ex)
             {
@@ -163,10 +156,7 @@ namespace Class_Management.Views
             }
         }
 
-        private void delete_all_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        private void delete_all_Click(object sender, RoutedEventArgs e){}
 
         private void teacher_list_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -178,10 +168,7 @@ namespace Class_Management.Views
                 (this.Parent as Grid).Children.Add(adteach);
                 (this.Parent as Grid).Children.Remove(this);
             }
-            catch (Exception)
-            {
-                //ErrorDialog(ex.GetType().Name);
-            }
+            catch (Exception){ }
         }
 
         private void segregator_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -199,7 +186,6 @@ namespace Class_Management.Views
                     SQLiteConnection conn;
                     conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
                     conn.Open();
-                    //MessageBox.Show("Connected");
                     string sql = "SELECT * FROM teacher WHERE teacher_subject='" + sname + "';";
                     SQLiteCommand command = new SQLiteCommand(sql, conn);
                     command.ExecuteNonQuery();
@@ -225,7 +211,6 @@ namespace Class_Management.Views
                 SQLiteConnection conn;
                 conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
                 conn.Open();
-                //MessageBox.Show("Connected");
                 string sql = "SELECT subject FROM subjects;";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 command.ExecuteNonQuery();
