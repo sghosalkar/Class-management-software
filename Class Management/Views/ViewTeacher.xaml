@@ -43,6 +43,13 @@
                 <Setter Property="Background" Value="#3F51B5" />
                 <Setter Property="Foreground" Value="White" />
             </Style>
+
+            <Style x:Key="shortcutBtn"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource MetroFlatButton}">
+                <Setter Property="Background" Value="White" />
+                <Setter Property="Foreground" Value="#3F51B5" />
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -58,20 +65,21 @@
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-
+                    <ColumnDefinition Width="110" />
+                    <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
 
-                <Label x:Name="label" Grid.Row="0" 
+                <Label x:Name="label" Grid.Row="0" Grid.ColumnSpan="2"
                        Content="Teacher List" Margin="0,10,0,0" 
                        Style="{StaticResource formlabel}"
                        HorizontalAlignment="Center" VerticalAlignment="Top" 
                        FontSize="30"/>
 
-                <DataGrid x:Name="teacher_list" Height="500" Width="1400" Grid.Row="2"
+                <DataGrid x:Name="teacher_list" Height="500" Grid.Row="2" Grid.Column="1"
                           IsReadOnly="True" HorizontalScrollBarVisibility="Visible" RowHeight="30"
                           SelectionUnit="FullRow" SelectionMode="Extended" MouseDoubleClick="teacher_list_MouseDoubleClick"
                           AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False"
-                          HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,10,0,0" 
+                          HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,10,50,0" 
                           BorderBrush="#3F51B5" BorderThickness="2">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn>
@@ -91,26 +99,43 @@
                         <DataGridTextColumn Header="Other details" MinWidth="120" Binding="{Binding other_details}" />
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button x:Name="delete_rows" Grid.Row="1" Visibility="Collapsed" 
-                        Margin="50,20,0,0" Style="{StaticResource btn}" 
+                <Button x:Name="delete_rows" Grid.Row="1" Grid.Column="1" Visibility="Collapsed" 
+                        Margin="20,20,0,0" Style="{StaticResource btn}" 
                         BorderBrush="White" BorderThickness="2"
                         Click="delete_rows_Click" >
                     <Controls:PackIconMaterial x:Name="DeleteIcon" Kind="Delete" Height="18" Width="18" />
                 </Button>
-                <Button x:Name="delete_all" Content="Delete all" Grid.Row="1" Visibility="Collapsed" 
+                <Button x:Name="delete_all" Content="Delete all" Grid.Row="1" Grid.Column="1" Visibility="Collapsed" 
                         BorderBrush="White" BorderThickness="2" FontSize="12"
-                        Margin="140,20,0,0" Width="100" Style="{StaticResource btn}" 
+                        Margin="110,20,0,0" Width="100" Style="{StaticResource btn}" 
                         Click="delete_all_Click" />
 
-                <ComboBox x:Name="segregator" Grid.Row="1" Margin="50,20,0,0" 
+                <ComboBox x:Name="segregator" Grid.Row="1" Margin="20,20,0,0" Grid.Column="1" 
                           BorderBrush="#3F51B5" BorderThickness="1" 
                           SelectionChanged="segregator_SelectionChanged" Visibility="Visible"
                           HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="150" />
 
-                <Button x:Name="closeUC" Grid.Row="0" Width="30" Height="30" Click="closeUC_Click"
+                <Button x:Name="closeUC" Grid.Row="0" Grid.Column="1" Width="30" Height="30" Click="closeUC_Click"
                         Background="#3F51B5" Foreground="White"
                         HorizontalAlignment="Right" Style="{StaticResource btn}">
                     <Controls:PackIconMaterial x:Name="CloseIcon" Kind="WindowClose" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Button>
+
+                <Button x:Name="ShortcutToList"
+                        BorderBrush="White" 
+                        BorderThickness="2"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.RowSpan="1"
+                        Height="350"
+                        Width="100"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource shortcutBtn}" 
+                        Click="shortcut_Click">
+                    <StackPanel Orientation="Vertical">
+                        <Controls:PackIconMaterial HorizontalAlignment="Center" Kind="ArrowLeft" Height="60" Width="30"></Controls:PackIconMaterial>
+                        <TextBlock HorizontalAlignment="Center" FontSize="20">Add</TextBlock>
+                    </StackPanel>
                 </Button>
             </Grid>
             <Grid x:Name="DialogSpace" Height="800" Width="1500" />

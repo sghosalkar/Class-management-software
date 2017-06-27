@@ -202,5 +202,12 @@ namespace Class_Management.Views
                 ErrorDialog(msg);
             }
         }
+
+        private void shortcut_Click(object sender, RoutedEventArgs e)
+        {
+            ViewTeacher viewTeacher = new ViewTeacher();
+            (this.Parent as Grid).Children.Add(viewTeacher);
+            (this.Parent as Grid).Children.Remove(this);
+        }
     }
 }

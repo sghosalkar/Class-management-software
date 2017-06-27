@@ -225,9 +225,11 @@ namespace Class_Management.Views
             }
         }
 
-        private void Ellipse_MouseDown(object sender, MouseButtonEventArgs e)
+        private void shortcut_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("yo bro");
+            ViewStudent viewStudent = new ViewStudent();
+            (this.Parent as Grid).Children.Add(viewStudent);
+            (this.Parent as Grid).Children.Remove(this);
         }
     }
 }
