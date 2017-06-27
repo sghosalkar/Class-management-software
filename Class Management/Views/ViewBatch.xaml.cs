@@ -117,13 +117,10 @@ namespace Class_Management.Views
                 {
                     f1 = 1;
                     string sql = "DELETE FROM batch WHERE batch_name='" + ele + "';";
-                    string sql1 = "DELETE FROM batchtiming WHERE batch_name='" + ele + "';";
-                    string sql2 = "DELETE FROM dailytimetable1 WHERE batch_name='" + ele + "';";
+                    string sql2 = "DELETE FROM dailtimetable1 WHERE batch_name='" + ele + "';";
                     string sql3 = "DELETE FROM dailytimetable2 WHERE batch_name='" + ele + "';";
                     string sql4 = "DELETE FROM dailytimetable3 WHERE batch_name='" + ele + "';";
                     SQLiteCommand command = new SQLiteCommand(sql, conn);
-                    command.ExecuteNonQuery();
-                    command = new SQLiteCommand(sql1, conn);
                     command.ExecuteNonQuery();
                     command = new SQLiteCommand(sql2, conn);
                     command.ExecuteNonQuery();

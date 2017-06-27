@@ -264,8 +264,6 @@ G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddStudent.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddTeacher.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\DailyTimetable.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ManualTimetable.g.cs
-G:\My-Projects\Class Management\Class Management\obj\Debug\Views\SetBatchTiming.g.cs
-G:\My-Projects\Class Management\Class Management\obj\Debug\Views\SetTeacherTiming.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ViewBatch.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ViewStudent.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ViewTeacher.g.cs
@@ -283,8 +281,6 @@ G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddStudent.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddTeacher.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\DailyTimetable.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ManualTimetable.baml
-G:\My-Projects\Class Management\Class Management\obj\Debug\Views\SetBatchTiming.baml
-G:\My-Projects\Class Management\Class Management\obj\Debug\Views\SetTeacherTiming.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ViewBatch.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ViewStudent.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ViewTeacher.baml

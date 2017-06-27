@@ -71,10 +71,6 @@ namespace Class_Management.Views
                                         + general_timing_from + "', '"
                                         + general_timing_to + "', '"
                                         + selected_subjects + "');";
-                    sql1 = "INSERT INTO batchtiming( batch_name, timing_from, timing_to) VALUES('"
-                                        + batch_name.Text + "', '"
-                                        + general_timing_from + "', '"
-                                        + general_timing_to + "');";
                     sql2 = "INSERT INTO dailytimetable1(batch_name, batch_time, lectures, per_lec_duration) VALUES('"
                                         + batch_name.Text + "', '" + general_timing_from + "-" + general_timing_to + "', '', '');";
                     sql3 = "INSERT INTO dailytimetable2(batch_name, batch_time, lectures, per_lec_duration) VALUES('"
@@ -90,11 +86,6 @@ namespace Class_Management.Views
                         + general_timing_to + "', selected_subjects= '"
                         + selected_subjects + "' where batch_name='"
                         + igotbatch + "';";
-                    sql1 = "update batchtiming set batch_name='"
-                        + batch_name.Text + "', timing_from= '"
-                        + general_timing_from + "', timing_to ='"
-                        + general_timing_to + "' where batch_name='"
-                        + igotbatch + "';";
                     sql2 = "UPDATE dailytimetable1 set batch_name='"
                         + batch_name.Text + "', batch_time='"
                         + general_timing_from + "-" + general_timing_to + "' WHERE batch_name='"
@@ -109,8 +100,6 @@ namespace Class_Management.Views
                         + igotbatch + "';";
                 }
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
-                command.ExecuteNonQuery();
-                command = new SQLiteCommand(sql1, conn);
                 command.ExecuteNonQuery();
                 command = new SQLiteCommand(sql2, conn);
                 command.ExecuteNonQuery();

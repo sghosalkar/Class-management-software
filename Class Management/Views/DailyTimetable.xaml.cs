@@ -135,7 +135,6 @@ namespace Class_Management.Views
                 dr.Close();
                 command2.Dispose();
             }
-            FillSuggestions(CurrentDay);
             Button selbtn = FindName(ActiveTable) as Button;
             ClearTableBtn();
             selbtn.Background = Brushes.White;
@@ -429,6 +428,7 @@ namespace Class_Management.Views
             }           
         }
 
+        /*
         public void FillSuggestions(string CurrentDay)
         {
             List<string> tchrs = new List<string>();
@@ -455,6 +455,7 @@ namespace Class_Management.Views
                 command.Dispose();
             }
         }
+        */
 
         private void DisplayInDataGridCell(string batch, string ttl)
         {
@@ -518,6 +519,7 @@ namespace Class_Management.Views
             return child;
         }
 
+        /*
         private List<string> GetMatchingTeachers(string batch, string timing, string CurrentDay)
         {
             List<string> tchrs = new List<string>();
@@ -552,6 +554,7 @@ namespace Class_Management.Views
             }
             return tchrs;
         }
+        */
 
         private int MinuteSpan(string timeBlock)
         {

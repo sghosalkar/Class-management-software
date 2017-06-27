@@ -102,11 +102,11 @@ namespace Class_Management.Views
         {
             try
             {
-                string sql = "SELECT * FROM weeklytimetable;";
+                string sql = "SELECT * FROM timetable;";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 command.ExecuteNonQuery();
                 SQLiteDataAdapter dataAdp = new SQLiteDataAdapter(command);
-                DataTable dt = new DataTable("weeklytimetable");
+                DataTable dt = new DataTable("timetable");
                 dataAdp.Fill(dt);
                 manualTimetable.ItemsSource = dt.DefaultView;
                 dataAdp.Update(dt);
@@ -132,7 +132,7 @@ namespace Class_Management.Views
             string sql;
             try
             {
-                sql = "SELECT " + col + " FROM weeklytimetable WHERE batch_name='" + row + "';";
+                sql = "SELECT " + col + " FROM timetable WHERE batch_name='" + row + "';";
                 using (SQLiteCommand command1 = new SQLiteCommand(sql, conn))
                 {
                     using (SQLiteDataReader dr = command1.ExecuteReader())
@@ -148,7 +148,7 @@ namespace Class_Management.Views
                     }
                     command1.Dispose();
                 }
-                sql = "UPDATE weeklytimetable SET " + col + "='" + AllLecs + "' WHERE batch_name='" + row + "';";
+                sql = "UPDATE timetable SET " + col + "='" + AllLecs + "' WHERE batch_name='" + row + "';";
                 using (SQLiteCommand command2 = new SQLiteCommand(sql, conn))
                 {
                     command2.ExecuteNonQuery();
@@ -196,6 +196,31 @@ namespace Class_Management.Views
             string txt = searchBox.Text;
             teachersList.Items.Clear();
             FillTeacherCode(txt);
+        }
+
+        private void Eraser_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                IList<DataGridCellInfo> selectedCells = manualTimetable.SelectedCells;
+                foreach(DataGridCellInfo data in selectedCells)
+                {
+                    DataRowView drv = data.Item as DataRowView;
+                    string row = drv["batch_name"].ToString();
+                    string column = data.Column.Header.ToString().ToLower();
+                    string sql = "UPDATE timetable SET " + column + "='' WHERE batch_name='" + row + "';";
+                    using (SQLiteCommand command = new SQLiteCommand(sql, conn))
+                    {
+                        command.ExecuteNonQuery();
+                        command.Dispose();
+                    }
+                    FillDataGrid();
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorDialog(ex.Message + "eraserclick");
+            }
         }
     }
 }

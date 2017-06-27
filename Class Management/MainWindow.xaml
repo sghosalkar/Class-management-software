@@ -205,7 +205,6 @@
                 <StackPanel Orientation="Horizontal" Style="{StaticResource FlyoutStackpanel}">
                     <Button x:Name="AddTeacher" Content="Add Teacher" Style="{StaticResource SubFlyoutBtn}" />
                     <Button x:Name="ViewTeacher" Content="View Teacher" Style="{StaticResource SubFlyoutBtn}" />
-                    <Button x:Name="SetTeacherTiming" Content="Set Timing" Style="{StaticResource SubFlyoutBtn}" />
                 </StackPanel>
             </Controls:Flyout>
             <Controls:Flyout x:Name="BatchFlyout" Position="Top" Theme="Accent" CloseButtonVisibility="Hidden" Height="80">
@@ -217,7 +216,6 @@
                 <StackPanel Orientation="Horizontal" Style="{StaticResource FlyoutStackpanel}">
                     <Button x:Name="AddBatch" Content="Add Batch" Style="{StaticResource SubFlyoutBtn}" />
                     <Button x:Name="ViewBatch" Content="View Batch" Style="{StaticResource SubFlyoutBtn}" />
-                    <Button x:Name="SetBatchTiming" Content="Set Timing" Style="{StaticResource SubFlyoutBtn}" />
                 </StackPanel>
             </Controls:Flyout>
             <Controls:Flyout x:Name="TimetableFlyout" Position="Top" Theme="Accent" CloseButtonVisibility="Hidden" Height="80">

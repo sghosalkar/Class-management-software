@@ -120,12 +120,6 @@
     <Compile Include="Views\ManualTimetable.xaml.cs">
       <DependentUpon>ManualTimetable.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SetBatchTiming.xaml.cs">
-      <DependentUpon>SetBatchTiming.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SetTeacherTiming.xaml.cs">
-      <DependentUpon>SetTeacherTiming.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ViewBatch.xaml.cs">
       <DependentUpon>ViewBatch.xaml</DependentUpon>
     </Compile>
@@ -187,14 +181,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ManualTimetable.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SetBatchTiming.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SetTeacherTiming.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

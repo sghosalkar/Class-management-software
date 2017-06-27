@@ -21,6 +21,14 @@
             <Style x:Key="StyleDataGridCell" TargetType="DataGridCell">
 
             </Style>
+            <Style x:Key="btn" TargetType="Button" BasedOn="{StaticResource MetroFlatButton}">
+                <Setter Property="Grid.Row" Value="1"></Setter>
+                <Setter Property="Grid.Column" Value="0"></Setter>
+                <Setter Property="Height" Value="35"></Setter>
+                <Setter Property="BorderBrush" Value="White"></Setter>
+                <Setter Property="BorderThickness" Value="1"></Setter>
+                <Setter Property="Background" Value="White"></Setter>
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
     <Viewbox>
@@ -80,7 +88,7 @@
                           IsReadOnly="True"
                           BorderBrush="Transparent"
                           BorderThickness="0"
-                          Margin="5"                          
+                          Margin="5 45 5 5"                          
                           SelectionUnit="Cell"
                           GridLinesVisibility="All">
                     <DataGrid.Columns>
@@ -94,6 +102,20 @@
                         <DataGridTextColumn Header="Sunday" CellStyle="{StaticResource DroppableDataGridCell}" Binding="{Binding sunday}"/>
                     </DataGrid.Columns>
                 </DataGrid>
+                <Button x:Name="Eraser"
+                        Grid.Column="1" Grid.Row="1"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        FontSize="13"
+                        Width="100"
+                        Margin="5,5,0,0"
+                        Style="{StaticResource btn}"
+                        Click="Eraser_Click">
+                    <Grid>
+                        <TextBlock Margin="0,3,25,0" HorizontalAlignment="Center">Eraser</TextBlock>
+                        <Controls:PackIconMaterial HorizontalAlignment="Center" Margin="40,3,0,0" Kind="Eraser" Height="20" Width="20"></Controls:PackIconMaterial>
+                    </Grid>
+                </Button>
             </Grid>
             <Grid x:Name="DialogSpace" Height="800" Width="1500"></Grid>
         </Grid>

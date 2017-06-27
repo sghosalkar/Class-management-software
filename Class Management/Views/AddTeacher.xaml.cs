@@ -63,7 +63,7 @@ namespace Class_Management.Views
                     ErrorDialog("Enter proper contact number");
                     return;
                 }
-                string sql, sql1;
+                string sql;
                 if (updateTeacher == null)
                 {
                     sql = "INSERT INTO teacher( teacher_name, teacher_contact_no, qualification, other_details, teacher_email, teacher_code, teacher_subject, timing_optional) VALUES('"
@@ -75,9 +75,6 @@ namespace Class_Management.Views
                                 + teacher_code.Text + "', '"
                                 + teacher_subject.Text + "', '"
                                 + timing_optional.Text + "');";
-                    sql1 = "INSERT INTO teachertiming( teacher_code, pref_timing, monday, tuesday, wednesday, thursday, friday, saturday, sunday) VALUES('"
-                                + teacher_code.Text + "', '"
-                                + timing_optional.Text + "', ':: - ::', ':: - ::', ':: - ::', ':: - ::', ':: - ::', ':: - ::', ':: - ::');";
                 }
                 else
                 {
@@ -89,11 +86,8 @@ namespace Class_Management.Views
                                     + teacher_code.Text + "', teacher_subject='"
                                     + teacher_subject.Text + "', timing_optional='"
                                     + timing_optional.Text + "' where teacher_code='" + updateTeacher + "';";
-                    sql1 = "UPDATE teachertiming SET teacher_code='" + teacher_code.Text + "', pref_timing='" + timing_optional.Text + "' WHERE teacher_code='" + updateTeacher + "';";
                 }
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
-                command.ExecuteNonQuery();
-                command = new SQLiteCommand(sql1, conn);
                 command.ExecuteNonQuery();
                 teacher_name.Text = teacher_contact_no.Text = qualification.Text = other_details.Text = "";
                 teacher_email.Text = teacher_code.Text = teacher_subject.Text = "";

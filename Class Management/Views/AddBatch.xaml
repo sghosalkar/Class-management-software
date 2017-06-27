@@ -40,8 +40,8 @@
             <Style x:Key="btn"
                    TargetType="{x:Type Button}"
                    BasedOn="{StaticResource MetroFlatButton}">
-                <Setter Property="Grid.Column" Value="1" />
-                <Setter Property="Grid.Row" Value="5" />
+                <Setter Property="Grid.Column" Value="0" />
+                <Setter Property="Grid.Row" Value="7" />
                 <Setter Property="HorizontalAlignment" Value="Left" />
                 <Setter Property="VerticalAlignment" Value="Top" />
                 <Setter Property="FontSize" Value="15" />
@@ -102,15 +102,14 @@
                        Content="Batch Details" Margin="100,90,0,0" 
                        HorizontalAlignment="Left" VerticalAlignment="Top" 
                        Foreground="#3F51B5" FontSize="25"/>
-                <Label Grid.Column="1" Grid.Row="0" 
-                       Content="Subject Details" Margin="40,90,0,0" 
-                       HorizontalAlignment="Left" VerticalAlignment="Top" 
+                <Label Grid.Column="0" Grid.Row="3" 
+                       Content="Subject Details" Margin="100,40,0,8" 
+                       HorizontalAlignment="Left" 
                        Foreground="#3F51B5" FontSize="25"/>
                 <Label x:Name="label1" Content="Batch Name"     Grid.Row="1" Margin="100,10,0,0" Style="{StaticResource formlabel}" />
                 <Label x:Name="label2" Content="General Timing" Grid.Row="2" Margin="100,10,0,0" Style="{StaticResource formlabel}" />
                 <Label x:Name="label4" Content="To" Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="254,40,0,0" Height="30" Width="40" Style="{StaticResource formlabel}" />
-                <Label x:Name="label5" Content="Select Subject" Grid.Row="1" Grid.Column="1" Margin="40,10,0,0" Style="{StaticResource formlabel}" />
-                <Label x:Name="label6" Content="Subjects" Grid.Column="1" Grid.Row="2" Margin="40,10,0,0" Style="{StaticResource formlabel}" />
+                <Label x:Name="label5" Content="Select Subject" Grid.Row="4" Grid.Column="0" Margin="100,10,0,0" Style="{StaticResource formlabel}" />
 
                 <TextBox x:Name="batch_name" Margin="104,42,0,0" Grid.Row="1" Width="200" Style="{StaticResource formtextbox}" CharacterCasing="Upper" />
                 <ComboBox x:Name="from_h"   Margin="104,42,0,0" Style="{StaticResource timepicker}"></ComboBox>
@@ -125,16 +124,16 @@
                     <ComboBoxItem IsSelected="True">AM</ComboBoxItem>
                     <ComboBoxItem>PM</ComboBoxItem>
                 </ComboBox>
-                <ComboBox x:Name="select_subject"   Margin="44,42,0,0" Grid.Row="1" Grid.Column="1" 
+                <ComboBox x:Name="select_subject"   Margin="104,42,0,0" Grid.Row="4" Grid.Column="0" 
                           BorderThickness="0"
                           Height="35" Width="200"   HorizontalAlignment="Left" VerticalAlignment="Top"></ComboBox>
-                <Button x:Name="add_selected_subject" Margin="254,42,0,0" Grid.Column="1" Grid.Row="1"
+                <Button x:Name="add_selected_subject" Margin="314,42,0,0" Grid.Column="0" Grid.Row="4"
                         Height="35" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" 
                         BorderBrush="#3F51B5" BorderThickness="2"
                         Style="{StaticResource btn}" Click="add_selected_subject_Click" >
                     <Controls:PackIconMaterial x:Name="AddIcon" Kind="Plus" Height="10" Width="10" />
                 </Button>
-                <Button x:Name="refresh_subject" Margin="314,42,0,0" Grid.Column="1" Grid.Row="1"
+                <Button x:Name="refresh_subject" Margin="374,42,0,0" Grid.Column="0" Grid.Row="4"
                         BorderBrush="#3F51B5" BorderThickness="2"
                         Height="35" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" 
                         Style="{StaticResource btn}" Click="FillComboBox">
@@ -144,15 +143,15 @@
                        Grid.Row="3" Grid.Column="1" Visibility="Collapsed" FontSize="15"
                        HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Red" />
 
-                <Button x:Name="delete_subject" Margin="294,20,0,0" Grid.Column="1" Grid.Row="2"
-                        Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                <Button x:Name="delete_subject" Margin="434,42,0,0" Grid.Column="0" Grid.Row="4"
+                        Height="35" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" 
                         Style="{StaticResource btn}" Click="delete_subject_Click">
                     <Controls:PackIconMaterial x:Name="DeleteIcon" Kind="Delete" Height="18" Width="18" />
                 </Button>
-                <ListBox x:Name="batch_subjects" Margin="44,52,0,0" Background="Transparent" Foreground="White"
-                         Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="2" FontSize="15"
+                <ListBox x:Name="batch_subjects" Margin="104,0,0,0" Background="Transparent" Foreground="White"
+                         Grid.Column="0" Grid.Row="5" Grid.RowSpan="3" Grid.ColumnSpan="2" FontSize="15"
                          BorderBrush="#263238" BorderThickness="2"
-                         Height="200" Width="300" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                         Height="160" Width="380" HorizontalAlignment="Left" VerticalAlignment="Top" >
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="ListBoxItem">
                             <Setter Property="Height" Value="30" />
@@ -173,7 +172,7 @@
                 </DataGrid>
 
                 <Button x:Name="save" Content="Save" BorderBrush="#3F51B5" BorderThickness="2"
-                        Margin="224,40,0,0" Style="{StaticResource btn}" Click="save_Click" />
+                        Margin="104,0,0,0" Style="{StaticResource btn}" Click="save_Click" />
 
                 <Button x:Name="closeUC" Grid.Row="0" Width="30" Height="30" Click="closeUC_Click"
                         Background="#3F51B5" Foreground="White" Grid.ColumnSpan="3"
@@ -181,9 +180,9 @@
                     <Controls:PackIconMaterial x:Name="CloseIcon" Kind="WindowClose" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Button>
             </Grid>
-            <Grid Height="800" Width="1500" x:Name="DialogSpace"> </Grid>
+            <Grid Height="800" Width="1500" x:Name="DialogSpace"></Grid>
         </Grid>
-        
+
     </Viewbox>
-    
+
 </UserControl>

@@ -119,9 +119,6 @@ namespace Class_Management.Views
                     string sql = "DELETE FROM teacher WHERE teacher_code='" + ele + "';";
                     SQLiteCommand command = new SQLiteCommand(sql, conn);
                     command.ExecuteNonQuery();
-                    sql = "DELETE FROM teachertiming WHERE teacher_code='" + ele + "';";
-                    command = new SQLiteCommand(sql, conn);
-                    command.ExecuteNonQuery();
                 }
                 if (f1 == 0)
                 {
