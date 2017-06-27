@@ -27,7 +27,6 @@ namespace Class_Management.Views
         public WeeklyTimetable()
         {
             InitializeComponent();
-            
         }
 
         List<string> ClearList = new List<string>();

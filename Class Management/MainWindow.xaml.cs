@@ -42,6 +42,7 @@ namespace Class_Management
             conn.Open();
             FillSubjects();
             FillNotification();
+            FillTodaysTimetable();
             ReminderCalendar.SelectedDate = DateTime.Today.Date;
         }
         private void mainWindow_Unloaded(object sender, RoutedEventArgs e)
@@ -411,6 +412,37 @@ namespace Class_Management
             var app = App.Current as App;
             string accentUrl = "pack://application:,,,/MahApps.Metro;component/Styles/Accents/" + (sender as Button).Name + ".xaml";
             app.ChangeAccent(accentUrl);
+        }
+
+        public void FillTodaysTimetable()
+        {
+            DateTime da = DateTime.Today;
+            Console.WriteLine(da.DayOfWeek.ToString().ToLower());
+            string today = da.DayOfWeek.ToString().ToLower();
+            string sql = "SELECT batch_name, " + today + " FROM timetable";
+            using (SQLiteCommand command = new SQLiteCommand(sql, conn))
+            {
+                using (SQLiteDataReader dr = command.ExecuteReader())
+                {
+                    string batchName, lectures;
+                    while (dr.Read())
+                    {
+                        Console.WriteLine(dr.GetString(1));
+                        batchName = dr.GetString(0);
+                        lectures = dr.GetString(1);
+                        ListBoxItem litm = new ListBoxItem();
+                        litm.Content = "Batch " + batchName + ": " + lectures;
+                        litm.Style = Resources["ReminderRowStyle"] as Style;
+                        litm.MouseDoubleClick += (sdr, e) =>
+                        {
+                            //yet to think
+                        };
+                        TodaysTimetableListBox.Items.Add(litm);
+                    }
+                    dr.Close();
+                }
+                command.Dispose();
+            }
         }
     }
 }

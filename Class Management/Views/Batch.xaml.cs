@@ -77,8 +77,8 @@ namespace Class_Management.Views
                                         + general_timing_from + "', '"
                                         + general_timing_to + "', '"
                                         + selected_subjects + "');";
-                    sql2 = "INSERT INTO timetable(batch_name) VALUES('"
-                                        + new_batch_name.Text + "');";
+                    sql2 = "INSERT INTO timetable VALUES('"
+                                        + new_batch_name.Text + "', '', '', '', '', '', '', '');";
                 }
                 else
                 {
@@ -100,11 +100,7 @@ namespace Class_Management.Views
                 new_batch_name.Text = "";
                 batch_subjects.Items.Clear();
                 FillDataGrid();
-                if (igotbatch == null)
-                {
-                    ErrorDialog("Saved");
-                }
-                else
+                if (igotbatch != null)
                 {
                     FillDataGrid();
                     igotbatch = null;

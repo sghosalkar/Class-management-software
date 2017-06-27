@@ -182,7 +182,7 @@
                     <Button x:Name="Student" Content="Student" Style="{StaticResource FlyoutBtn}" />
                     <Button x:Name="Teacher" Content="Teacher" Style="{StaticResource FlyoutBtn}" />
                     <Button x:Name="Batch" Content="Batch" Style="{StaticResource SubFlyoutBtn}" />
-                    <Button x:Name="Timetable" Content="Time Table" Style="{StaticResource FlyoutBtn}" />
+                    <Button x:Name="WeeklyTimetable" Content="Time Table" Style="{StaticResource SubFlyoutBtn}" />
                 </StackPanel>
             </Controls:Flyout>
             <Controls:Flyout x:Name="StudentFlyout" Position="Top" Theme="Accent" CloseButtonVisibility="Hidden" Height="80">
@@ -226,7 +226,7 @@
                 </Controls:Flyout.HeaderTemplate>
                 <StackPanel Orientation="Horizontal" Style="{StaticResource FlyoutStackpanel}">
                     <Button x:Name="DailyTimetable" Content="Daily Timetable" Style="{StaticResource SubFlyoutBtn}" />
-                    <Button x:Name="WeeklyTimetable" Content="Weekly Timetable" Style="{StaticResource SubFlyoutBtn}" />
+                    <Button x:Name="WeeklyTimetable1" Content="Weekly Timetable" Style="{StaticResource SubFlyoutBtn}" />
                     <!--<Button x:Name="ManualTimetable" Content="Manual Timetable" Style="{StaticResource SubFlyoutBtn}" />-->
                 </StackPanel>
             </Controls:Flyout>
@@ -323,7 +323,17 @@
     <Viewbox>
         <Grid Background="AliceBlue" Height="855" Width="1590">
             <Grid Margin="2,3,2,38">
-                <Grid Margin="100, 100, 370, 100" Background="White">
+                <Grid.RowDefinitions></Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Background="Beige">
+                    <Label FontSize="20" Foreground="#3F51B5" Margin="0 10 0 50">Here's Today's Timetable</Label>
+                    <ListBox x:Name="TodaysTimetableListBox" Margin="5"></ListBox>
+                </StackPanel>
+                <Grid Margin="10 100" Background="White" Grid.Column="1">
                     <Grid Margin="50">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*" />
@@ -347,24 +357,23 @@
                         </Controls:Tile>
                     </Grid>
                 </Grid>
-                <Grid Height="250" Width="250" Margin="0,10,10,0" HorizontalAlignment="Right" VerticalAlignment="Top">
-                    <Viewbox>
-                        <Calendar x:Name="ReminderCalendar" 
+                <StackPanel Orientation="Vertical" Grid.Column="2">
+                    <Grid>
+                        <Viewbox>
+                            <Calendar x:Name="ReminderCalendar" 
                                   Height="180" Width="180" 
                                   BorderBrush="Teal" 
                                   SelectedDatesChanged="ReminderCalendar_SelectedDatesChanged"
                                   HorizontalAlignment="Center" VerticalAlignment="Center">
-                        </Calendar>
-                    </Viewbox>
-                </Grid>
-                <ListBox x:Name="ReminderList" 
-                         Margin="0,260,10,0" 
-                         Width="250" 
-                         HorizontalAlignment="Right"
+                            </Calendar>
+                        </Viewbox>
+                    </Grid>
+                    <ListBox x:Name="ReminderList"
                          Background="Beige"
                          BorderBrush="Black"
                          BorderThickness="1">
-                </ListBox>
+                    </ListBox>
+                </StackPanel>
             </Grid>
             <Grid x:Name="mainContent"  Margin="2,3,2,38" ></Grid>
             <Grid x:Name="DialogSpace"  Margin="2,3,2,38" ></Grid>

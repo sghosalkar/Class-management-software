@@ -68,6 +68,7 @@ namespace Class_Management
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
+            conn.Close();
         }
 
         public void SetUpdateParameters(object context, string reminderDate, string title, string text) {
