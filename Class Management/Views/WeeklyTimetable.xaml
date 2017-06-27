@@ -116,6 +116,12 @@
                         <Controls:PackIconMaterial HorizontalAlignment="Center" Margin="40,3,0,0" Kind="Eraser" Height="20" Width="20"></Controls:PackIconMaterial>
                     </Grid>
                 </Button>
+
+                <Button x:Name="closeUC" Grid.Row="0" Grid.Column="1" Width="30" Height="30" Click="closeUC_Click"
+                        Background="#3F51B5" Foreground="White" VerticalAlignment="Top"
+                        HorizontalAlignment="Right" Style="{StaticResource btn}">
+                    <Controls:PackIconMaterial x:Name="CloseIcon" Kind="WindowClose" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Button>
             </Grid>
             <Grid x:Name="DialogSpace" Height="800" Width="1500"></Grid>
         </Grid>

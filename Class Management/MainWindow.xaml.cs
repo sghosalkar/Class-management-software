@@ -160,6 +160,7 @@ namespace Class_Management
         private static UserControl MagicallyCreateInstance(string className)
         {
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            Console.WriteLine(className);
             var type = assembly.GetTypes().First(t => t.Name == className);
             return (UserControl)Activator.CreateInstance(type);
         }

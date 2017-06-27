@@ -259,12 +259,10 @@ G:\My-Projects\Class Management\Class Management\obj\Debug\ActionDialog.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\MainWindow.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\MessageDialog.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\ReminderDialog.g.cs
-G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddBatch.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddStudent.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddTeacher.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\DailyTimetable.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ManualTimetable.g.cs
-G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ViewBatch.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ViewStudent.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ViewTeacher.g.cs
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\WeeklyTimetable.g.cs
@@ -276,12 +274,10 @@ G:\My-Projects\Class Management\Class Management\obj\Debug\ActionDialog.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\MainWindow.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\MessageDialog.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\ReminderDialog.baml
-G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddBatch.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddStudent.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\AddTeacher.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\DailyTimetable.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ManualTimetable.baml
-G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ViewBatch.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ViewStudent.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\ViewTeacher.baml
 G:\My-Projects\Class Management\Class Management\obj\Debug\Views\WeeklyTimetable.baml
@@ -290,3 +286,5 @@ G:\My-Projects\Class Management\Class Management\obj\Debug\Class_Management.Prop
 G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.csproj.GenerateResource.Cache
 G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.exe
 G:\My-Projects\Class Management\Class Management\obj\Debug\Class Management.pdb
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\Batch.g.cs
+G:\My-Projects\Class Management\Class Management\obj\Debug\Views\Batch.baml

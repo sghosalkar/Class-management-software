@@ -51,6 +51,11 @@ namespace Class_Management.Views
             conn.Dispose();
         }
 
+        private void closeUC_Click(object sender, RoutedEventArgs e)
+        {
+            (this.Parent as Grid).Children.Remove(this);
+        }
+
         private void ErrorDialog(string msg)
         {
             MessageDialog md = new MessageDialog();

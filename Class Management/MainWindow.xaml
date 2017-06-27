@@ -181,7 +181,7 @@
                 <StackPanel Orientation="Horizontal" x:Name="MainFlyoutPanel" Style="{StaticResource FlyoutStackpanel}">
                     <Button x:Name="Student" Content="Student" Style="{StaticResource FlyoutBtn}" />
                     <Button x:Name="Teacher" Content="Teacher" Style="{StaticResource FlyoutBtn}" />
-                    <Button x:Name="Batch" Content="Batch" Style="{StaticResource FlyoutBtn}" />
+                    <Button x:Name="Batch" Content="Batch" Style="{StaticResource SubFlyoutBtn}" />
                     <Button x:Name="Timetable" Content="Time Table" Style="{StaticResource FlyoutBtn}" />
                 </StackPanel>
             </Controls:Flyout>
@@ -339,10 +339,10 @@
                         <Controls:Tile x:Name="ViewTeacherTile" Grid.Column="1" Grid.Row="0" Style="{StaticResource MainTileStyle}">
                             <Label Style="{StaticResource MainTileLabelStyle}">Teacher</Label>
                         </Controls:Tile>
-                        <Controls:Tile x:Name="ViewBatchTile" Grid.Column="0" Grid.Row="1" Style="{StaticResource MainTileStyle}">
+                        <Controls:Tile x:Name="BatchTile" Grid.Column="0" Grid.Row="1" Style="{StaticResource MainTileStyle}">
                             <Label Style="{StaticResource MainTileLabelStyle}">Batch</Label>
                         </Controls:Tile>
-                        <Controls:Tile x:Name="DailyTimetableTile" Grid.Column="1" Grid.Row="1" Style="{StaticResource MainTileStyle}">
+                        <Controls:Tile x:Name="WeeklyTimetableTile" Grid.Column="1" Grid.Row="1" Style="{StaticResource MainTileStyle}">
                             <Label Style="{StaticResource MainTileLabelStyle}">Timetable</Label>
                         </Controls:Tile>
                     </Grid>
