@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Class_Management.Views"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
+             Unloaded="UserControl_Unloaded"
              xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
              d:DesignHeight="800" d:DesignWidth="1500">
     <UserControl.Resources>
@@ -61,6 +62,29 @@
                 <Setter Property="BorderBrush" Value="Transparent" />
                 <Setter Property="BorderThickness" Value="0,0.5,0,0.5" />
             </Style>
+
+            <Style x:Key="BatchButton" TargetType="Button">
+                <Setter Property="MinWidth" Value="100" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="Background" Value="Teal" />
+                <Setter Property="Foreground" Value="White" />
+                <EventSetter Event="Click" Handler="Button_Batch_Select_Click" />
+                <EventSetter Event="GotFocus" Handler="Button_Batch_GotFocus" />
+                <EventSetter Event="LostFocus" Handler="Button_Batch_LostFocus" />
+            </Style>
+
+            <Style x:Key="BatchButtonLabel" TargetType="Label">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="FontSize" Value="24" />
+            </Style>
+
+            <Style x:Key="DataGridStyle" 
+                   TargetType="DataGrid"
+                   BasedOn="{StaticResource AzureDataGrid}">
+                <Setter Property="AutoGenerateColumns" Value="False"/>
+                <Setter Property="CanUserAddRows" Value="False"/>
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -71,6 +95,9 @@
             <Grid Background="Black" Opacity="0.6" />
             <Grid Background="#ECEFF1">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                 </Grid.ColumnDefinitions>
@@ -79,7 +106,74 @@
                        HorizontalAlignment="Center" VerticalAlignment="Top" 
                        Style="{StaticResource formlabel}" FontSize="30"/>
 
-                <Button x:Name="closeUC" Grid.Row="0" Width="30" Height="30" Click="closeUC_Click" 
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Margin="10">
+                    <StackPanel x:Name="batch_list" Orientation="Horizontal"></StackPanel>
+                </ScrollViewer>
+                
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--<DataGrid x:Name="attendanceDatagrid" 
+                              Grid.Column="0"
+                              RowHeight="30"
+                              Margin="20"
+                              IsReadOnly="True"
+                              Style="{StaticResource DataGridStyle}"
+                              BorderBrush="Black" 
+                              BorderThickness="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Reg no" MinWidth="120" x:Name="reg_no" Binding="{Binding reg_no}" />
+                            <DataGridTextColumn Header="Student Name" Width="3*" Binding="{Binding student_name}" />
+                            <DataGridTemplateColumn Header="Was Absent?">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox x:Name="chk" Checked="Chk_Checked" Unchecked="Chk_Checked" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ListView x:Name="AttendanceList">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource MetroListViewItem}">
+                                <Setter Property="Height" Value="30" />
+                                <Setter Property="FontSize" Value="16" />
+                                <Setter Property="Foreground" Value="Red" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Reg No" DisplayMemberBinding="{Binding RegNo}"/>
+                                <GridViewColumn Header="Student Name" Width="auto" DisplayMemberBinding="{Binding Name}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>-->
+                    <DataGrid x:Name="AttendanceDatagrid" 
+                              Grid.Column="0"
+                              RowHeight="30"
+                              Margin="20"
+                              IsReadOnly="True"
+                              Style="{StaticResource DataGridStyle}"
+                              BorderBrush="Black" 
+                              BorderThickness="2">
+                        <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource MetroDataGridRow}">
+                                <Setter Property="Height" Value="30" />
+                                <Setter Property="FontSize" Value="16" />
+                                <Setter Property="Foreground" Value="Red" />
+                            </Style>
+                        </DataGrid.RowStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Reg no" MinWidth="120" x:Name="reg_no" Binding="{Binding RegNo}" />
+                            <DataGridTextColumn Header="Student Name" Width="1*" Binding="{Binding Name}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+
+                    <Button x:Name="closeUC" Grid.Row="0" Width="30" Height="30" Click="closeUC_Click" 
                         Background="#3F51B5" Foreground="White"
                         Grid.ColumnSpan="3"
                         HorizontalAlignment="Right" Style="{StaticResource btn}">

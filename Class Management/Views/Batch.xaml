@@ -50,17 +50,18 @@
             </Style>
 
             <Style x:Key="timepicker"
-                   TargetType="{x:Type ComboBox}">
+                   TargetType="{x:Type ComboBox}"
+                   BasedOn="{StaticResource MetroComboBox}">
                 <Setter Property="Grid.Column" Value="0" />
                 <Setter Property="Grid.Row" Value="2" />
                 <Setter Property="HorizontalAlignment" Value="Left" />
                 <Setter Property="VerticalAlignment" Value="Top" />
                 <Setter Property="Height" Value="30" />
-                <Setter Property="Width" Value="50" />
+                <Setter Property="Width" Value="60" />
                 <Setter Property="Background" Value="White" />
                 <Setter Property="Foreground" Value="#263238" />
-                <Setter Property="BorderBrush" Value="White" />
-                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="BorderBrush" Value="Black" />
+                <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="VerticalContentAlignment" Value="Center" />
             </Style>
 
@@ -105,19 +106,19 @@
                        Foreground="#3F51B5" FontSize="25"/>
                 <Label x:Name="label1" Content="Batch Name"     Grid.Row="1" Margin="100,10,0,0" Style="{StaticResource formlabel}" />
                 <Label x:Name="label2" Content="General Timing" Grid.Row="2" Margin="100,10,0,0" Style="{StaticResource formlabel}" />
-                <Label x:Name="label4" Content="To" Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="254,40,0,0" Height="30" Width="40" Style="{StaticResource formlabel}" />
+                <Label x:Name="label4" Content="To" Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="284,40,0,0" Height="30" Width="40" Style="{StaticResource formlabel}" />
                 <Label x:Name="label5" Content="Select Subject" Grid.Row="4" Grid.Column="0" Margin="100,10,0,0" Style="{StaticResource formlabel}" />
 
                 <TextBox x:Name="new_batch_name" Margin="104,42,0,0" Grid.Row="1" Width="200" Style="{StaticResource formtextbox}" CharacterCasing="Upper" />
                 <ComboBox x:Name="from_h"   Margin="104,42,0,0" Style="{StaticResource timepicker}"></ComboBox>
-                <ComboBox x:Name="from_m"   Margin="154,42,0,0" Style="{StaticResource timepicker}"></ComboBox>
-                <ComboBox x:Name="from_ampm"   Margin="204,42,0,0" Style="{StaticResource timepicker}">
+                <ComboBox x:Name="from_m"   Margin="164,42,0,0" Style="{StaticResource timepicker}"></ComboBox>
+                <ComboBox x:Name="from_ampm"   Margin="224,42,0,0" Style="{StaticResource timepicker}">
                     <ComboBoxItem IsSelected="True">AM</ComboBoxItem>
                     <ComboBoxItem>PM</ComboBoxItem>
                 </ComboBox>
-                <ComboBox x:Name="to_h" Margin="294,42,0,0" Style="{StaticResource timepicker}"></ComboBox>
-                <ComboBox x:Name="to_m"   Margin="344,42,0,0" Style="{StaticResource timepicker}"></ComboBox>
-                <ComboBox x:Name="to_ampm"   Margin="394,42,0,0" Style="{StaticResource timepicker}">
+                <ComboBox x:Name="to_h" Margin="324,42,0,0" Style="{StaticResource timepicker}"></ComboBox>
+                <ComboBox x:Name="to_m"   Margin="384,42,0,0" Style="{StaticResource timepicker}"></ComboBox>
+                <ComboBox x:Name="to_ampm"   Margin="444,42,0,0" Style="{StaticResource timepicker}">
                     <ComboBoxItem IsSelected="True">AM</ComboBoxItem>
                     <ComboBoxItem>PM</ComboBoxItem>
                 </ComboBox>

@@ -160,9 +160,9 @@ namespace Class_Management.Views
             }
         }
 
-        private void delete_all_Click(object sender, RoutedEventArgs e) { }
+        private void Delete_all_Click(object sender, RoutedEventArgs e) { }
 
-        private void student_list_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void Student_list_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             try
             {
