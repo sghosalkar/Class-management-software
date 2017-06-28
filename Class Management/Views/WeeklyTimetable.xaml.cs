@@ -29,6 +29,14 @@ namespace Class_Management.Views
             InitializeComponent();
         }
 
+        object context;
+
+        public WeeklyTimetable(object context)
+        {
+            InitializeComponent();
+            this.context = context;
+        }
+
         List<string> ClearList = new List<string>();
         SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
 
@@ -48,6 +56,7 @@ namespace Class_Management.Views
             ClearList.Clear();
             conn.Close();
             conn.Dispose();
+            (context as MainWindow).FillTodaysTimetable();
         }
 
         private void closeUC_Click(object sender, RoutedEventArgs e)
@@ -166,6 +175,12 @@ namespace Class_Management.Views
             txtblock.Text = AllLecs;
             txtblock.VerticalAlignment = VerticalAlignment.Center;
             e.Handled = true;
+            if (col == (DateTime.Today).DayOfWeek.ToString().ToLower())
+            {
+                MainWindow mw = new MainWindow();
+                mw.FillTodaysTimetable();
+            }
+            
         }
 
         public static Tuple<DataGridCell, DataGridRow> GetDataGridRowAndCell(DependencyObject dep)

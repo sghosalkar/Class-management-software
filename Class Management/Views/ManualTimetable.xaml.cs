@@ -83,6 +83,18 @@ namespace Class_Management.Views
             //manualTimetable.ItemsSource = weeks;
         }
 
+        public ManualTimetable(object context)
+        {
+            InitializeComponent();
+            FillTeacherCode();
+            FillDataGrid();
+            weeks.Add(new Week() { monday = "A", tuesday = "A", wednesday = "A", thursday = "A", friday = "A", saturday = "A", sunday = "A" });
+            weeks.Add(new Week() { monday = "B", tuesday = "B", wednesday = "B", thursday = "B", friday = "B", saturday = "B", sunday = "B" });
+            weeks.Add(new Week() { monday = "C", tuesday = "C", wednesday = "C", thursday = "C", friday = "C", saturday = "C", sunday = "C" });
+            weeks.Add(new Week() { monday = "D", tuesday = "D", wednesday = "D", thursday = "D", friday = "D", saturday = "D", sunday = "D" });
+            //manualTimetable.ItemsSource = weeks;
+        }
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             Storyboard mystory;

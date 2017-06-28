@@ -26,6 +26,11 @@ namespace Class_Management.Views
             InitializeComponent();
         }
 
+        public Attendance(object context)
+        {
+            InitializeComponent();
+        }
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             Storyboard mystory;

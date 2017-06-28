@@ -29,6 +29,11 @@ namespace Class_Management.Views
             InitializeComponent();            
         }
 
+        public DailyTimetable(object context)
+        {
+            InitializeComponent();
+        }
+
         string ActiveTable = "";
         List<string> ClearList = new List<string>();
         SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");

@@ -32,6 +32,15 @@ namespace Class_Management.Views
             FillBatchComboBox();
         }
 
+        public Batch(object context)
+        {
+            InitializeComponent();
+            FillSubjectsComboBox();
+            FillTime();
+            FillDataGrid();
+            FillBatchComboBox();
+        }
+
         string igotbatch = null;
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

@@ -31,6 +31,13 @@ namespace Class_Management.Views
             FillDataGrid();
         }
 
+        public AddStudent(object context)
+        {
+            InitializeComponent();
+            FillBatch();
+            FillDataGrid();
+        }
+
         string updateStudent = null;
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {

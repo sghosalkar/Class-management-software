@@ -30,6 +30,13 @@ namespace Class_Management.Views
             FillDataGrid();
         }
 
+        public AddTeacher(object context)
+        {
+            InitializeComponent();
+            FillSubjects();
+            FillDataGrid();
+        }
+
         string updateTeacher = null;
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

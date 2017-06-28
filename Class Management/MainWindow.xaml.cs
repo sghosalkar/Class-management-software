@@ -28,7 +28,7 @@ namespace Class_Management
             this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.89);
             LoginFlyout.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.89);
             LoginFlyout.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.89);
-            MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;      
+            MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
         }
 
         SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
@@ -39,7 +39,7 @@ namespace Class_Management
             mystory = (Storyboard)App.Current.Resources["sb"];
             mystory.Begin(this);
 
-            conn.Open();
+            //conn.Open();
             FillSubjects();
             FillNotification();
             FillTodaysTimetable();
@@ -47,7 +47,7 @@ namespace Class_Management
         }
         private void mainWindow_Unloaded(object sender, RoutedEventArgs e)
         {
-            conn.Close();
+            //conn.Close();
         }
 
         private void ShowFlyout(int index)
@@ -158,12 +158,12 @@ namespace Class_Management
             e.Handled = true;
         }
 
-        private static UserControl MagicallyCreateInstance(string className)
+        private UserControl MagicallyCreateInstance(string className)
         {
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             Console.WriteLine(className);
             var type = assembly.GetTypes().First(t => t.Name == className);
-            return (UserControl)Activator.CreateInstance(type);
+            return (UserControl)Activator.CreateInstance(type, new object[] { this });
         }
 
 
@@ -183,6 +183,7 @@ namespace Class_Management
         {
             try
             {
+                conn.Open();
                 string sql;
                 var btn = sender as Button;
                 if(btn.Name == "add_subject")
@@ -199,11 +200,11 @@ namespace Class_Management
                 {
                     sql = "DELETE FROM subjects WHERE subject='" + (subject_list.SelectedItem as DataRowView)["subject"].ToString() + "';";
                 }
-                             
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 command.ExecuteNonQuery();
                 subject_textbox.Text = null;
-                FillSubjects();        
+                FillSubjects();
+                conn.Close();
             }
             catch(SQLiteException)
             {
@@ -223,17 +224,16 @@ namespace Class_Management
 
         private void FillSubjects()
         {
-            
+            conn.Open();
             string sql = "SELECT * FROM subjects;";
             SQLiteCommand command = new SQLiteCommand(sql, conn);
             command.ExecuteNonQuery();
             SQLiteDataAdapter dataAdp = new SQLiteDataAdapter(command);
             DataTable dt = new DataTable("subjects");
-
             dataAdp.Fill(dt);
             subject_list.ItemsSource = dt.DefaultView;
-
             dataAdp.Update(dt);
+            conn.Close();
         }
 
         private void subject_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -277,6 +277,7 @@ namespace Class_Management
 
         private void FillNotification()
         {
+            conn.Open();
             string sql = "", temp = null;
             string[] notiList = {"subjects", "batch", "teacher", "student"};
             foreach (string ele in notiList)
@@ -303,6 +304,7 @@ namespace Class_Management
             CreateNotification("batch");
             CreateNotification("teacher");
             CreateNotification("student");
+            conn.Close();
         }
 
         private void CreateNotification(string ele)
@@ -359,6 +361,7 @@ namespace Class_Management
 
         public void FillReminders(string Rdate)
         {
+            conn.Open();
             string sql = "SELECT * FROM reminder WHERE remin_date='" + Rdate + "';";
             ReminderList.Items.Clear();
             using (SQLiteCommand command1 = new SQLiteCommand(sql, conn))
@@ -383,6 +386,7 @@ namespace Class_Management
                 }
             }
             ReminderList.Items.Add(AddReminderBtn());
+            conn.Close();
         }
 
 
@@ -416,6 +420,7 @@ namespace Class_Management
 
         public void FillTodaysTimetable()
         {
+            conn.Open();
             DateTime da = DateTime.Today;
             Console.WriteLine(da.DayOfWeek.ToString().ToLower());
             string today = da.DayOfWeek.ToString().ToLower();
@@ -424,6 +429,7 @@ namespace Class_Management
             {
                 using (SQLiteDataReader dr = command.ExecuteReader())
                 {
+                    TodaysTimetableListBox.Items.Clear();
                     string batchName, lectures;
                     while (dr.Read())
                     {
@@ -444,6 +450,7 @@ namespace Class_Management
                 }
                 command.Dispose();
             }
+            conn.Close();
         }
     }
 }

@@ -29,6 +29,13 @@ namespace Class_Management.Views
             FillComboBox();
         }
 
+        public ViewStudent(object context)
+        {
+            InitializeComponent();
+            FillDataGrid();
+            FillComboBox();
+        }
+
         List<string> delete_list = new List<string>();
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
