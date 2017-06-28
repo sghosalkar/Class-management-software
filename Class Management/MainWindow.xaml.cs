@@ -433,6 +433,7 @@ namespace Class_Management
                         ListBoxItem litm = new ListBoxItem();
                         litm.Content = "Batch " + batchName + ": " + lectures;
                         litm.Style = Resources["ReminderRowStyle"] as Style;
+                        litm.HorizontalAlignment = HorizontalAlignment.Left;
                         litm.MouseDoubleClick += (sdr, e) =>
                         {
                             //yet to think
