@@ -1,7 +1,6 @@
 Tasks:
  ✔ Weekly Timetable @done (17-06-28 14:40)
  ☐ Calling and data management
- ☐ Excel export
  ☐ Income expense monthly
  ☐ Multiple logins-Rights
  ☐ Notifications
@@ -10,4 +9,9 @@ Tasks:
  ☐ Notes
  ✔ Reminders @done (17-06-28 14:41)
  ☐ Graphics and GUI
+ ☐ Attendance
+ ☐ Portion tracking
+
+Task for Ambu:
+  ☐ Excel export .\MainWindow.xaml:276
 
