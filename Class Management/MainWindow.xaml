@@ -183,6 +183,7 @@
                     <Button x:Name="Teacher" Content="Teacher" Style="{StaticResource FlyoutBtn}" />
                     <Button x:Name="Batch" Content="Batch" Style="{StaticResource SubFlyoutBtn}" />
                     <Button x:Name="WeeklyTimetable" Content="Time Table" Style="{StaticResource SubFlyoutBtn}" />
+                    <Button x:Name="Attendance" Content="Attendance" Style="{StaticResource SubFlyoutBtn}" />
                 </StackPanel>
             </Controls:Flyout>
             <Controls:Flyout x:Name="StudentFlyout" Position="Top" Theme="Accent" CloseButtonVisibility="Hidden" Height="80">

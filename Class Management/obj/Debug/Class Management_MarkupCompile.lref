@@ -1,15 +1,15 @@
 ﻿
-FG:\My-Projects\Class Management\Class Management\App.xaml;;
-FG:\My-Projects\Class Management\Class Management\ActionDialog.xaml;;
-FG:\My-Projects\Class Management\Class Management\MainWindow.xaml;;
-FG:\My-Projects\Class Management\Class Management\MessageDialog.xaml;;
-FG:\My-Projects\Class Management\Class Management\ReminderDialog.xaml;;
-FG:\My-Projects\Class Management\Class Management\Views\AddStudent.xaml;;
-FG:\My-Projects\Class Management\Class Management\Views\AddTeacher.xaml;;
-FG:\My-Projects\Class Management\Class Management\Views\Batch.xaml;;
-FG:\My-Projects\Class Management\Class Management\Views\DailyTimetable.xaml;;
-FG:\My-Projects\Class Management\Class Management\Views\ManualTimetable.xaml;;
-FG:\My-Projects\Class Management\Class Management\Views\ViewStudent.xaml;;
-FG:\My-Projects\Class Management\Class Management\Views\ViewTeacher.xaml;;
-FG:\My-Projects\Class Management\Class Management\Views\WeeklyTimetable.xaml;;
+FG:\My-Projects\Class-management-software\Class Management\App.xaml;;
+FG:\My-Projects\Class-management-software\Class Management\MainWindow.xaml;;
+FG:\My-Projects\Class-management-software\Class Management\MessageDialog.xaml;;
+FG:\My-Projects\Class-management-software\Class Management\ReminderDialog.xaml;;
+FG:\My-Projects\Class-management-software\Class Management\Views\AddStudent.xaml;;
+FG:\My-Projects\Class-management-software\Class Management\Views\AddTeacher.xaml;;
+FG:\My-Projects\Class-management-software\Class Management\Views\Batch.xaml;;
+FG:\My-Projects\Class-management-software\Class Management\Views\DailyTimetable.xaml;;
+FG:\My-Projects\Class-management-software\Class Management\Views\ManualTimetable.xaml;;
+FG:\My-Projects\Class-management-software\Class Management\Views\ViewStudent.xaml;;
+FG:\My-Projects\Class-management-software\Class Management\Views\ViewTeacher.xaml;;
+FG:\My-Projects\Class-management-software\Class Management\Views\WeeklyTimetable.xaml;;
+FG:\My-Projects\Class-management-software\Class Management\Views\Attendance.xaml;;
 

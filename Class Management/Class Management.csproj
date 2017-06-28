@@ -96,9 +96,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ActionDialog.xaml.cs">
-      <DependentUpon>ActionDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MessageDialog.xaml.cs">
       <DependentUpon>MessageDialog.xaml</DependentUpon>
     </Compile>
@@ -110,6 +107,9 @@
     </Compile>
     <Compile Include="Views\AddTeacher.xaml.cs">
       <DependentUpon>AddTeacher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Attendance.xaml.cs">
+      <DependentUpon>Attendance.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Batch.xaml.cs">
       <DependentUpon>Batch.xaml</DependentUpon>
@@ -129,10 +129,6 @@
     <Compile Include="Views\WeeklyTimetable.xaml.cs">
       <DependentUpon>WeeklyTimetable.xaml</DependentUpon>
     </Compile>
-    <Page Include="ActionDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -166,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AddTeacher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Attendance.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
