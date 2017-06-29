@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,15 +28,13 @@ namespace Class_Management.Views
         public Attendance()
         {
             InitializeComponent();
-            FillBatches();
-            CreateMonthColumns();
+            GetEverythingReady();
         }
 
         public Attendance(object context)
         {
             InitializeComponent();
-            FillBatches();
-            CreateMonthColumns();
+            GetEverythingReady();
         }
 
         SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
@@ -65,6 +64,13 @@ namespace Class_Management.Views
             DialogSpace.Children.Add(md);
         }
 
+        private void GetEverythingReady()
+        {
+            FillBatches();
+            CreateMonthButtons();            
+            CreateMonthColumns(int.Parse(DateTime.Now.ToString("MM")), DateTime.Now.Year);
+        }
+
         private void FillBatches()
         {
             Button btn1 = new Button();
@@ -91,7 +97,6 @@ namespace Class_Management.Views
         private void Button_Batch_Select_Click(object sender, RoutedEventArgs e)
         {
             string batchName = (sender as Button).Content.ToString();
-            //FillDataGrid((sender as Button).Content.ToString());
             FillDataGrid(batchName);
         }
 
@@ -105,59 +110,23 @@ namespace Class_Management.Views
             (sender as Button).Background = Brushes.Teal;
         }
 
-        //public void FillDataGrid(string batch_name)
-        //{
-        //    try
-        //    {
-        //        AttendanceDatagrid.Items.Clear();
-        //        string sql = "SELECT student_name, reg_no FROM student WHERE batch='" + batch_name + "';";
-        //        SQLiteCommand command = new SQLiteCommand(sql, conn);
-        //        SQLiteDataReader dr = command.ExecuteReader();
-        //        while (dr.Read())
-        //        {
-        //            DataGridRow dgr = new DataGridRow()
-        //            {
-        //                Item = new Student() { RegNo = dr.GetString(1), Name = dr.GetString(0) },
-        //                Background = Brushes.MediumSeaGreen
-        //            };
-        //            dgr.MouseDoubleClick += (sdr, e) =>
-        //            {
-        //                SwitchAttendance(sdr, e);
-        //            };
-        //            AttendanceDatagrid.Items.Add(dgr);
-        //        }
-        //        dr.Close();
-        //        command.Dispose();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        string msg = ex.GetType().Name + " : " + ex.Message;
-        //        ErrorDialog(msg);
-        //    }
-        //}
-
-        private void SwitchAttendance(object sender, RoutedEventArgs e)
+        private void CreateMonthButtons()
         {
-            var row = sender as DataGridRow;
-            if (row.Background == Brushes.LightCoral)
+            string[] months = new string[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+            foreach (string month in months)
             {
-                row.Background = Brushes.MediumSeaGreen;
-            }
-            else
-            {
-                row.Background = Brushes.LightCoral;
+                Button btn = new Button()
+                {
+                    Content = month,
+                    Style = Resources["MonthButtonStyle"] as Style,
+                };
+                MonthStackPanel.Children.Add(btn);
+                MonthMenu.Items.Add(new MenuItem() { Header = month });
             }
         }
 
-        private void SortStudentList(object sender, SelectionChangedEventArgs e)
+        private void CreateMonthColumns(int month, int year)
         {
-            //MessageBox.Show("Yolo");
-        }
-
-        private void CreateMonthColumns()
-        {
-            int year = 2017;
-            int month = 6;
             int days = DateTime.DaysInMonth(year, month);
 
             AttendanceDataGrid.Columns.Clear();
@@ -168,11 +137,11 @@ namespace Class_Management.Views
                 Binding = new Binding("RegNo")
             };
             AttendanceDataGrid.Columns.Add(RegNoColumn);
-            DataGridTextColumn NameColumn = new DataGridTextColumn()
+            DataGridCheckBoxColumn NameColumn = new DataGridCheckBoxColumn()
             {
                 Header = "Name",
                 Binding = new Binding("Name"),
-                Width = new DataGridLength(1, DataGridLengthUnitType.Star)
+                Width = new DataGridLength(1, DataGridLengthUnitType.Star),
             };
             AttendanceDataGrid.Columns.Add(NameColumn);
 
@@ -181,7 +150,7 @@ namespace Class_Management.Views
                 DataGridTemplateColumn dgtc = new DataGridTemplateColumn();
                 dgtc.Header = i;
                 FrameworkElementFactory factory1 = new FrameworkElementFactory(typeof(CheckBox));
-                Binding b1 = new Binding("IsSelected");
+                Binding b1 = new Binding("IsSelected" + i);
                 b1.Mode = BindingMode.TwoWay;
                 factory1.SetValue(CheckBox.IsCheckedProperty, b1);
                 factory1.AddHandler(CheckBox.CheckedEvent, new RoutedEventHandler(ChkSelect_Checked));
@@ -204,14 +173,11 @@ namespace Class_Management.Views
                 while (dr.Read())
                 {
                     Console.WriteLine(dr.GetString(0));
+                    CheckBox ck = new CheckBox();
+                    ck.IsChecked = true;
                     DataGridRow dgr = new DataGridRow()
                     {
                         Item = new Student() { RegNo = dr.GetString(1), Name = dr.GetString(0) },
-                        Background = Brushes.MediumSeaGreen
-                    };
-                    dgr.MouseDoubleClick += (sdr, e) =>
-                    {
-                        SwitchAttendance(sdr, e);
                     };
                     AttendanceDataGrid.Items.Add(dgr);
                 }
@@ -262,12 +228,47 @@ namespace Class_Management.Views
             }
             return null;
         }
+
+        private void Month_Select_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
     class Student
     {
         public string RegNo { get; set; }
         public string Name { get; set; }
-        
+        public int IsSelected1 { get; set; }
+        public int IsSelected2 { get; set; }
+        public int IsSelected3 { get; set; }
+        public int IsSelected4 { get; set; }
+        public int IsSelected5 { get; set; }
+        public int IsSelected6 { get; set; }
+        public int IsSelected7 { get; set; }
+        public int IsSelected8 { get; set; }
+        public int IsSelected9 { get; set; }
+        public int IsSelected10 { get; set; }
+        public int IsSelected11 { get; set; }
+        public int IsSelected12 { get; set; }
+        public int IsSelected13 { get; set; }
+        public int IsSelected14 { get; set; }
+        public int IsSelected15 { get; set; }
+        public int IsSelected16 { get; set; }
+        public int IsSelected17 { get; set; }
+        public int IsSelected18 { get; set; }
+        public int IsSelected19 { get; set; }
+        public int IsSelected20 { get; set; }
+        public int IsSelected21 { get; set; }
+        public int IsSelected22 { get; set; }
+        public int IsSelected23 { get; set; }
+        public int IsSelected24 { get; set; }
+        public int IsSelected25 { get; set; }
+        public int IsSelected26 { get; set; }
+        public int IsSelected27 { get; set; }
+        public int IsSelected28 { get; set; }
+        public int IsSelected29 { get; set; }
+        public int IsSelected30 { get; set; }
+        public int IsSelected31 { get; set; }
     }
 }
