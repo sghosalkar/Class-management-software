@@ -109,71 +109,81 @@
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" Margin="10">
                     <StackPanel x:Name="batch_list" Orientation="Horizontal"></StackPanel>
                 </ScrollViewer>
-                
-                <Grid Grid.Row="2">
+
+                <!--<Grid Visibility="Collapsed" Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
 
-                    <!--<DataGrid x:Name="attendanceDatagrid" 
-                              Grid.Column="0"
+                    <StackPanel Grid.Column="1" Orientation="Vertical" Margin="20">
+                        <ComboBox x:Name="Sorter" 
+                                  SelectionChanged="SortStudentList" 
+                                  HorizontalAlignment="Left"
+                                  FontSize="16"
+                                  Margin="5"
+                                  Style="{StaticResource MetroComboBox}">
+                            <ComboBoxItem IsSelected="True">Sort by Name</ComboBoxItem>
+                            <ComboBoxItem>Sort by Reg No</ComboBoxItem>
+                        </ComboBox>
+                        --><!--<DataGrid x:Name="AttendanceDatagrid" 
+                                  RowHeight="30"
+                                  IsReadOnly="True"
+                                  Margin="5"
+                                  CanUserSortColumns="False"
+                                  Style="{StaticResource DataGridStyle}"
+                                  BorderBrush="Black" 
+                                  BorderThickness="2">
+                            <DataGrid.RowStyle>
+                                <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource MetroDataGridRow}">
+                                    <Setter Property="Height" Value="30" />
+                                    <Setter Property="FontSize" Value="16" />
+                                    <Setter Property="Foreground" Value="White" />
+                                </Style>
+                            </DataGrid.RowStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Reg no" MinWidth="120" x:Name="reg_no" Binding="{Binding RegNo}" />
+                                <DataGridTextColumn Header="Student Name" Width="1*" Binding="{Binding Name}" />
+                                <DataGridTemplateColumn Header="Present" Width="120">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox x:Name="chk"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>--><!--
+                        
+                        
+                    </StackPanel>
+                </Grid>-->
+
+                <Grid Grid.Row="2">
+                    <DataGrid x:Name="AttendanceDataGrid" 
+                              SelectionMode="Single"
+                              SelectionUnit="Cell"
                               RowHeight="30"
-                              Margin="20"
                               IsReadOnly="True"
-                              Style="{StaticResource DataGridStyle}"
-                              BorderBrush="Black" 
-                              BorderThickness="2">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Reg no" MinWidth="120" x:Name="reg_no" Binding="{Binding reg_no}" />
-                            <DataGridTextColumn Header="Student Name" Width="3*" Binding="{Binding student_name}" />
-                            <DataGridTemplateColumn Header="Was Absent?">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <CheckBox x:Name="chk" Checked="Chk_Checked" Unchecked="Chk_Checked" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                    <ListView x:Name="AttendanceList">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource MetroListViewItem}">
-                                <Setter Property="Height" Value="30" />
-                                <Setter Property="FontSize" Value="16" />
-                                <Setter Property="Foreground" Value="Red" />
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Reg No" DisplayMemberBinding="{Binding RegNo}"/>
-                                <GridViewColumn Header="Student Name" Width="auto" DisplayMemberBinding="{Binding Name}"/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>-->
-                    <DataGrid x:Name="AttendanceDatagrid" 
-                              Grid.Column="0"
-                              RowHeight="30"
-                              Margin="20"
-                              IsReadOnly="True"
+                              Margin="5"
+                              CanUserSortColumns="False"
                               Style="{StaticResource DataGridStyle}"
                               BorderBrush="Black" 
                               BorderThickness="2">
                         <DataGrid.RowStyle>
-                            <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource MetroDataGridRow}">
-                                <Setter Property="Height" Value="30" />
-                                <Setter Property="FontSize" Value="16" />
-                                <Setter Property="Foreground" Value="Red" />
-                            </Style>
-                        </DataGrid.RowStyle>
+                                <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource MetroDataGridRow}">
+                                    <Setter Property="Height" Value="30" />
+                                    <Setter Property="FontSize" Value="16" />
+                                    <Setter Property="Foreground" Value="White" />
+                                </Style>
+                            </DataGrid.RowStyle>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Reg no" MinWidth="120" x:Name="reg_no" Binding="{Binding RegNo}" />
-                            <DataGridTextColumn Header="Student Name" Width="1*" Binding="{Binding Name}" />
+                            <!--<DataGridTextColumn Header="Reg no" Binding="{Binding RegNo}" />
+                            <DataGridTextColumn Header="Name" Width="1*" Binding="{Binding Name}" />-->
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
 
-                    <Button x:Name="closeUC" Grid.Row="0" Width="30" Height="30" Click="closeUC_Click" 
+                <Button x:Name="closeUC" Grid.Row="0" Width="30" Height="30" Click="closeUC_Click" 
                         Background="#3F51B5" Foreground="White"
                         Grid.ColumnSpan="3"
                         HorizontalAlignment="Right" Style="{StaticResource btn}">
