@@ -41,6 +41,7 @@ namespace Class_Management.Views
         }
 
         int activeMonth = int.Parse(DateTime.Now.ToString("MM"));
+        string activeBatch = null;
 
         SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
 
@@ -72,7 +73,7 @@ namespace Class_Management.Views
         private void GetEverythingReady()
         {
             FillBatches();
-            CreateMonthColumns(activeMonth, DateTime.Now.Year);
+            CreateMonthColumns();
         }
 
         private void FillBatches()
@@ -100,9 +101,10 @@ namespace Class_Management.Views
 
         private void Button_Batch_Select_Click(object sender, RoutedEventArgs e)
         {
-            string batchName = (sender as Button).Content.ToString();
-            BatchNameLabel.Content = "Batch: " + batchName; 
-            FillAttendanceDataGrid(batchName);
+            activeBatch = (sender as Button).Content.ToString();
+            AttendanceBoxStackPanel.Visibility = Visibility.Visible;
+            BatchNameLabel.Content = "Batch: " + activeBatch;
+            FillAttendanceDataGrid();
         }
 
         private void Button_Batch_GotFocus(object sender, RoutedEventArgs e)
@@ -115,9 +117,10 @@ namespace Class_Management.Views
             (sender as Button).Background = Brushes.Teal;
         }
 
-        private void CreateMonthColumns(int month, int year)
+        private void CreateMonthColumns()
         {
-            int days = DateTime.DaysInMonth(year, month);
+            int year = DateTime.Now.Year;
+            int days = DateTime.DaysInMonth(year, activeMonth);
 
             AttendanceDataGrid.Columns.Clear();
 
@@ -152,19 +155,18 @@ namespace Class_Management.Views
             }
         }
 
-        private void FillAttendanceDataGrid(string batchName)
+        private void FillAttendanceDataGrid()
         {
             try
             {
                 AttendanceDataGrid.Items.Clear();
                 string month = CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(activeMonth);
-                string sql = "SELECT " + month.ToLower() + " FROM attendance WHERE reg_no IN (SELECT reg_no FROM student WHERE batch='" + batchName + "') ORDER BY reg_no ASC;";
+                string sql = "SELECT " + month.ToLower() + " FROM attendance WHERE reg_no IN (SELECT reg_no FROM student WHERE batch='" + activeBatch + "') ORDER BY reg_no ASC;";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 SQLiteDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
                     string json = dr.GetString(0);
-                    //Console.WriteLine(json);
                     Student student = JsonConvert.DeserializeObject<Student>(json);
                     DataGridRow dgr = new DataGridRow()
                     {
@@ -194,11 +196,6 @@ namespace Class_Management.Views
             try
             {
                 string month = (CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(activeMonth)).ToLower();
-                //string sql = "SELECT " + month + " FROM attendance WHERE reg_no='" + row + "';";
-                //SQLiteCommand command = new SQLiteCommand(sql, conn);
-                //string result = command.ExecuteScalar().ToString();
-                ////MessageBox.Show(result);
-                //Student student = JsonConvert.DeserializeObject<Student>(result);
                 string json = JsonConvert.SerializeObject(student);
                 string sql = "UPDATE attendance SET " + month + "='" + json + "' WHERE reg_no='" + row + "';";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
@@ -242,8 +239,9 @@ namespace Class_Management.Views
         private void Month_Select_Click(object sender, RoutedEventArgs e)
         {
             activeMonth = DateTime.ParseExact((sender as MenuItem).Header.ToString(), "MMMM", CultureInfo.InvariantCulture).Month;
-            CreateMonthColumns(activeMonth, DateTime.Now.Year);
+            CreateMonthColumns();
             (sender as MenuItem).Focus();
+            FillAttendanceDataGrid();
         }
     }
 }

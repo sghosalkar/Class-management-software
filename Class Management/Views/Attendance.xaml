@@ -69,7 +69,7 @@
                     <StackPanel x:Name="batch_list" Orientation="Horizontal"></StackPanel>
                 </ScrollViewer>
 
-                <StackPanel Orientation="Vertical" Grid.Row="2" Margin="20">
+                <StackPanel x:Name="AttendanceBoxStackPanel" Orientation="Vertical" Grid.Row="2" Margin="20" Visibility="Collapsed">
 
                     <Grid Margin="5 0">
                         <Label x:Name="BatchNameLabel" HorizontalAlignment="Left" FontSize="20"/>
@@ -120,8 +120,6 @@
                                 </Style>
                             </DataGrid.RowStyle>
                             <DataGrid.Columns>
-                                <!--<DataGridTextColumn Header="Reg no" Binding="{Binding RegNo}" />
-                                <DataGridTextColumn Header="Name" Width="1*" Binding="{Binding Name}" />-->
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
