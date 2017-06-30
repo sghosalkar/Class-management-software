@@ -16,6 +16,8 @@ using System.Windows.Media.Animation;
 using System.Data.SQLite;
 using System.Globalization;
 using System.Data;
+using Class_Management.Models;
+using Newtonsoft.Json;
 
 namespace Class_Management.Views
 {
@@ -69,7 +71,7 @@ namespace Class_Management.Views
                     ErrorDialog("Enter proper contact number");
                     return;
                 }
-                string sql;
+                string sql, sql2;
                 if (updateStudent == null)
                 {
                     sql = "INSERT INTO student( student_name, contact_no1, studying_at, studying_at_name, address, student_email, parent_name, contact_no2, reg_no, batch, subjects, other_details, balance_fees) VALUES('"
@@ -86,6 +88,25 @@ namespace Class_Management.Views
                                 + subjects.Text + "', '"
                                 + other_details.Text + "', '"
                                 + balance_fees.Text + "');";
+
+                    Student student = new Student();
+                    student.Name = student_name.Text;
+                    student.RegNo = reg_no.Text;
+                    string json = JsonConvert.SerializeObject(student);
+                    sql2 = "INSERT INTO attendance VALUES('" 
+                        + reg_no.Text + "', '"
+                        + json + "', '"
+                        + json + "', '"
+                        + json + "', '"
+                        + json + "', '"
+                        + json + "', '"
+                        + json + "', '"
+                        + json + "', '"
+                        + json + "', '"
+                        + json + "', '"
+                        + json + "', '"
+                        + json + "', '"
+                        + json + "');";
                 }
                 else
                 {
@@ -103,8 +124,12 @@ namespace Class_Management.Views
                         + subjects.Text + "', other_details= '"
                         + other_details.Text + "', balance_fees='"
                         + balance_fees.Text + "' where reg_no='" + updateStudent + "';";
+
+                    sql2 = "UPDATE attendance SET reg_no='" + reg_no.Text + "' WHERE reg_no='" + updateStudent + "';";
                 }
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
+                command.ExecuteNonQuery();
+                command = new SQLiteCommand(sql2, conn);
                 command.ExecuteNonQuery();
                 conn.Close();
                 student_name.Text = contact_no1.Text = address.Text = studying_at.Text = "";

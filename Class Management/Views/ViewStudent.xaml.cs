@@ -124,7 +124,10 @@ namespace Class_Management.Views
                 {
                     f1 = 1;
                     string sql = "DELETE FROM student WHERE reg_no='" + ele + "';";
+                    string sql2 = "DELETE FROM attendance WHERE reg_no='" + ele + "';";
                     SQLiteCommand command = new SQLiteCommand(sql, conn);
+                    command.ExecuteNonQuery();
+                    command = new SQLiteCommand(sql2, conn);
                     command.ExecuteNonQuery();
                 }
                 if (f1 == 0)

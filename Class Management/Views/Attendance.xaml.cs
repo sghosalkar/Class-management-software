@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Class_Management.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
 using System.Globalization;
@@ -37,6 +40,8 @@ namespace Class_Management.Views
             GetEverythingReady();
         }
 
+        int activeMonth = int.Parse(DateTime.Now.ToString("MM"));
+
         SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -67,8 +72,7 @@ namespace Class_Management.Views
         private void GetEverythingReady()
         {
             FillBatches();
-            CreateMonthButtons();            
-            CreateMonthColumns(int.Parse(DateTime.Now.ToString("MM")), DateTime.Now.Year);
+            CreateMonthColumns(activeMonth, DateTime.Now.Year);
         }
 
         private void FillBatches()
@@ -85,19 +89,20 @@ namespace Class_Management.Views
             btn3.Style = Resources["BatchButton"] as Style;
             btn3.Content = "C";
             batch_list.Children.Add(btn3);
-            for (int i = 0; i < 20; i++)
-            {
-                Button btn = new Button();
-                btn.Style = Resources["BatchButton"] as Style;
-                btn.Content = i;
-                batch_list.Children.Add(btn);
-            }
+            //for (int i = 0; i < 20; i++)
+            //{
+            //    Button btn = new Button();
+            //    btn.Style = Resources["BatchButton"] as Style;
+            //    btn.Content = i;
+            //    batch_list.Children.Add(btn);
+            //}
         }
 
         private void Button_Batch_Select_Click(object sender, RoutedEventArgs e)
         {
             string batchName = (sender as Button).Content.ToString();
-            FillDataGrid(batchName);
+            BatchNameLabel.Content = "Batch: " + batchName; 
+            FillAttendanceDataGrid(batchName);
         }
 
         private void Button_Batch_GotFocus(object sender, RoutedEventArgs e)
@@ -108,21 +113,6 @@ namespace Class_Management.Views
         private void Button_Batch_LostFocus(object sender, RoutedEventArgs e)
         {
             (sender as Button).Background = Brushes.Teal;
-        }
-
-        private void CreateMonthButtons()
-        {
-            string[] months = new string[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-            foreach (string month in months)
-            {
-                Button btn = new Button()
-                {
-                    Content = month,
-                    Style = Resources["MonthButtonStyle"] as Style,
-                };
-                MonthStackPanel.Children.Add(btn);
-                MonthMenu.Items.Add(new MenuItem() { Header = month });
-            }
         }
 
         private void CreateMonthColumns(int month, int year)
@@ -137,7 +127,7 @@ namespace Class_Management.Views
                 Binding = new Binding("RegNo")
             };
             AttendanceDataGrid.Columns.Add(RegNoColumn);
-            DataGridCheckBoxColumn NameColumn = new DataGridCheckBoxColumn()
+            DataGridTextColumn NameColumn = new DataGridTextColumn()
             {
                 Header = "Name",
                 Binding = new Binding("Name"),
@@ -162,22 +152,23 @@ namespace Class_Management.Views
             }
         }
 
-        private void FillDataGrid(string batchName)
+        private void FillAttendanceDataGrid(string batchName)
         {
             try
             {
                 AttendanceDataGrid.Items.Clear();
-                string sql = "SELECT student_name, reg_no FROM student WHERE batch='" + batchName + "';";
+                string month = CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(activeMonth);
+                string sql = "SELECT " + month.ToLower() + " FROM attendance WHERE reg_no IN (SELECT reg_no FROM student WHERE batch='" + batchName + "') ORDER BY reg_no ASC;";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 SQLiteDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
-                    Console.WriteLine(dr.GetString(0));
-                    CheckBox ck = new CheckBox();
-                    ck.IsChecked = true;
+                    string json = dr.GetString(0);
+                    //Console.WriteLine(json);
+                    Student student = JsonConvert.DeserializeObject<Student>(json);
                     DataGridRow dgr = new DataGridRow()
                     {
-                        Item = new Student() { RegNo = dr.GetString(1), Name = dr.GetString(0) },
+                        Item = student
                     };
                     AttendanceDataGrid.Items.Add(dgr);
                 }
@@ -197,9 +188,28 @@ namespace Class_Management.Views
             Tuple<DataGridCell, DataGridRow> tuple = GetDataGridRowAndCell(dep);
             DataGridCell cell = tuple.Item1 as DataGridCell;
             DataGridRow dgr = tuple.Item2 as DataGridRow;
-            string row = (dgr.Item as Student).RegNo;
+            Student student = dgr.Item as Student;
+            string row = student.RegNo;
             string col = cell.Column.Header.ToString();
-            MessageBox.Show(row + " : " + col);
+            try
+            {
+                string month = (CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(activeMonth)).ToLower();
+                //string sql = "SELECT " + month + " FROM attendance WHERE reg_no='" + row + "';";
+                //SQLiteCommand command = new SQLiteCommand(sql, conn);
+                //string result = command.ExecuteScalar().ToString();
+                ////MessageBox.Show(result);
+                //Student student = JsonConvert.DeserializeObject<Student>(result);
+                string json = JsonConvert.SerializeObject(student);
+                string sql = "UPDATE attendance SET " + month + "='" + json + "' WHERE reg_no='" + row + "';";
+                SQLiteCommand command = new SQLiteCommand(sql, conn);
+                command.ExecuteNonQuery();
+                command.Dispose();
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.GetType().Name + " : " + ex.Message;
+                ErrorDialog(msg);
+            }
         }
 
         public static Tuple<DataGridCell, DataGridRow> GetDataGridRowAndCell(DependencyObject dep)
@@ -231,44 +241,9 @@ namespace Class_Management.Views
 
         private void Month_Select_Click(object sender, RoutedEventArgs e)
         {
-
+            activeMonth = DateTime.ParseExact((sender as MenuItem).Header.ToString(), "MMMM", CultureInfo.InvariantCulture).Month;
+            CreateMonthColumns(activeMonth, DateTime.Now.Year);
+            (sender as MenuItem).Focus();
         }
-    }
-
-    class Student
-    {
-        public string RegNo { get; set; }
-        public string Name { get; set; }
-        public int IsSelected1 { get; set; }
-        public int IsSelected2 { get; set; }
-        public int IsSelected3 { get; set; }
-        public int IsSelected4 { get; set; }
-        public int IsSelected5 { get; set; }
-        public int IsSelected6 { get; set; }
-        public int IsSelected7 { get; set; }
-        public int IsSelected8 { get; set; }
-        public int IsSelected9 { get; set; }
-        public int IsSelected10 { get; set; }
-        public int IsSelected11 { get; set; }
-        public int IsSelected12 { get; set; }
-        public int IsSelected13 { get; set; }
-        public int IsSelected14 { get; set; }
-        public int IsSelected15 { get; set; }
-        public int IsSelected16 { get; set; }
-        public int IsSelected17 { get; set; }
-        public int IsSelected18 { get; set; }
-        public int IsSelected19 { get; set; }
-        public int IsSelected20 { get; set; }
-        public int IsSelected21 { get; set; }
-        public int IsSelected22 { get; set; }
-        public int IsSelected23 { get; set; }
-        public int IsSelected24 { get; set; }
-        public int IsSelected25 { get; set; }
-        public int IsSelected26 { get; set; }
-        public int IsSelected27 { get; set; }
-        public int IsSelected28 { get; set; }
-        public int IsSelected29 { get; set; }
-        public int IsSelected30 { get; set; }
-        public int IsSelected31 { get; set; }
     }
 }

@@ -340,3 +340,5 @@ G:\My-Projects\Class-management-software\Class Management\obj\Debug\Class Manage
 G:\My-Projects\Class-management-software\Class Management\obj\Debug\Class Management.pdb
 G:\My-Projects\Class-management-software\Class Management\obj\Debug\Views\Attendance.g.cs
 G:\My-Projects\Class-management-software\Class Management\obj\Debug\Views\Attendance.baml
+G:\My-Projects\Class-management-software\Class Management\bin\Debug\Newtonsoft.Json.dll
+G:\My-Projects\Class-management-software\Class Management\bin\Debug\Newtonsoft.Json.xml

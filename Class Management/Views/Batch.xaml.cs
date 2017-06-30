@@ -29,7 +29,6 @@ namespace Class_Management.Views
             FillSubjectsComboBox();
             FillTime();
             FillDataGrid();
-            FillBatchComboBox();
         }
 
         public Batch(object context)
@@ -38,7 +37,6 @@ namespace Class_Management.Views
             FillSubjectsComboBox();
             FillTime();
             FillDataGrid();
-            FillBatchComboBox();
         }
 
         string igotbatch = null;
@@ -344,13 +342,11 @@ namespace Class_Management.Views
             {
                 delete_rows.Visibility = Visibility.Visible;
                 delete_all.Visibility = Visibility.Visible;
-                segregator.Visibility = Visibility.Collapsed;
             }
             else
             {
                 delete_rows.Visibility = Visibility.Collapsed;
                 delete_all.Visibility = Visibility.Collapsed;
-                segregator.Visibility = Visibility.Visible;
             }
         }
 
@@ -366,64 +362,6 @@ namespace Class_Management.Views
             catch (Exception)
             {
                 //ErrorDialog(ex.GetType().Name);
-            }
-        }
-
-        private void segregator_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                ComboBox cmbbox = sender as ComboBox;
-                string bname = cmbbox.SelectedItem.ToString();
-                if (bname == "" || bname == "All")
-                {
-                    FillDataGrid();
-                }
-                else
-                {
-                    SQLiteConnection conn;
-                    conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
-                    conn.Open();
-                    string sql = "SELECT * FROM batch WHERE batch_name='" + bname + "';";
-                    SQLiteCommand command = new SQLiteCommand(sql, conn);
-                    command.ExecuteNonQuery();
-                    SQLiteDataAdapter dataAdp = new SQLiteDataAdapter(command);
-                    DataTable dt = new DataTable("batch");
-                    dataAdp.Fill(dt);
-                    batch_list.ItemsSource = dt.DefaultView;
-                    dataAdp.Update(dt);
-                    conn.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
-            }
-        }
-
-        private void FillBatchComboBox()
-        {
-            try
-            {
-                SQLiteConnection conn;
-                conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
-                conn.Open();
-                string sql = "SELECT batch_name FROM batch;";
-                SQLiteCommand command = new SQLiteCommand(sql, conn);
-                command.ExecuteNonQuery();
-                SQLiteDataReader dr = command.ExecuteReader();
-                segregator.Items.Add("All");
-                while (dr.Read())
-                {
-                    segregator.Items.Add(dr["batch_name"].ToString());
-                }
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
             }
         }
     }
