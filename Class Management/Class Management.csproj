@@ -118,6 +118,9 @@
     <Compile Include="Views\Batch.xaml.cs">
       <DependentUpon>Batch.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Budget.xaml.cs">
+      <DependentUpon>Budget.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DailyTimetable.xaml.cs">
       <DependentUpon>DailyTimetable.xaml</DependentUpon>
     </Compile>
@@ -174,6 +177,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Batch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Budget.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

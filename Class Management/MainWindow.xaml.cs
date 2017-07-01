@@ -48,6 +48,7 @@ namespace Class_Management
         private void mainWindow_Unloaded(object sender, RoutedEventArgs e)
         {
             //conn.Close();
+            Application.Current.Shutdown();
         }
 
         private void ShowFlyout(int index)

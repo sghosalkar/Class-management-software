@@ -342,3 +342,5 @@ G:\My-Projects\Class-management-software\Class Management\obj\Debug\Views\Attend
 G:\My-Projects\Class-management-software\Class Management\obj\Debug\Views\Attendance.baml
 G:\My-Projects\Class-management-software\Class Management\bin\Debug\Newtonsoft.Json.dll
 G:\My-Projects\Class-management-software\Class Management\bin\Debug\Newtonsoft.Json.xml
+G:\My-Projects\Class-management-software\Class Management\obj\Debug\Views\Budget.g.cs
+G:\My-Projects\Class-management-software\Class Management\obj\Debug\Views\Budget.baml

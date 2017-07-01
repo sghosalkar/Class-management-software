@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="Class_Management.Views.Budget"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Class_Management.Views"
+             mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+             d:DesignHeight="800" d:DesignWidth="1500">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style x:Key="formlabel"
+                   TargetType="{x:Type Label}">
+                <Setter Property="FontSize" Value="15"></Setter>
+                <Setter Property="VerticalAlignment" Value="Top"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                <Setter Property="Grid.Column" Value="0"></Setter>
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Foreground" Value="#3F51B5" />
+            </Style>
+
+            <Style x:Key="formtextbox"
+                   TargetType="{x:Type TextBox}">
+                <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                <Setter Property="VerticalAlignment" Value="Top"></Setter>
+                <Setter Property="Height" Value="30"></Setter>
+                <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                <Setter Property="FontSize" Value="15"></Setter>
+                <Setter Property="Background" Value="White" />
+                <Setter Property="Foreground" Value="#263238" />
+                <Setter Property="BorderBrush" Value="White" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="btn"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource MetroFlatButton}">
+                <Setter Property="HorizontalAlignment" Value="Left" />
+                <Setter Property="VerticalAlignment" Value="Top" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="Height" Value="35" />
+                <Setter Property="Width" Value="120" />
+                <Setter Property="Background" Value="#3F51B5" />
+                <Setter Property="Foreground" Value="White" />
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Viewbox>
+        <Grid Height="798" Width="1550">
+            <Grid Background="Black" Opacity="0.6" />
+            <Grid Background="#ECEFF1" >
+                <Grid.RowDefinitions>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="Budget Tracking" Margin="0,10,0,0"
+                       HorizontalAlignment="Center" VerticalAlignment="Top" 
+                       Foreground="#3F51B5" FontSize="30"/>
+
+                <Button x:Name="closeUC" Width="30" Height="30" 
+                        Click="closeUC_Click"
+                        Background="#3F51B5" 
+                        Foreground="White"
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Top"
+                        Style="{StaticResource MetroFlatButton}">
+                    <Controls:PackIconMaterial x:Name="CloseIcon" Kind="WindowClose" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Button>
+
+            </Grid>
+            <Grid Height="800" Width="1500" x:Name="DialogSpace"></Grid>
+        </Grid>
+    </Viewbox>
+</UserControl>
