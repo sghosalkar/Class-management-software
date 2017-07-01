@@ -90,13 +90,6 @@ namespace Class_Management.Views
             btn3.Style = Resources["BatchButton"] as Style;
             btn3.Content = "C";
             batch_list.Children.Add(btn3);
-            //for (int i = 0; i < 20; i++)
-            //{
-            //    Button btn = new Button();
-            //    btn.Style = Resources["BatchButton"] as Style;
-            //    btn.Content = i;
-            //    batch_list.Children.Add(btn);
-            //}
         }
 
         private void Button_Batch_Select_Click(object sender, RoutedEventArgs e)
@@ -161,7 +154,14 @@ namespace Class_Management.Views
             {
                 AttendanceDataGrid.Items.Clear();
                 string month = CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(activeMonth);
-                string sql = "SELECT " + month.ToLower() + " FROM attendance WHERE reg_no IN (SELECT reg_no FROM student WHERE batch='" + activeBatch + "') ORDER BY reg_no ASC;";
+                if ( SortOptions.SelectedItem == null )
+                {
+                    SortOptions.SelectedIndex = 0;
+                    return;
+                }
+                string sortOption = (SortOptions.SelectedItem as ComboBoxItem).Name;
+                //string sql = "SELECT " + month.ToLower() + " FROM attendance WHERE reg_no IN (SELECT reg_no FROM student WHERE batch='" + activeBatch + "') ORDER BY reg_no ASC;";
+                string sql = "SELECT " + month.ToLower() + " FROM attendance INNER JOIN student ON attendance.reg_no = student.reg_no WHERE attendance.reg_no IN (SELECT reg_no FROM student WHERE batch='" + activeBatch + "') ORDER BY student." + sortOption + " ASC;";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 SQLiteDataReader dr = command.ExecuteReader();
                 while (dr.Read())
@@ -241,6 +241,11 @@ namespace Class_Management.Views
             activeMonth = DateTime.ParseExact((sender as MenuItem).Header.ToString(), "MMMM", CultureInfo.InvariantCulture).Month;
             CreateMonthColumns();
             (sender as MenuItem).Focus();
+            FillAttendanceDataGrid();
+        }
+
+        private void Sort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
             FillAttendanceDataGrid();
         }
     }

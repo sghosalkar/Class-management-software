@@ -23,11 +23,6 @@
                 <EventSetter Event="LostFocus" Handler="Button_Batch_LostFocus" />
             </Style>
 
-            <Style x:Key="BatchButtonLabel" TargetType="Label">
-                <Setter Property="Foreground" Value="White"></Setter>
-                <Setter Property="FontSize" Value="24" />
-            </Style>
-
             <Style x:Key="DataGridStyle" 
                    TargetType="DataGrid"
                    BasedOn="{StaticResource AzureDataGrid}">
@@ -35,15 +30,6 @@
                 <Setter Property="CanUserAddRows" Value="False"/>
             </Style>
 
-            <Style x:Key="MonthButtonStyle"
-                   TargetType="{x:Type Button}"
-                   BasedOn="{StaticResource MetroFlatButton}">
-                <Setter Property="Background" Value="MediumSeaGreen"/>
-                <Setter Property="Foreground" Value="White"/>
-                <Setter Property="FontSize" Value="16" />
-                <EventSetter Event="Click" Handler="Month_Select_Click" />
-            </Style>
-            
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -69,37 +55,44 @@
                     <StackPanel x:Name="batch_list" Orientation="Horizontal"></StackPanel>
                 </ScrollViewer>
 
-                <StackPanel x:Name="AttendanceBoxStackPanel" Orientation="Vertical" Grid.Row="2" Margin="20" Visibility="Collapsed">
+                <StackPanel x:Name="AttendanceBoxStackPanel" 
+                            Orientation="Vertical" Grid.Row="2" 
+                            Margin="20" Visibility="Collapsed">
 
                     <Grid Margin="5 0">
-                        <Label x:Name="BatchNameLabel" HorizontalAlignment="Left" FontSize="20"/>
-
-                        <Menu x:Name="MonthMenu" HorizontalAlignment="Right">
-                            <Menu.Resources>
-                                <Style TargetType="{x:Type MenuItem}">
-                                    <EventSetter Event="Click" Handler="Month_Select_Click"/>
-                                    <Setter Property="FontSize" Value="16" />
-                                    <Setter Property="Padding" Value="10"/>
-                                </Style>
-                            </Menu.Resources>
-                            <Menu.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <VirtualizingStackPanel Orientation="Horizontal" />
-                                </ItemsPanelTemplate>
-                            </Menu.ItemsPanel>
-                            <MenuItem Header="January" x:Name="jan"/>
-                            <MenuItem Header="February" x:Name="feb"/>
-                            <MenuItem Header="March" x:Name="mar"/>
-                            <MenuItem Header="April" x:Name="apr"/>
-                            <MenuItem Header="May" x:Name="may"/>
-                            <MenuItem Header="June" x:Name="jun"/>
-                            <MenuItem Header="July" x:Name="jul"/>
-                            <MenuItem Header="August" x:Name="aug"/>
-                            <MenuItem Header="September" x:Name="sep"/>
-                            <MenuItem Header="October" x:Name="oct"/>
-                            <MenuItem Header="November" x:Name="nov"/>
-                            <MenuItem Header="December" x:Name="dec"/>
-                        </Menu>
+                        <Label x:Name="BatchNameLabel" Content="yooooooooo" HorizontalAlignment="Left" FontSize="20"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <ComboBox x:Name="SortOptions" SelectionChanged="Sort_SelectionChanged" FontSize="14" Margin="5 0">
+                                <ComboBoxItem x:Name="reg_no">Sort by Reg No</ComboBoxItem>
+                                <ComboBoxItem x:Name="student_name">Sort by Name</ComboBoxItem>
+                            </ComboBox>
+                            <Menu x:Name="MonthMenu" HorizontalAlignment="Right">
+                                <Menu.Resources>
+                                    <Style TargetType="{x:Type MenuItem}">
+                                        <EventSetter Event="Click" Handler="Month_Select_Click"/>
+                                        <Setter Property="FontSize" Value="16" />
+                                        <Setter Property="Padding" Value="10"/>
+                                    </Style>
+                                </Menu.Resources>
+                                <Menu.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </Menu.ItemsPanel>
+                                <MenuItem Header="January" x:Name="jan"/>
+                                <MenuItem Header="February" x:Name="feb"/>
+                                <MenuItem Header="March" x:Name="mar"/>
+                                <MenuItem Header="April" x:Name="apr"/>
+                                <MenuItem Header="May" x:Name="may"/>
+                                <MenuItem Header="June" x:Name="jun"/>
+                                <MenuItem Header="July" x:Name="jul"/>
+                                <MenuItem Header="August" x:Name="aug"/>
+                                <MenuItem Header="September" x:Name="sep"/>
+                                <MenuItem Header="October" x:Name="oct"/>
+                                <MenuItem Header="November" x:Name="nov"/>
+                                <MenuItem Header="December" x:Name="dec"/>
+                            </Menu>
+                        </StackPanel>
                     </Grid>
 
                     <Grid Grid.Row="2" Margin="5">
