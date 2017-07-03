@@ -33,12 +33,14 @@
                    BasedOn="{StaticResource MetroFlatButton}">
                 <Setter Property="FontSize" Value="15" />
                 <Setter Property="Margin" Value="10"/>
+                <Setter Property="Foreground" Value="DarkSlateGray"/>
+                <Setter Property="Background" Value="WhiteSmoke"/>
             </Style>
 
             <Style x:Key="dataGridStyle"
                    TargetType="{x:Type DataGrid}"
                    BasedOn="{StaticResource AzureDataGrid}">
-                <Setter Property="Margin" Value="10"></Setter>
+                <Setter Property="Margin" Value="10 0 10 30"></Setter>
                 <Setter Property="BorderBrush" Value="Black"/>
                 <Setter Property="BorderThickness" Value="2"/>
             </Style>
@@ -71,18 +73,32 @@
                         Style="{StaticResource MetroFlatButton}">
                     <Controls:PackIconMaterial x:Name="CloseIcon" Kind="WindowClose" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Button>
-                <Grid Grid.Row="1" Background="Black"></Grid>
-                <Grid Grid.Row="1" Margin="10">
+
+                <Grid Grid.Row="1" Margin="50 0">
                     <Grid.RowDefinitions>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0" Background="Azure">
-                        <DataGrid Grid.Column="0"
+                    <Grid Grid.Column="0" Background="Green" Margin="0 0 10 0"></Grid>
+                    <Grid Grid.Column="0" Background="LightGreen" Margin="2 2 12 2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="2"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label FontSize="30" Grid.ColumnSpan="3" HorizontalAlignment="Center" Foreground="Green">Income</Label>
+                        <DataGrid Grid.Row="5" Grid.ColumnSpan="3"
                               Style="{StaticResource dataGridStyle}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Source" Width="1*"></DataGridTextColumn>
@@ -91,61 +107,62 @@
                                 <DataGridTextColumn Header="Amount"></DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>
+                        <TextBox Grid.Row="1" Grid.Column="0" Controls:TextBoxHelper.Watermark="Source" Style="{StaticResource formtextbox}"></TextBox>
+                        <DatePicker Grid.Row="1" Grid.Column="1" Style="{StaticResource formdatepicker}"></DatePicker>
+                        <TextBox Grid.Row="2" Grid.Column="0" Controls:TextBoxHelper.Watermark="Cheque No" Style="{StaticResource formtextbox}"></TextBox>
+                        <TextBox Grid.Row="2" Grid.Column="1" Controls:TextBoxHelper.Watermark="Amount" Style="{StaticResource formtextbox}"></TextBox>
+                        <Button Grid.Row="2" Grid.Column="2" Style="{StaticResource formbtn}">Save</Button>
+                        <Button Grid.Row="4" Grid.Column="2" Style="{StaticResource formbtn}">Delete</Button>
+                        <TextBox Grid.Row="4" Grid.Column="0" Controls:TextBoxHelper.Watermark="Search by Source" Controls:TextBoxHelper.ClearTextButton="True" Style="{StaticResource formtextbox}"></TextBox>
+                        <Grid Grid.Row="3" Grid.ColumnSpan="3" Background="Green"/>
                     </Grid>
 
-                    <Grid Grid.Column="2" Background="Beige">
-                        <DataGrid Grid.Column="2"
+                    <Grid Grid.Column="1" Background="IndianRed" Margin="10 0 0 0"></Grid>
+                    <Grid Grid.Column="1" Background="Pink" Margin="12 2 2 2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="2"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label FontSize="30" Grid.ColumnSpan="3" HorizontalAlignment="Center" Foreground="IndianRed">Expense</Label>
+                        <DataGrid Grid.Row="5" Grid.ColumnSpan="3"
                               Style="{StaticResource dataGridStyle}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Recipient" Width="1*"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Source" Width="1*"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Date"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Cheque No"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Amount"></DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>
-                    </Grid>
-
-                    <Grid Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-
-                        <Grid Grid.Row="0" Background="Azure" Margin="0 0 10 5">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                            </Grid.RowDefinitions>
-                            <Label Foreground="White" FontSize="25" HorizontalAlignment="Left">Income</Label>
-                            <TextBox Grid.Row="1" Margin="0 0 20 10" Style="{StaticResource formtextbox}"></TextBox>
-                            <DatePicker Grid.Row="2" Margin="0 0 20 10" Style="{StaticResource formdatepicker}"></DatePicker>
-                            <TextBox Grid.Row="3" Margin="0 0 20 10" Style="{StaticResource formtextbox}"></TextBox>
-                            <TextBox Grid.Row="4" Margin="0 0 20 10" Style="{StaticResource formtextbox}"></TextBox>
-                            <Button Grid.Row="5" Margin="0 0 20 10" Style="{StaticResource formbtn}">Save</Button>
-                        </Grid>
-                        <Grid Grid.Row="1" Background="Beige" Margin="10 5 0 0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                            </Grid.RowDefinitions>
-                            <Label Foreground="White" FontSize="25" HorizontalAlignment="Right">Expense</Label>
-                            <TextBox Grid.Row="1" Margin="20 0 0 10" Style="{StaticResource formtextbox}"></TextBox>
-                            <DatePicker Grid.Row="2" Margin="20 0 0 10" Style="{StaticResource formdatepicker}"></DatePicker>
-                            <TextBox Grid.Row="3" Margin="20 0 0 10" Style="{StaticResource formtextbox}"></TextBox>
-                            <TextBox Grid.Row="4" Margin="20 0 0 10" Style="{StaticResource formtextbox}"></TextBox>
-                            <Button Grid.Row="5" Margin="20 0 0 10" Style="{StaticResource formbtn}">Save</Button>
-                        </Grid>
+                        <TextBox Grid.Row="1" Grid.Column="0" Controls:TextBoxHelper.Watermark="Recipient" Style="{StaticResource formtextbox}"></TextBox>
+                        <DatePicker Grid.Row="1" Grid.Column="1" Style="{StaticResource formdatepicker}"></DatePicker>
+                        <TextBox Grid.Row="2" Grid.Column="0" Controls:TextBoxHelper.Watermark="Cheque No" Style="{StaticResource formtextbox}"></TextBox>
+                        <TextBox Grid.Row="2" Grid.Column="1" Controls:TextBoxHelper.Watermark="Amount" Style="{StaticResource formtextbox}"></TextBox>
+                        <Button Grid.Row="2" Grid.Column="2" Style="{StaticResource formbtn}">Save</Button>
+                        <Button Grid.Row="4" Grid.Column="2" Style="{StaticResource formbtn}">Delete</Button>
+                        <TextBox Grid.Row="4" Grid.Column="0" Controls:TextBoxHelper.Watermark="Search by Recipient" Controls:TextBoxHelper.ClearTextButton="True" Style="{StaticResource formtextbox}"></TextBox>
+                        <Grid Grid.Row="3" Grid.ColumnSpan="3" Background="IndianRed"/>
                     </Grid>
                 </Grid>
 
+                <Grid Grid.Row="2" Margin="50 0">
+                    <Grid.RowDefinitions>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" Background="LightGreen" Margin="0 0 10 0"></Grid>
+                    <Grid Grid.Column="1" Background="Pink" Margin="10 0 0 0"></Grid>
+                </Grid>
             </Grid>
             <Grid Height="800" Width="1500" x:Name="DialogSpace"></Grid>
         </Grid>
