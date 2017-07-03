@@ -103,7 +103,8 @@ namespace Class_Management.Views
                 FillDataGrid();
                 if (updateTeacher == null)
                 {
-                    ErrorDialog("Saved");
+                    //ErrorDialog("Saved");
+                    MessageBox.Show("Saved");
                 }
                 else
                 {

@@ -31,13 +31,11 @@ namespace Class_Management.Views
         public Attendance()
         {
             InitializeComponent();
-            GetEverythingReady();
         }
 
         public Attendance(object context)
         {
             InitializeComponent();
-            GetEverythingReady();
         }
 
         int activeMonth = int.Parse(DateTime.Now.ToString("MM"));
@@ -51,6 +49,7 @@ namespace Class_Management.Views
             mystory = (Storyboard)App.Current.Resources["sb"];
             mystory.Begin(this);
             conn.Open();
+            GetEverythingReady();
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
@@ -78,18 +77,27 @@ namespace Class_Management.Views
 
         private void FillBatches()
         {
-            Button btn1 = new Button();
-            btn1.Style = Resources["BatchButton"] as Style;
-            btn1.Content = "A";
-            batch_list.Children.Add(btn1);
-            Button btn2 = new Button();
-            btn2.Style = Resources["BatchButton"] as Style;
-            btn2.Content = "B";
-            batch_list.Children.Add(btn2);
-            Button btn3 = new Button();
-            btn3.Style = Resources["BatchButton"] as Style;
-            btn3.Content = "C";
-            batch_list.Children.Add(btn3);
+            try
+            {
+                string sql = "SELECT batch_name FROM batch;";
+                SQLiteCommand command = new SQLiteCommand(sql, conn);
+                command.ExecuteNonQuery();
+                SQLiteDataReader dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    Button btn = new Button();
+                    btn.Style = Resources["BatchButton"] as Style;
+                    btn.Content = dr.GetString(0);
+                    batch_list.Children.Add(btn);
+                }
+                dr.Close();
+                command.Dispose();
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.GetType().Name + " : " + ex.Message;
+                ErrorDialog(msg);
+            }
         }
 
         private void Button_Batch_Select_Click(object sender, RoutedEventArgs e)

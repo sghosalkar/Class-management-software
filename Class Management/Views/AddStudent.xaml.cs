@@ -30,14 +30,12 @@ namespace Class_Management.Views
         {
             InitializeComponent();
             FillBatch();
-            FillDataGrid();
         }
 
         public AddStudent(object context)
         {
             InitializeComponent();
             FillBatch();
-            FillDataGrid();
         }
 
         string updateStudent = null;
@@ -135,10 +133,10 @@ namespace Class_Management.Views
                 student_name.Text = contact_no1.Text = address.Text = studying_at.Text = "";
                 studying_at_name.Text = student_email.Text = parent_name.Text = contact_no2.Text = reg_no.Text = "";
                 batch.Text = subjects.Text = other_details.Text = balance_fees.Text = "";
-                FillDataGrid();
                 if (updateStudent == null)
                 {
-                    ErrorDialog("Saved");
+                    //ErrorDialog("Saved");
+                    MessageBox.Show("Saved");
                 }
                 else
                 {
@@ -216,38 +214,6 @@ namespace Class_Management.Views
                 {
                     batch.Items.Add(dr["batch_name"].ToString());
                 }
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
-            }
-        }
-
-        private void FillDataGrid()
-        {
-            try
-            {
-                SQLiteConnection conn;
-                conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
-                conn.Open();
-                string sql = "SELECT student_name, reg_no FROM student;";
-                SQLiteCommand command = new SQLiteCommand(sql, conn);
-                command.ExecuteNonQuery();
-                SQLiteDataAdapter dataAdp = new SQLiteDataAdapter(command);
-                DataTable dt = new DataTable("student");
-                dataAdp.Fill(dt);
-                student_list.ItemsSource = dt.DefaultView;
-                dataAdp.Update(dt);
-                sql = "SELECT batch_name, selected_subjects FROM batch;";
-                command = new SQLiteCommand(sql, conn);
-                command.ExecuteNonQuery();
-                dataAdp = new SQLiteDataAdapter(command);
-                dt = new DataTable("batch");
-                dataAdp.Fill(dt);
-                batch_list.ItemsSource = dt.DefaultView;
-                dataAdp.Update(dt);
                 conn.Close();
             }
             catch (Exception ex)

@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Class_Management.Views"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
+             Unloaded="UserControl_Unloaded"
              xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
              d:DesignHeight="800" d:DesignWidth="1500">
     <UserControl.Resources>
@@ -43,6 +44,8 @@
                 <Setter Property="Margin" Value="10 0 10 30"></Setter>
                 <Setter Property="BorderBrush" Value="Black"/>
                 <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="AutoGenerateColumns" Value="False"/>
+                <Setter Property="IsReadOnly" Value="True"/>
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -98,22 +101,22 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <Label FontSize="30" Grid.ColumnSpan="3" HorizontalAlignment="Center" Foreground="Green">Income</Label>
-                        <DataGrid Grid.Row="5" Grid.ColumnSpan="3"
+                        <DataGrid x:Name="incomeTable" Grid.Row="5" Grid.ColumnSpan="3"
                               Style="{StaticResource dataGridStyle}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Source" Width="1*"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Date"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Cheque No"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Amount"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Source" Width="1*" Binding="{Binding name}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Date" Width="1*" Binding="{Binding transaction_date}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Cheque No" Width="1*" Binding="{Binding cheque_no}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Amount" Width="1*" Binding="{Binding amount}"></DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <TextBox Grid.Row="1" Grid.Column="0" Controls:TextBoxHelper.Watermark="Source" Style="{StaticResource formtextbox}"></TextBox>
-                        <DatePicker Grid.Row="1" Grid.Column="1" Style="{StaticResource formdatepicker}"></DatePicker>
-                        <TextBox Grid.Row="2" Grid.Column="0" Controls:TextBoxHelper.Watermark="Cheque No" Style="{StaticResource formtextbox}"></TextBox>
-                        <TextBox Grid.Row="2" Grid.Column="1" Controls:TextBoxHelper.Watermark="Amount" Style="{StaticResource formtextbox}"></TextBox>
-                        <Button Grid.Row="2" Grid.Column="2" Style="{StaticResource formbtn}">Save</Button>
-                        <Button Grid.Row="4" Grid.Column="2" Style="{StaticResource formbtn}">Delete</Button>
-                        <TextBox Grid.Row="4" Grid.Column="0" Controls:TextBoxHelper.Watermark="Search by Source" Controls:TextBoxHelper.ClearTextButton="True" Style="{StaticResource formtextbox}"></TextBox>
+                        <TextBox x:Name="incomeSourceTextBox" Grid.Row="1" Grid.Column="0" Controls:TextBoxHelper.Watermark="Source" Style="{StaticResource formtextbox}"></TextBox>
+                        <DatePicker x:Name="incomeDatePicker" Grid.Row="1" Grid.Column="1" Style="{StaticResource formdatepicker}"></DatePicker>
+                        <TextBox x:Name="incomeChequeNoTextBox" Grid.Row="2" Grid.Column="0" Controls:TextBoxHelper.Watermark="Cheque No" Style="{StaticResource formtextbox}"></TextBox>
+                        <TextBox x:Name="incomeAmountTextBox" Grid.Row="2" Grid.Column="1" Controls:TextBoxHelper.Watermark="Amount" Style="{StaticResource formtextbox}"></TextBox>
+                        <Button x:Name="incomeSave" Grid.Row="2" Grid.Column="2" Style="{StaticResource formbtn}" Click="SaveIncomeExpense">Save</Button>
+                        <Button x:Name="incomeDelete" Grid.Row="4" Grid.Column="2" Style="{StaticResource formbtn}" Click="DeleteIncomeExpense">Delete</Button>
+                        <TextBox x:Name="incomeSearchBox" Grid.Row="4" Grid.Column="0" Controls:TextBoxHelper.Watermark="Search by Source" Controls:TextBoxHelper.ClearTextButton="True" Style="{StaticResource formtextbox}"></TextBox>
                         <Grid Grid.Row="3" Grid.ColumnSpan="3" Background="Green"/>
                     </Grid>
 
@@ -133,22 +136,22 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <Label FontSize="30" Grid.ColumnSpan="3" HorizontalAlignment="Center" Foreground="IndianRed">Expense</Label>
-                        <DataGrid Grid.Row="5" Grid.ColumnSpan="3"
+                        <DataGrid x:Name="expenseTable" Grid.Row="5" Grid.ColumnSpan="3"
                               Style="{StaticResource dataGridStyle}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Source" Width="1*"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Date"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Cheque No"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Amount"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Source" Width="1*" Binding="{Binding name}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Date" Width="1*" Binding="{Binding transaction_date}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Cheque No" Width="1*" Binding="{Binding cheque_no}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Amount" Width="1*" Binding="{Binding amount}"></DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <TextBox Grid.Row="1" Grid.Column="0" Controls:TextBoxHelper.Watermark="Recipient" Style="{StaticResource formtextbox}"></TextBox>
-                        <DatePicker Grid.Row="1" Grid.Column="1" Style="{StaticResource formdatepicker}"></DatePicker>
-                        <TextBox Grid.Row="2" Grid.Column="0" Controls:TextBoxHelper.Watermark="Cheque No" Style="{StaticResource formtextbox}"></TextBox>
-                        <TextBox Grid.Row="2" Grid.Column="1" Controls:TextBoxHelper.Watermark="Amount" Style="{StaticResource formtextbox}"></TextBox>
-                        <Button Grid.Row="2" Grid.Column="2" Style="{StaticResource formbtn}">Save</Button>
-                        <Button Grid.Row="4" Grid.Column="2" Style="{StaticResource formbtn}">Delete</Button>
-                        <TextBox Grid.Row="4" Grid.Column="0" Controls:TextBoxHelper.Watermark="Search by Recipient" Controls:TextBoxHelper.ClearTextButton="True" Style="{StaticResource formtextbox}"></TextBox>
+                        <TextBox x:Name="expenseRecipientTextBox" Grid.Row="1" Grid.Column="0" Controls:TextBoxHelper.Watermark="Recipient" Style="{StaticResource formtextbox}"></TextBox>
+                        <DatePicker x:Name="expenseDatePicker" Grid.Row="1" Grid.Column="1" Style="{StaticResource formdatepicker}"></DatePicker>
+                        <TextBox x:Name="expenseChequeNoTextBox" Grid.Row="2" Grid.Column="0" Controls:TextBoxHelper.Watermark="Cheque No" Style="{StaticResource formtextbox}"></TextBox>
+                        <TextBox x:Name="expenseAmountTextBox" Grid.Row="2" Grid.Column="1" Controls:TextBoxHelper.Watermark="Amount" Style="{StaticResource formtextbox}"></TextBox>
+                        <Button x:Name="expenseSave" Grid.Row="2" Grid.Column="2" Style="{StaticResource formbtn}" Click="SaveIncomeExpense">Save</Button>
+                        <Button x:Name="expenseDelete" Grid.Row="4" Grid.Column="2" Style="{StaticResource formbtn}" Click="DeleteIncomeExpense">Delete</Button>
+                        <TextBox x:Name="expenseSearchBox" Grid.Row="4" Grid.Column="0" Controls:TextBoxHelper.Watermark="Search by Recipient" Controls:TextBoxHelper.ClearTextButton="True" Style="{StaticResource formtextbox}"></TextBox>
                         <Grid Grid.Row="3" Grid.ColumnSpan="3" Background="IndianRed"/>
                     </Grid>
                 </Grid>
