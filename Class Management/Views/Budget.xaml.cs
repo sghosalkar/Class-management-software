@@ -124,11 +124,12 @@ namespace Class_Management.Views
             FillExpenseTable();
         }
 
+        string incomeNamePattern = "";
         private void FillIncomeTable()
         {
             try
             {
-                string sql = "SELECT * FROM income;";
+                string sql = "SELECT * FROM income WHERE name LIKE '%" + incomeNamePattern + "%';";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 command.ExecuteNonQuery();
                 SQLiteDataAdapter dataAdp = new SQLiteDataAdapter(command);
@@ -144,11 +145,12 @@ namespace Class_Management.Views
             }
         }
 
+        string expenseNamePattern = "";
         private void FillExpenseTable()
         {
             try
             {
-                string sql = "SELECT * FROM expense;";
+                string sql = "SELECT * FROM expense WHERE name LIKE '%" + expenseNamePattern + "%';";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 command.ExecuteNonQuery();
                 SQLiteDataAdapter dataAdp = new SQLiteDataAdapter(command);
@@ -310,6 +312,18 @@ namespace Class_Management.Views
             {
                 ErrorDialog(ex.GetType().Name);
             }
+        }
+
+        private void IncomeSearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            incomeNamePattern = incomeSearchBox.Text;
+            FillIncomeTable();
+        }
+
+        private void ExpenseSearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            expenseNamePattern = expenseSearchBox.Text;
+            FillExpenseTable();
         }
     }
 }

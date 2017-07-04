@@ -125,7 +125,7 @@
                         <TextBox x:Name="incomeAmountTextBox" Grid.Row="2" Grid.Column="1" Controls:TextBoxHelper.Watermark="Amount" Style="{StaticResource formtextbox}"></TextBox>
                         <Button x:Name="incomeSave" Grid.Row="2" Grid.Column="2" Style="{StaticResource formbtn}" Click="SaveIncomeExpense">Save</Button>
                         <Button x:Name="incomeDelete" Grid.Row="4" Grid.Column="2" Style="{StaticResource formbtn}" Click="DeleteIncomeExpense">Delete</Button>
-                        <TextBox x:Name="incomeSearchBox" Grid.Row="4" Grid.Column="0" Controls:TextBoxHelper.Watermark="Search by Source" Controls:TextBoxHelper.ClearTextButton="True" Style="{StaticResource formtextbox}"></TextBox>
+                        <TextBox x:Name="incomeSearchBox" Grid.Row="4" Grid.Column="0" Controls:TextBoxHelper.Watermark="Search by Source" Controls:TextBoxHelper.ClearTextButton="True" Style="{StaticResource formtextbox}" TextChanged="IncomeSearchBox_TextChanged"></TextBox>
                         <Grid Grid.Row="3" Grid.ColumnSpan="3" Background="Green"/>
                     </Grid>
 
@@ -169,7 +169,7 @@
                         <TextBox x:Name="expenseAmountTextBox" Grid.Row="2" Grid.Column="1" Controls:TextBoxHelper.Watermark="Amount" Style="{StaticResource formtextbox}"></TextBox>
                         <Button x:Name="expenseSave" Grid.Row="2" Grid.Column="2" Style="{StaticResource formbtn}" Click="SaveIncomeExpense">Save</Button>
                         <Button x:Name="expenseDelete" Grid.Row="4" Grid.Column="2" Style="{StaticResource formbtn}" Click="DeleteIncomeExpense">Delete</Button>
-                        <TextBox x:Name="expenseSearchBox" Grid.Row="4" Grid.Column="0" Controls:TextBoxHelper.Watermark="Search by Recipient" Controls:TextBoxHelper.ClearTextButton="True" Style="{StaticResource formtextbox}"></TextBox>
+                        <TextBox x:Name="expenseSearchBox" Grid.Row="4" Grid.Column="0" Controls:TextBoxHelper.Watermark="Search by Recipient" Controls:TextBoxHelper.ClearTextButton="True" Style="{StaticResource formtextbox}" TextChanged="ExpenseSearchBox_TextChanged"></TextBox>
                         <Grid Grid.Row="3" Grid.ColumnSpan="3" Background="IndianRed"/>
                     </Grid>
                 </Grid>
