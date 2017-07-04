@@ -1,14 +1,14 @@
-# Class-management-software
+# Class Management Software
 
-> A software for Coaching Classes
+> A software for coaching classes
 
 ## Features:
 * Store student and lecturer data
 * Manage batches
-* Create Weekly Timetables with an easy drag drop interface
+* Create weekly timetables with an easy drag-n-drop interface
 * Reminders
 * Attendance tracking
 * Budget logging
 
 ## Demo
-![Alt text](Screenshots/Demo.gif "Demo")
+![Demo](./Screenshots/Demo.gif)

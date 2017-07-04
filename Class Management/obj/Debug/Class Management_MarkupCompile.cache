@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-G:\My-Projects\Class-management-software\Class Management\obj\Debug\
+C:\Users\Siddhesh\Documents\Visual Studio 2017\Projects\Class-management-software\Class Management\obj\Debug\
 Class_Management
 none
 false
 DEBUG;TRACE
-G:\My-Projects\Class-management-software\Class Management\App.xaml
+C:\Users\Siddhesh\Documents\Visual Studio 2017\Projects\Class-management-software\Class Management\App.xaml
 141368349613
 
 17958387727
-26-43423943
+26-1283923535
 MainWindow.xaml;MessageDialog.xaml;ReminderDialog.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;Views\AddStudent.xaml;Views\AddTeacher.xaml;Views\Attendance.xaml;Views\Batch.xaml;Views\Budget.xaml;Views\DailyTimetable.xaml;Views\ViewStudent.xaml;Views\ViewTeacher.xaml;Views\WeeklyTimetable.xaml;
 
 False
