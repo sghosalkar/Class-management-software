@@ -8,6 +8,7 @@
 * Create Weekly Timetables with an easy drag drop interface
 * Reminders
 * Attendance tracking
+* Budget logging
 
 ## Demo
 ![Alt text](Screenshots/Demo.gif "Demo")
