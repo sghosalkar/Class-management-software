@@ -102,8 +102,17 @@
                         </Grid.ColumnDefinitions>
                         <Label FontSize="30" Grid.ColumnSpan="3" HorizontalAlignment="Center" Foreground="Green">Income</Label>
                         <DataGrid x:Name="incomeTable" Grid.Row="5" Grid.ColumnSpan="3"
-                              Style="{StaticResource dataGridStyle}">
+                                  MouseDoubleClick="Income_MouseDoubleClick"
+                                  Style="{StaticResource dataGridStyle}">
                             <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox x:Name="incomeChk" Checked="Income_Checked" Unchecked="Income_Checked" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="Id" x:Name="id" Binding="{Binding id}" />
                                 <DataGridTextColumn Header="Source" Width="1*" Binding="{Binding name}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Date" Width="1*" Binding="{Binding transaction_date}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Cheque No" Width="1*" Binding="{Binding cheque_no}"></DataGridTextColumn>
@@ -137,8 +146,17 @@
                         </Grid.ColumnDefinitions>
                         <Label FontSize="30" Grid.ColumnSpan="3" HorizontalAlignment="Center" Foreground="IndianRed">Expense</Label>
                         <DataGrid x:Name="expenseTable" Grid.Row="5" Grid.ColumnSpan="3"
-                              Style="{StaticResource dataGridStyle}">
+                                  MouseDoubleClick="Expense_MouseDoubleClick"
+                                  Style="{StaticResource dataGridStyle}">
                             <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox x:Name="expenseChk" Checked="Expense_Checked" Unchecked="Expense_Checked" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="Id" x:Name="expenseId" Binding="{Binding id}" />
                                 <DataGridTextColumn Header="Source" Width="1*" Binding="{Binding name}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Date" Width="1*" Binding="{Binding transaction_date}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Cheque No" Width="1*" Binding="{Binding cheque_no}"></DataGridTextColumn>

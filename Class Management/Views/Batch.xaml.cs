@@ -109,7 +109,6 @@ namespace Class_Management.Views
                 FillDataGrid();
                 if (igotbatch != null)
                 {
-                    FillDataGrid();
                     igotbatch = null;
                 }
             }

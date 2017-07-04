@@ -84,21 +84,37 @@ namespace Class_Management.Views
                     chequeNo = expenseChequeNoTextBox.Text;
                     amount = int.Parse(expenseAmountTextBox.Text);
                 }
-
-                string sql = "INSERT INTO " + btnName + "(name, transaction_date, cheque_no, amount) VALUES('"
-                    + name + "', '"
-                    + transactionDate + "', '"
-                    + chequeNo + "', "
-                    + amount + ");";
+                string sql;
+                if (igotid == null)
+                {
+                    sql = "INSERT INTO " + btnName + "(name, transaction_date, cheque_no, amount) VALUES('"
+                        + name + "', '"
+                        + transactionDate + "', '"
+                        + chequeNo + "', "
+                        + amount + ");";
+                }
+                else
+                {
+                    sql = "UPDATE " + btnName 
+                        + " SET name='" + name 
+                        + "', transaction_date='" + transactionDate 
+                        + "', cheque_no='"+ chequeNo 
+                        + "', amount="+ amount 
+                        + " WHERE id="+ igotid + ";";
+                }
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 command.ExecuteNonQuery();
                 command.Dispose();
                 MessageBox.Show("Saved");
                 FillDataGrids();
+                if (igotid != null)
+                {
+                    igotid = null;
+                }
             }
             catch(Exception ex)
             {
-                ErrorDialog("Please check all fields again");
+                ErrorDialog(ex.Message);
             }
         }
 
@@ -148,11 +164,152 @@ namespace Class_Management.Views
             }
         }
 
+        List<string> deleteIncomeList = new List<string>();
+        List<string> deleteExpenseList = new List<string>();
+
+        private void Income_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var chkbox = sender as CheckBox;
+                var delId = (incomeTable.SelectedItem as DataRowView)["id"].ToString();
+                if (chkbox.IsChecked == true)
+                {
+                    deleteIncomeList.Add(delId);
+                }
+                else if (chkbox.IsChecked == false)
+                {
+                    deleteIncomeList.Remove(delId);
+                }
+                else { }
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.GetType().Name + " : " + ex.Message;
+                ErrorDialog(msg);
+            }
+        }
+
+        private void Expense_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var chkbox = sender as CheckBox;
+                var delId = (expenseTable.SelectedItem as DataRowView)["id"].ToString();
+                if (chkbox.IsChecked == true)
+                {
+                    deleteExpenseList.Add(delId);
+                }
+                else if (chkbox.IsChecked == false)
+                {
+                    deleteExpenseList.Remove(delId);
+                }
+                else { }
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.GetType().Name + " : " + ex.Message;
+                ErrorDialog(msg);
+            }
+        }
+
         private void DeleteIncomeExpense(object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;
             var btnName = btn.Name;
             btnName = btnName.Substring(0, (btnName.Length - 6));
+            List<string> deleteList = new List<string>();
+            if (btnName == "income") { deleteList = deleteIncomeList; }
+            else { deleteList = deleteExpenseList; }
+            try
+            {
+                if(deleteList.Count == 0)
+                {
+                    ErrorDialog("Select row(s) to delete");
+                    return;
+                }
+                foreach (string ele in deleteList)
+                {
+                    string sql = "DELETE FROM " + btnName + " WHERE id=" + ele + ";";
+                    SQLiteCommand command = new SQLiteCommand(sql, conn);
+                    command.ExecuteNonQuery();
+                }
+                deleteList.Clear();
+                deleteIncomeList.Clear();
+                deleteExpenseList.Clear();
+                FillDataGrids();
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.GetType().Name + " : " + ex.Message;
+                ErrorDialog(msg);
+            }
+        }
+
+        private void Income_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+
+                var selb = (incomeTable.SelectedItem as DataRowView)["id"].ToString();
+                Stringcmode(selb, "income");
+            }
+            catch (Exception)
+            {
+                //ErrorDialog(ex.GetType().Name);
+            }
+        }
+
+        private void Expense_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+
+                var selb = (expenseTable.SelectedItem as DataRowView)["id"].ToString();
+                Stringcmode(selb, "expense");
+            }
+            catch (Exception)
+            {
+                //ErrorDialog(ex.GetType().Name);
+            }
+        }
+
+        string igotid = null;
+
+        internal void Stringcmode(string id, string tableName)
+        {
+            try
+            {
+                igotid = id;
+                string sql = ("select * from " + tableName + " where id='" + igotid + "'; ");
+                SQLiteCommand command = new SQLiteCommand(sql, conn);
+                SQLiteDataReader dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    if(tableName == "income")
+                    {
+                        incomeSourceTextBox.Text = dr.GetString(1);
+                        incomeDatePicker.Text = dr.GetString(2);
+                        incomeChequeNoTextBox.Text = dr.GetString(3);
+                        incomeAmountTextBox.Text = dr.GetInt32(4).ToString();
+                    }
+                    else
+                    {
+
+                        expenseRecipientTextBox.Text = dr.GetString(1);
+                        expenseDatePicker.Text = dr.GetString(2);
+                        expenseChequeNoTextBox.Text = dr.GetString(3);
+                        expenseAmountTextBox.Text = dr.GetInt32(4).ToString();
+                    }
+                    
+                }
+                dr.Close();
+                command.Dispose();
+            }
+            catch (Exception ex)
+            {
+                ErrorDialog(ex.GetType().Name);
+            }
         }
     }
 }

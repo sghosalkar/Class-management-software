@@ -1,0 +1,477 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"local",
+				"localhost"
+			],
+			[
+				"add",
+				"addContact"
+			],
+			[
+				"doc",
+				"document"
+			],
+			[
+				"ope",
+				"openModal"
+			],
+			[
+				"i",
+				"inc\t#include <…>"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"car",
+				"carTypes"
+			],
+			[
+				"ac",
+				"action\tAttr"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"li",
+				"link\tTag"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/C/xampp/htdocs/SampleApp/application/config/config.php",
+			"settings":
+			{
+				"buffer_size": 18453,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/xampp/htdocs/SampleApp/.htaccess",
+			"settings":
+			{
+				"buffer_size": 215,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/xampp/htdocs/SampleApp/application/controllers/Welcome.php",
+			"settings":
+			{
+				"buffer_size": 679,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 150.0,
+		"last_filter": "Package Control: ins",
+		"selected_items":
+		[
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"plain",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"pa",
+				"Package Control: Enable Package"
+			],
+			[
+				"Package Control: i",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: is",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"ma",
+				"Material Theme: Activate theme"
+			],
+			[
+				"pac",
+				"Package Control: Add Channel"
+			],
+			[
+				"b",
+				"Boxy Theme: Activation"
+			],
+			[
+				"mater",
+				"Material Theme: Activate theme"
+			],
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			],
+			[
+				"mp",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"ip",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 496.0
+	},
+	"console":
+	{
+		"height": 146.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/xampp/htdocs/SampleApp"
+	],
+	"file_history":
+	[
+		"/C/xampp/htdocs/SampleApp/application/index.html",
+		"/C/xampp/htdocs/SampleApp/application/controllers/index.html",
+		"/C/Users/Shubham/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/messages/Tutorial.todo",
+		"/G/My-Projects/Class-management-software/roadmap.todo",
+		"/C/xampp/htdocs/applications.html",
+		"/G/My-Projects/Class-management-software/README.md",
+		"/G/My-Projects/Class Management/roadmap.todo",
+		"/C/Users/Shubham/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Shubham/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/G/practice/powersum.java",
+		"/C/Users/Shubham/AppData/Roaming/Sublime Text 3/Packages/JavaScript Completions/Default (OSX).sublime-keymap",
+		"/C/Users/Shubham/Desktop/Homepage - Semantic.html",
+		"/C/xampp/htdocs/PhoneBook/index.php",
+		"/C/xampp/htdocs/phptuto/index.php",
+		"/C/xampp/htdocs/phptuto/index_sample.html",
+		"/C/xampp/htdocs/phptuto/css/homepage.css",
+		"/C/Users/Shubham/AppData/Roaming/Sublime Text 3/Packages/HTMLBeautify/HTMLBeautify.sublime-settings",
+		"/C/xampp/htdocs/phptuto/test.php",
+		"/C/xampp/htdocs/phptuto/insert.php",
+		"/C/Users/Shubham/Downloads/MaterialDesignInXamlToolkit-master (1)/MaterialDesignInXamlToolkit-master/README.md",
+		"/G/My-Projects/Class Management/README.md",
+		"/G/My-Projects/phptuto/index.html",
+		"/C/Users/Shubham/AppData/Roaming/Sublime Text 3/Packages/MarkdownEditing/README.md",
+		"/C/Users/Shubham/AppData/Roaming/Sublime Text 3/Packages/ClangAutoComplete/ClangAutoComplete.sublime-settings",
+		"/C/Users/Shubham/eclipse/java-mars/eclipse/readme/readme_eclipse.html",
+		"/G/phptuto/index.html",
+		"/C/Users/Shubham/Downloads/JetBrains.RubyMine.v2016.2.Build.162.1236_p30download.com/Help.html",
+		"/G/DesignerWebsite/Website/design-rant/build/build-server.js",
+		"/C/Users/Shubham/AppData/Roaming/Sublime Text 3/Packages/Material Theme/Preferences.sublime-settings",
+		"/G/DesignerWebsite/Website/design-rant/index.html",
+		"/G/DesignerWebsite/Website/design-rant/src/main.js",
+		"/C/Users/Shubham/Downloads/manan.html",
+		"/C/Users/Shubham/AndroidStudioProjects/Sunshine-Version-2/app/src/main/java/com/example/android/sunshine/app/DetailActivity.java",
+		"/C/xampp/htdocs/phptuto/index1.php",
+		"/C/Users/Shubham/AndroidStudioProjects/Sunshine-Version-2/app/src/main/java/com/example/android/sunshine/app/Utility.java",
+		"/C/Users/Shubham/Downloads/Sunshine-Version-2-1.01_hello_world (1)/Sunshine-Version-2-1.01_hello_world/app/src/main/java/com/example/android/sunshine/app/MainActivity.java",
+		"/G/My-Projects/ctrial.c",
+		"/C/Users/Shubham/AppData/Roaming/Sublime Text 3/Packages/User/ClangAutoComplete.sublime-settings",
+		"/C/Users/Shubham/workspace/exp5/src/exp5/Connect.java",
+		"/C/Users/Shubham/Downloads/My-Website-1/preparedLogin.php",
+		"/C/Users/Shubham/Downloads/My-Website-1/login.php",
+		"/C/Users/Shubham/Downloads/connect.java",
+		"/C/Users/Shubham/Downloads/JDBCConnectPS.java",
+		"/C/Users/Shubham/Downloads/JDBCConnect.java",
+		"/G/Web programming/jquery.html",
+		"/G/jsexample.html",
+		"/C/xampp/htdocs/Admission-master/js/login.js",
+		"/G/New folder/test.md",
+		"/G/WP project/default_format.css",
+		"/C/xampp/htdocs/Admission-master/js/validate.js",
+		"/C/xampp/htdocs/Admission-master/js/pagination.js",
+		"/C/xampp/htdocs/Admission-master/html/backend/databaseEntry.php",
+		"/C/xampp/htdocs/Admission-master/html/backend/autoLogin.php",
+		"/C/xampp/htdocs/Admission-master/html/form.php",
+		"/C/xampp/htdocs/new/search.php",
+		"/C/xampp/htdocs/new/insert.php",
+		"/C/xampp/htdocs/new/home.php",
+		"/C/Users/Shubham/Downloads/registration.sql",
+		"/C/Users/Shubham/Downloads/admission_portal_1.sql",
+		"/C/xampp/htdocs/Admission-master/html/backend/authenticateUser.php",
+		"/C/xampp/htdocs/Admission-master/html/footer.php",
+		"/C/xampp/htdocs/Admission-master/html/header.php",
+		"/C/xampp/htdocs/phptuto/index.html",
+		"/C/xampp/htdocs/index.php",
+		"/C/Users/Shubham/Downloads/home.php",
+		"/G/Web programming/phptuto/index.html",
+		"/C/Users/Shubham/Downloads/landing-page/landing-page/index.html",
+		"/G/html1.html",
+		"/G/aaa.html",
+		"/G/html1"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"body"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/xampp/htdocs/SampleApp/application/config/config.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18453,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1305,
+								1305
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/xampp/htdocs/SampleApp/.htaccess",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 215,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								215,
+								215
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 2,
+					"file": "/C/xampp/htdocs/SampleApp/application/controllers/Welcome.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 679,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								679,
+								679
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.916247906198,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 138.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Java/JavaC.sublime-build",
+	"project": "sampleApp.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 201.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
