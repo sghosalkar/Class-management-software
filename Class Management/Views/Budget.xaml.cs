@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
@@ -114,7 +115,7 @@ namespace Class_Management.Views
             }
             catch(Exception ex)
             {
-                ErrorDialog(ex.Message);
+                ErrorDialog("Please check input again.");
             }
         }
 
@@ -138,6 +139,7 @@ namespace Class_Management.Views
                 incomeTable.ItemsSource = dt.DefaultView;
                 dataAdp.Update(dt);
                 command.Dispose();
+                CalculateIncomeTotal();
             }
             catch(Exception ex)
             {
@@ -159,6 +161,7 @@ namespace Class_Management.Views
                 expenseTable.ItemsSource = dt.DefaultView;
                 dataAdp.Update(dt);
                 command.Dispose();
+                CalculateExpenseTotal();
             }
             catch (Exception ex)
             {
@@ -324,6 +327,33 @@ namespace Class_Management.Views
         {
             expenseNamePattern = expenseSearchBox.Text;
             FillExpenseTable();
+        }
+
+        private void CalculateIncomeTotal()
+        {
+            try
+            {
+                int sum = 0;
+                foreach (DataRowView dr in incomeTable.ItemsSource)
+                {
+                    sum += int.Parse(dr["amount"].ToString());
+                }
+                TotalIncome.Text = sum.ToString();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void CalculateExpenseTotal()
+        {
+            int sum = 0;
+            foreach (DataRowView dr in expenseTable.ItemsSource)
+            {
+                sum += int.Parse(dr["amount"].ToString());
+            }
+            TotalExpense.Text = sum.ToString();
         }
     }
 }
