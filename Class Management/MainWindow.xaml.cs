@@ -13,6 +13,7 @@ using Class_Management.Views;
 using System.Windows.Input;
 using System.Collections;
 using System.Collections.Generic;
+using MahApps.Metro.IconPacks;
 
 namespace Class_Management
 {

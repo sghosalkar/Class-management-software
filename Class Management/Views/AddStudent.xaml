@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Class_Management.Views"
              xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:IconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
              d:DesignHeight="800" d:DesignWidth="1500">
@@ -150,7 +151,7 @@
                         Background="#3F51B5" Foreground="White"
                         Grid.ColumnSpan="3"
                         HorizontalAlignment="Right" Style="{StaticResource btn}">
-                    <Controls:PackIconMaterial x:Name="CloseIcon" Kind="WindowClose" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <IconPacks:PackIconMaterial x:Name="CloseIcon" Kind="WindowClose" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Button>
 
                 <Button x:Name="ShortcutToList"
@@ -165,7 +166,7 @@
                         Style="{StaticResource shortcutBtn}" 
                         Click="shortcut_Click">
                     <StackPanel Orientation="Vertical">
-                        <Controls:PackIconMaterial HorizontalAlignment="Center" Kind="ArrowRight" Height="60" Width="30"></Controls:PackIconMaterial>
+                        <IconPacks:PackIconMaterial HorizontalAlignment="Center" Kind="ArrowRight" Height="60" Width="30"></IconPacks:PackIconMaterial>
                         <TextBlock HorizontalAlignment="Center" FontSize="20">List</TextBlock>
                     </StackPanel>
                 </Button>

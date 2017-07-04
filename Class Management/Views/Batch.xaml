@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
              xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:IconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              d:DesignHeight="800" d:DesignWidth="1500">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -129,13 +130,13 @@
                         Height="35" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" 
                         BorderBrush="#3F51B5" BorderThickness="2"
                         Style="{StaticResource btn}" Click="add_selected_subject_Click" >
-                    <Controls:PackIconMaterial x:Name="AddIcon" Kind="Plus" Height="10" Width="10" />
+                    <IconPacks:PackIconMaterial x:Name="AddIcon" Kind="Plus" Height="10" Width="10" />
                 </Button>
                 <Button x:Name="refresh_subject" Margin="374,42,0,0" Grid.Column="0" Grid.Row="4"
                         BorderBrush="#3F51B5" BorderThickness="2"
                         Height="35" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" 
                         Style="{StaticResource btn}" Click="FillComboBox">
-                    <Controls:PackIconMaterial x:Name="RefreshIcon" Kind="Refresh" Height="10" Width="10" />
+                    <IconPacks:PackIconMaterial x:Name="RefreshIcon" Kind="Refresh" Height="10" Width="10" />
                 </Button>
                 <Label x:Name="label7" Content="Select a Subject" Margin="10,40,0,0"
                        Grid.Row="3" Grid.Column="1" Visibility="Collapsed" FontSize="15"
@@ -144,7 +145,7 @@
                 <Button x:Name="delete_subject" Margin="434,42,0,0" Grid.Column="0" Grid.Row="4"
                         Height="35" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" 
                         Style="{StaticResource btn}" Click="delete_subject_Click">
-                    <Controls:PackIconMaterial x:Name="DeleteIcon" Kind="Delete" Height="18" Width="18" />
+                    <IconPacks:PackIconMaterial x:Name="DeleteIcon" Kind="Delete" Height="18" Width="18" />
                 </Button>
                 <ListBox x:Name="batch_subjects" Margin="104,0,0,0" Background="Transparent" Foreground="White"
                          Grid.Column="0" Grid.Row="5" Grid.RowSpan="3" Grid.ColumnSpan="2" FontSize="15"
@@ -164,7 +165,7 @@
                 <Button x:Name="closeUC" Grid.Row="0" Width="30" Height="30" Click="closeUC_Click"
                         Background="#3F51B5" Foreground="White" Grid.ColumnSpan="3"
                         HorizontalAlignment="Right" Style="{StaticResource btn}">
-                    <Controls:PackIconMaterial x:Name="CloseIcon" Kind="WindowClose" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <IconPacks:PackIconMaterial x:Name="CloseIcon" Kind="WindowClose" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Button>
 
                 <!-- View batch -->
@@ -198,7 +199,7 @@
                         Margin="50,40,0,0" Style="{StaticResource btn}"
                         BorderBrush="White" BorderThickness="2"
                         Click="delete_rows_Click" >
-                    <Controls:PackIconMaterial x:Name="DeleteIcon2" Kind="Delete" Height="18" Width="18" />
+                    <IconPacks:PackIconMaterial x:Name="DeleteIcon2" Kind="Delete" Height="18" Width="18" />
                 </Button>
                 <Button x:Name="delete_all" Content="Delete all" Grid.Row="1" Grid.Column="1" Visibility="Collapsed" 
                         BorderBrush="White" BorderThickness="2" FontSize="12"

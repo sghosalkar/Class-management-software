@@ -4,6 +4,7 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                       xmlns:Dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+                      xmlns:IconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                       xmlns:behaviors="clr-namespace:WPFTextBoxAutoComplete;assembly=WPFTextBoxAutoComplete"
@@ -152,7 +153,7 @@
     <Controls:MetroWindow.LeftWindowCommands>
         <Controls:WindowCommands ShowSeparators="False">
             <Button Click="ToggleMainFlyout" >
-                <Controls:PackIconMaterial x:Name="MenuIcon" Kind="Menu" Height="20" Width="20"/>
+                <IconPacks:PackIconMaterial x:Name="MenuIcon" Kind="Menu" Height="20" Width="20"/>
             </Button>
             <Label x:Name="MenuLabel" Foreground="White" Background="Transparent" FontSize="14" Content="MENU" />
         </Controls:WindowCommands>
@@ -164,7 +165,7 @@
             <Button Content="Tools" Click="ToggleTools"/>
             <Button Content="About" Click="ShowAbout" />
             <Button Padding="10" Foreground="Yellow">
-                <Controls:PackIconMaterial Kind="MessageAlert" />
+                <IconPacks:PackIconMaterial Kind="MessageAlert" />
             </Button>
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
@@ -257,7 +258,7 @@
                                 Grid.Column="1" Grid.Row="0" Visibility="Collapsed"
                                 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,25,0,0" 
                                 Style="{StaticResource MetroFlatButton}" Click="change_subject_Click">
-                            <Controls:PackIconMaterial x:Name="DeleteSubject" Kind="Delete" Height="15" Width="15" />
+                            <IconPacks:PackIconMaterial x:Name="DeleteSubject" Kind="Delete" Height="15" Width="15" />
                         </Button>
                         <TextBox x:Name="subject_textbox" Width="190" Height="25" Margin="0,10,0,0"
                                  Grid.Column="0" Grid.Row="2" CharacterCasing="Upper"
@@ -266,7 +267,7 @@
                                 Grid.Column="1" Grid.Row="2"
                                 HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0" 
                                 Style="{StaticResource MetroFlatButton}" Click="change_subject_Click">
-                            <Controls:PackIconMaterial x:Name="AddSubject" Kind="Plus" Height="15" Width="15" />
+                            <IconPacks:PackIconMaterial x:Name="AddSubject" Kind="Plus" Height="15" Width="15" />
                         </Button>
                     </Grid>
                     <Grid Height="2" Background="Gray"/>
@@ -296,7 +297,7 @@
                             <ColumnDefinition Width="3*" />
                             <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
-                        <Controls:PackIconMaterial x:Name="Account" Kind="AccountCircle" 
+                        <IconPacks:PackIconMaterial x:Name="Account" Kind="AccountCircle" 
                                                    Grid.Column="1" Grid.Row="1" Margin="0,80,0,0"
                                                    HorizontalAlignment="Center" VerticalAlignment="Top"
                                                    Height="150" Width="150" Foreground="White"/>
@@ -311,13 +312,13 @@
                                          Width="250" Height="40" VerticalContentAlignment="Center" />
                             <Button x:Name="LoginBtn"  Width="40" Height="40" Click="LoginFlyoutBtn_Click"
                                     Style="{StaticResource MetroFlatButton}" >
-                                <Controls:PackIconMaterial x:Name="LoginIcon" Kind="ArrowRight" Height="10" Width="10" />
+                                <IconPacks:PackIconMaterial x:Name="LoginIcon" Kind="ArrowRight" Height="10" Width="10" />
                             </Button>
                         </StackPanel>
                         <Button x:Name="WindowClose" Click="LoginFlyoutBtn_Click" 
                                 HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="2" Grid.Row="0"                                
                                 Height="50" Width="50" Margin="0,0,0,0" Style="{StaticResource TransparentBtn}" >
-                            <Controls:PackIconMaterial x:Name="WinClose" Kind="WindowClose" Height="17" Width="17" />
+                            <IconPacks:PackIconMaterial x:Name="WinClose" Kind="WindowClose" Height="17" Width="17" />
                         </Button>
                     </Grid>
                 </Viewbox>

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Class_Management.Views"
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:IconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
              Unloaded="UserControl_Unloaded"
@@ -113,7 +114,7 @@
                 <Button x:Name="delete_rows" Grid.Row="1" Visibility="Collapsed" Grid.Column="1"
                         Margin="20,20,0,0" Style="{StaticResource btn}" BorderBrush="White" BorderThickness="2"
                         Click="delete_rows_Click" >
-                    <Controls:PackIconMaterial x:Name="DeleteIcon" Kind="Delete" Height="18" Width="18" />
+                    <IconPacks:PackIconMaterial x:Name="DeleteIcon" Kind="Delete" Height="18" Width="18" />
                 </Button>
                 <Button x:Name="delete_all" Content="Delete all" Grid.Row="1" Visibility="Collapsed" Grid.Column="1"
                         BorderBrush="White" BorderThickness="2" FontSize="12"
@@ -128,7 +129,7 @@
                 <Button x:Name="closeUC" Grid.Row="0" Width="30" Height="30" Click="closeUC_Click" Grid.ColumnSpan="2"
                         Background="#3F51B5" Foreground="White"
                         HorizontalAlignment="Right" Style="{StaticResource btn}">
-                    <Controls:PackIconMaterial x:Name="CloseIcon" Kind="WindowClose" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <IconPacks:PackIconMaterial x:Name="CloseIcon" Kind="WindowClose" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Button>
 
                 <Button x:Name="ShortcutToList"
@@ -143,7 +144,7 @@
                         Style="{StaticResource shortcutBtn}" 
                         Click="shortcut_Click">
                     <StackPanel Orientation="Vertical">
-                        <Controls:PackIconMaterial HorizontalAlignment="Center" Kind="ArrowLeft" Height="60" Width="30"></Controls:PackIconMaterial>
+                        <IconPacks:PackIconMaterial HorizontalAlignment="Center" Kind="ArrowLeft" Height="60" Width="30"></IconPacks:PackIconMaterial>
                         <TextBlock HorizontalAlignment="Center" FontSize="20">Add</TextBlock>
                     </StackPanel>
                 </Button>
