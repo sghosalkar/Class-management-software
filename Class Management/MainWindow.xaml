@@ -6,11 +6,9 @@
                       xmlns:Dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
                       xmlns:IconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-                      xmlns:behaviors="clr-namespace:WPFTextBoxAutoComplete;assembly=WPFTextBoxAutoComplete"
-                      mc:Ignorable="d" 
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      mc:Ignorable="d"
                       d:DesignHeight="900" d:DesignWidth="1600"
-                      xmlns:mainWindow="clr-namespace:Class_Management"                      
                       BorderBrush="Transparent"
                       BorderThickness="0"
                       GlowBrush="Black"
@@ -28,13 +26,10 @@
                       Height="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}}"
                       Width="{Binding Source={x:Static SystemParameters.PrimaryScreenWidth}}"
                       TitleAlignment="Center">
-    
     <Controls:MetroWindow.Resources>
 
         <ResourceDictionary>
-
             <!--Setting style for TransparentBtn(x:key) button(target type)-->
-
             <Style x:Key="TransparentBtn"
                    TargetType="{x:Type Button}"
                    BasedOn="{StaticResource MetroFlatButton}">
@@ -63,7 +58,6 @@
 
             <Style x:Key="FlyoutStackpanel" TargetType="StackPanel">
                 <Setter Property="Margin" Value="10,20,0,0" />
-
             </Style>
 
             <!--Reminder-->
@@ -145,10 +139,10 @@
                     </Grid>
                 </Viewbox>
             </Dialogs:CustomDialog>
-                      
         </ResourceDictionary>
+
     </Controls:MetroWindow.Resources>
-    
+
     <!--Menu button-->
     <Controls:MetroWindow.LeftWindowCommands>
         <Controls:WindowCommands ShowSeparators="False">
@@ -158,7 +152,7 @@
             <Label x:Name="MenuLabel" Foreground="White" Background="Transparent" FontSize="14" Content="MENU" />
         </Controls:WindowCommands>
     </Controls:MetroWindow.LeftWindowCommands>
-    
+
     <!--settings and about us button-->
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands ShowSeparators="False">
@@ -392,5 +386,5 @@
             <Grid VerticalAlignment="Bottom" Background="RoyalBlue" Height="35"></Grid>
         </Grid>
     </Viewbox>
-    
+
 </Controls:MetroWindow>

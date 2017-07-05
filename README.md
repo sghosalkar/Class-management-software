@@ -12,3 +12,6 @@
 
 ## Demo
 ![Demo](./Screenshots/Demo.gif)
+
+### Note
+Copy or create a symlink to the Database directory in bin\Debug to access the debug database.

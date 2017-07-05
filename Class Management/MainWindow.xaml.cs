@@ -5,14 +5,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Data;
 using System.Data.SQLite;
-using Class_Management.Views;
 using System.Windows.Input;
-using System.Collections;
-using System.Collections.Generic;
 using MahApps.Metro.IconPacks;
 
 namespace Class_Management
@@ -22,6 +18,8 @@ namespace Class_Management
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+
         public MainWindow()
         {
             InitializeComponent();
@@ -31,8 +29,6 @@ namespace Class_Management
             LoginFlyout.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.89);
             MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
         }
-
-        SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
 
         private void mainWindow_Loaded(object sender, RoutedEventArgs e)
         {
@@ -46,6 +42,7 @@ namespace Class_Management
             FillTodaysTimetable();
             ReminderCalendar.SelectedDate = DateTime.Today.Date;
         }
+
         private void mainWindow_Unloaded(object sender, RoutedEventArgs e)
         {
             //conn.Close();
@@ -65,8 +62,6 @@ namespace Class_Management
             flyout.IsOpen = false;
         }
 
-
-        //main flyout
         private void ToggleMainFlyout(object sender, RoutedEventArgs e)
         {
             if (MainFlyout.IsOpen)
@@ -81,13 +76,11 @@ namespace Class_Management
             }
         }
 
-
         private void ToggleSubFlyouts(object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;
             ShowFlyout(MainFlyoutPanel.Children.IndexOf(btn) + 1);
         }
-
 
         private void CloseOpenFlyouts(Button btn)
         {
@@ -110,7 +103,6 @@ namespace Class_Management
                 HideFlyout(0);
             }
         }
-
 
         private void HandleSubFlyouts(object sender, RoutedEventArgs e)
         {
@@ -146,12 +138,12 @@ namespace Class_Management
                 await this.HideMetroDialogAsync(Resources["AboutUsDialog"] as BaseMetroDialog);
                 return;
             }
-            else if(btn.Name == "ErrorDialogClose")
+            else if (btn.Name == "ErrorDialogClose")
             {
                 await this.HideMetroDialogAsync(Resources["ErrorDialog"] as BaseMetroDialog);
                 return;
             }
-            
+
         }
 
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
@@ -167,7 +159,6 @@ namespace Class_Management
             var type = assembly.GetTypes().First(t => t.Name == className);
             return (UserControl)Activator.CreateInstance(type, new object[] { this });
         }
-
 
         private void ToggleTools(object sender, RoutedEventArgs e)
         {
@@ -188,9 +179,9 @@ namespace Class_Management
                 conn.Open();
                 string sql;
                 var btn = sender as Button;
-                if(btn.Name == "add_subject")
+                if (btn.Name == "add_subject")
                 {
-                    if(subject_textbox.Text == "")
+                    if (subject_textbox.Text == "")
                     {
                         string msg = "Enter proper Subject name.";
                         ErrorDialog(msg);
@@ -208,7 +199,7 @@ namespace Class_Management
                 FillSubjects();
                 conn.Close();
             }
-            catch(SQLiteException)
+            catch (SQLiteException)
             {
                 string msg = "Check Input (The subject might already exist in the records)";
                 ErrorDialog(msg);
@@ -257,11 +248,10 @@ namespace Class_Management
             {
                 LoginFlyout.IsOpen = false;
             }
-            else if(sender == WindowClose)
+            else if (sender == WindowClose)
             {
                 this.Close();
             }
-            
         }
 
         private void LoginFlyout_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -281,7 +271,7 @@ namespace Class_Management
         {
             conn.Open();
             string sql = "", temp = null;
-            string[] notiList = {"subjects", "batch", "teacher", "student"};
+            string[] notiList = { "subjects", "batch", "teacher", "student" };
             foreach (string ele in notiList)
             {
                 sql = "SELECT * FROM " + ele + ";";
@@ -290,9 +280,11 @@ namespace Class_Management
                     using (SQLiteDataReader dr = command1.ExecuteReader())
                     {
                         dr.Read();
-                        try {
+                        try
+                        {
                             temp = dr.GetString(0);
-                        } catch(Exception) { }
+                        }
+                        catch (Exception) { }
                         if (temp == null)
                         {
                             CreateNotification(ele);
@@ -312,7 +304,7 @@ namespace Class_Management
         private void CreateNotification(string ele)
         {
             string msg = "";
-            if(ele == "subjects")
+            if (ele == "subjects")
             {
                 msg = "Add your first Subject";
             }
@@ -341,7 +333,7 @@ namespace Class_Management
         {
             Button sdr = sender as Button;
             string msg = sdr.Content.ToString().Substring(15);
-            if(msg == "Subject")
+            if (msg == "Subject")
             {
                 ToolsFlyout.IsOpen = true;
                 NotificationFlyout.IsOpen = false;
@@ -390,8 +382,6 @@ namespace Class_Management
             ReminderList.Items.Add(AddReminderBtn());
             conn.Close();
         }
-
-
 
         private Button AddReminderBtn()
         {

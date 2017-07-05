@@ -2,12 +2,12 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Class_Management"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
              d:DesignHeight="800" d:DesignWidth="1500">
     <UserControl.Resources>
+
         <Storyboard x:Key="openblack">
             <DoubleAnimation From="0.2" To="0.8" Duration="0:0:0.3" Storyboard.TargetName="outer" Storyboard.TargetProperty="Opacity" />
         </Storyboard>
@@ -20,7 +20,9 @@
         <Storyboard x:Key="closewhite">
             <DoubleAnimation From="1" To="0" Duration="0:0:0.3" Storyboard.TargetName="inner" Storyboard.TargetProperty="Opacity" />
         </Storyboard>
+
     </UserControl.Resources>
+
     <Viewbox>
         <Grid>
             <Grid Width="1500" Height="800" Background="Black" x:Name="outer">
@@ -42,4 +44,5 @@
             </Grid>
         </Grid>
     </Viewbox>
+
 </UserControl>

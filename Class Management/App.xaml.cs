@@ -1,13 +1,7 @@
 ﻿using MahApps.Metro;
-using MahApps.Metro.Controls;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
-
 
 namespace Class_Management
 {
@@ -16,7 +10,6 @@ namespace Class_Management
     /// </summary>
     public partial class App : Application
     {
-
         public void ChangeAccent(string accentUrl)
         {
             ResourceDictionary resourceDict1 = new ResourceDictionary();
@@ -26,6 +19,5 @@ namespace Class_Management
             var accent = ThemeManager.Accents.First(x => x.Name == "Purple");
             ThemeManager.ChangeAppStyle(Current, accent, null);
         }
-
     }
 }

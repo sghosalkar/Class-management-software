@@ -2,15 +2,14 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Class_Management.Views"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:IconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
              d:DesignHeight="800" d:DesignWidth="1500">
-
     <UserControl.Resources>
+
         <ResourceDictionary>
             <Style x:Key="formlabel"
                    TargetType="{x:Type Label}">
@@ -64,9 +63,8 @@
                 <Setter Property="BorderThickness" Value="0,0.5,0,0.5" />
             </Style>
         </ResourceDictionary>
+
     </UserControl.Resources>
-
-
 
     <Viewbox>
         <Grid Height="798" Width="1550">
@@ -104,7 +102,7 @@
                        Style="{StaticResource formlabel}" FontSize="25"/>
                 <Label x:Name="label1" Content="Student's Name" Grid.Row="1" Margin="40,10,0,0" Style="{StaticResource formlabel}" />
                 <Label x:Name="label3" Content="Contact Number" Grid.Row="2" Margin="40,10,0,0" Style="{StaticResource formlabel}" />
-                <Label x:Name="label4" Content="Home Address"        Grid.Row="4" Margin="40,10,0,0" Style="{StaticResource formlabel}" />
+                <Label x:Name="label4" Content="Home Address"   Grid.Row="4" Margin="40,10,0,0" Style="{StaticResource formlabel}" />
                 <Label x:Name="label5" Content="Studying at"    Grid.Row="3" Margin="40,10,0,0" Style="{StaticResource formlabel}" />
                 <Label x:Name="label13" Content="Email ID"      Grid.Row="5" Margin="40,10,0,0" Style="{StaticResource formlabel}" />
                 <Label x:Name="label6" Content="Parent's Name"  Grid.Row="6" Margin="40,10,0,0" Style="{StaticResource formlabel}" />
@@ -173,7 +171,6 @@
             </Grid>
             <Grid Height="800" Width="1500" x:Name="DialogSpace" />
         </Grid>
-
     </Viewbox>
 
 </UserControl>

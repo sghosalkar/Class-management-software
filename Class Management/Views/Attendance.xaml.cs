@@ -1,25 +1,14 @@
 ﻿using Class_Management.Models;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SQLite;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Class_Management.Views
 {
@@ -28,6 +17,8 @@ namespace Class_Management.Views
     /// </summary>
     public partial class Attendance : UserControl
     {
+        SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+
         public Attendance()
         {
             InitializeComponent();
@@ -40,8 +31,6 @@ namespace Class_Management.Views
 
         int activeMonth = int.Parse(DateTime.Now.ToString("MM"));
         string activeBatch = null;
-
-        SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -162,7 +151,7 @@ namespace Class_Management.Views
             {
                 AttendanceDataGrid.Items.Clear();
                 string month = CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(activeMonth);
-                if ( SortOptions.SelectedItem == null )
+                if (SortOptions.SelectedItem == null)
                 {
                     SortOptions.SelectedIndex = 0;
                     return;

@@ -1,21 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Class_Management.Views
 {
@@ -24,6 +14,8 @@ namespace Class_Management.Views
     /// </summary>
     public partial class Budget : UserControl
     {
+        SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+
         public Budget()
         {
             InitializeComponent();
@@ -33,8 +25,6 @@ namespace Class_Management.Views
         {
             InitializeComponent();
         }
-
-        SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -96,12 +86,12 @@ namespace Class_Management.Views
                 }
                 else
                 {
-                    sql = "UPDATE " + btnName 
-                        + " SET name='" + name 
-                        + "', transaction_date='" + transactionDate 
-                        + "', cheque_no='"+ chequeNo 
-                        + "', amount="+ amount 
-                        + " WHERE id="+ igotid + ";";
+                    sql = "UPDATE " + btnName
+                        + " SET name='" + name
+                        + "', transaction_date='" + transactionDate
+                        + "', cheque_no='" + chequeNo
+                        + "', amount=" + amount
+                        + " WHERE id=" + igotid + ";";
                 }
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 command.ExecuteNonQuery();
@@ -113,7 +103,7 @@ namespace Class_Management.Views
                     igotid = null;
                 }
             }
-            catch(Exception ex)
+            catch (Exception)
             {
                 ErrorDialog("Please check input again.");
             }
@@ -141,7 +131,7 @@ namespace Class_Management.Views
                 command.Dispose();
                 CalculateIncomeTotal();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ErrorDialog(ex.GetType() + ": " + ex.Message);
             }
@@ -228,7 +218,7 @@ namespace Class_Management.Views
             else { deleteList = deleteExpenseList; }
             try
             {
-                if(deleteList.Count == 0)
+                if (deleteList.Count == 0)
                 {
                     ErrorDialog("Select row(s) to delete");
                     return;
@@ -291,7 +281,7 @@ namespace Class_Management.Views
                 SQLiteDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
-                    if(tableName == "income")
+                    if (tableName == "income")
                     {
                         incomeSourceTextBox.Text = dr.GetString(1);
                         incomeDatePicker.Text = dr.GetString(2);
@@ -306,7 +296,7 @@ namespace Class_Management.Views
                         expenseChequeNoTextBox.Text = dr.GetString(3);
                         expenseAmountTextBox.Text = dr.GetInt32(4).ToString();
                     }
-                    
+
                 }
                 dr.Close();
                 command.Dispose();
@@ -340,7 +330,7 @@ namespace Class_Management.Views
                 }
                 TotalIncome.Text = sum.ToString();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

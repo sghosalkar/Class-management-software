@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Class_Management
 {
@@ -22,12 +11,12 @@ namespace Class_Management
     /// </summary>
     public partial class ReminderDialog : UserControl
     {
+        SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+
         public ReminderDialog()
         {
             InitializeComponent();
         }
-
-        SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
 
         bool isUpdate = false;
         string old_title, old_text, old_date;
@@ -41,7 +30,6 @@ namespace Class_Management
             mystory2 = (Storyboard)Resources["openwhite"];
             mystory.Begin(this);
             mystory2.Begin(this);
-
             conn.Open();
         }
 
@@ -71,7 +59,8 @@ namespace Class_Management
             conn.Close();
         }
 
-        public void SetUpdateParameters(object context, string reminderDate, string title, string text) {
+        public void SetUpdateParameters(object context, string reminderDate, string title, string text)
+        {
             this.context = context;
             titleTextbox.Text = title;
             textTextbox.Text = text;
@@ -79,7 +68,7 @@ namespace Class_Management
             old_text = text;
             old_date = reminderDate;
             reminderDatePicker.SelectedDate = DateTime.Parse(reminderDate);
-            if(title != null || text != null)
+            if (title != null || text != null)
             {
                 this.isUpdate = true;
                 Delete.Visibility = Visibility.Visible;

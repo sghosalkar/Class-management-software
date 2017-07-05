@@ -2,19 +2,11 @@
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
 
 namespace Class_Management.Views
@@ -24,9 +16,11 @@ namespace Class_Management.Views
     /// </summary>
     public partial class DailyTimetable : UserControl
     {
+        SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+
         public DailyTimetable()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         public DailyTimetable(object context)
@@ -36,8 +30,6 @@ namespace Class_Management.Views
 
         string ActiveTable = "";
         List<string> ClearList = new List<string>();
-        SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
-               
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -146,7 +138,7 @@ namespace Class_Management.Views
             selbtn.Foreground = Brushes.DarkSlateBlue;
             try
             {
-                
+
             }
             catch (Exception ex)
             {
@@ -249,7 +241,7 @@ namespace Class_Management.Views
             {
                 ErrorDialog(ex.GetType().Name + " " + ex.Message + "setlecduration");
             }
-        }        
+        }
 
         public static Tuple<DataGridCell, DataGridRow> GetDataGridRowAndCell(DependencyObject dep)
         {
@@ -302,10 +294,10 @@ namespace Class_Management.Views
             dailytimetable1.Background = Brushes.DarkSlateBlue;
             dailytimetable1.Foreground = Brushes.White;
             dailytimetable2.Background = Brushes.DarkSlateBlue;
-            dailytimetable2.Foreground = Brushes.White; 
+            dailytimetable2.Foreground = Brushes.White;
             dailytimetable3.Background = Brushes.DarkSlateBlue;
             dailytimetable3.Foreground = Brushes.White;
-        }        
+        }
 
         private string SetTimetableDay(int index)
         {
@@ -336,8 +328,8 @@ namespace Class_Management.Views
                 catch (Exception ex)
                 {
                     errmsg = ex.Message;
-                }               
-            }          
+                }
+            }
             DayComboBox.Text = ActiveDay;
             return TimetableName;
         }
@@ -358,7 +350,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 ErrorDialog(ex.GetType().Name + "setselecteddayclick");
-            }            
+            }
         }
 
         private void DayComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -430,7 +422,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 ErrorDialog(ex.Message + "eraserclick");
-            }           
+            }
         }
 
         /*
@@ -464,7 +456,7 @@ namespace Class_Management.Views
 
         private void DisplayInDataGridCell(string batch, string ttl)
         {
-            for(int i = 0; i < dailyTimetable.Items.Count; i++)
+            for (int i = 0; i < dailyTimetable.Items.Count; i++)
             {
                 string bth = (dailyTimetable.Items[i] as DataRowView).Row.ItemArray[0].ToString();
                 if (batch == bth)
@@ -569,7 +561,7 @@ namespace Class_Management.Views
             {
                 minConv += 720;
             }
-            return minConv;            
+            return minConv;
         }
     }
 }

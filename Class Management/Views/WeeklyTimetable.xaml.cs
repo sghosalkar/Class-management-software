@@ -2,20 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Class_Management.Views
 {
@@ -24,6 +16,8 @@ namespace Class_Management.Views
     /// </summary>
     public partial class WeeklyTimetable : UserControl
     {
+        SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
+
         public WeeklyTimetable()
         {
             InitializeComponent();
@@ -38,8 +32,6 @@ namespace Class_Management.Views
         }
 
         List<string> ClearList = new List<string>();
-        SQLiteConnection conn = new SQLiteConnection(@"Data Source=Database\MainDatabase.db;Version=3;");
-
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             Storyboard mystory;
@@ -180,7 +172,7 @@ namespace Class_Management.Views
                 MainWindow mw = new MainWindow();
                 mw.FillTodaysTimetable();
             }
-            
+
         }
 
         public static Tuple<DataGridCell, DataGridRow> GetDataGridRowAndCell(DependencyObject dep)
@@ -222,7 +214,7 @@ namespace Class_Management.Views
             try
             {
                 IList<DataGridCellInfo> selectedCells = manualTimetable.SelectedCells;
-                foreach(DataGridCellInfo data in selectedCells)
+                foreach (DataGridCellInfo data in selectedCells)
                 {
                     DataRowView drv = data.Item as DataRowView;
                     string row = drv["batch_name"].ToString();
