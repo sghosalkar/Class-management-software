@@ -22,7 +22,8 @@
             </Style>
 
             <Style x:Key="formtextbox"
-                   TargetType="{x:Type TextBox}">
+                   TargetType="{x:Type TextBox}"
+                   BasedOn="{StaticResource MetroTextBox}">
                 <Setter Property="Grid.Column" Value="1"></Setter>
                 <Setter Property="HorizontalAlignment" Value="Left"></Setter>
                 <Setter Property="VerticalAlignment" Value="Top"></Setter>

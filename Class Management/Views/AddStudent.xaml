@@ -22,7 +22,8 @@
             </Style>
 
             <Style x:Key="formtextbox"
-                   TargetType="{x:Type TextBox}">
+                   TargetType="{x:Type TextBox}"
+                   BasedOn="{StaticResource MetroTextBox}">
                 <Setter Property="Grid.Column" Value="0"></Setter>
                 <Setter Property="HorizontalAlignment" Value="Left"></Setter>
                 <Setter Property="VerticalAlignment" Value="Top"></Setter>
@@ -33,7 +34,6 @@
                 <Setter Property="BorderBrush" Value="Transparent" />
                 <Setter Property="BorderThickness" Value="0" />
                 <Setter Property="VerticalContentAlignment" Value="Center" />
-                <Setter Property="Controls:TextBoxHelper.Watermark" Value="Enter here" />
             </Style>
 
             <Style x:Key="btn"
