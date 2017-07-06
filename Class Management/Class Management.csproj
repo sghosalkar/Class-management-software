@@ -102,6 +102,7 @@
     <Compile Include="ReminderDialog.xaml.cs">
       <DependentUpon>ReminderDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\ExcelService.cs" />
     <Compile Include="Views\AddStudent.xaml.cs">
       <DependentUpon>AddStudent.xaml</DependentUpon>
     </Compile>

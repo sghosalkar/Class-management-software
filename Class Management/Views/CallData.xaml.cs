@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Class_Management.Utilities;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -87,7 +88,7 @@ namespace Class_Management.Views
                 SQLiteDataAdapter dataAdp = new SQLiteDataAdapter(command);
                 DataTable dt = new DataTable("calldata");
                 dataAdp.Fill(dt);
-                CallDataDataGrid.ItemsSource = dt.DefaultView;
+                DatabaseDataGrid.ItemsSource = dt.DefaultView;
                 dataAdp.Update(dt);
                 command.Dispose();
             }
@@ -99,63 +100,13 @@ namespace Class_Management.Views
 
         private void ImportExcel_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openfile = new OpenFileDialog();
-            openfile.DefaultExt = ".xlsx";
-            openfile.Filter = "(.xlsx)|*.xlsx";
-            //openfile.ShowDialog();
-
-            var browsefile = openfile.ShowDialog();
-
-            if (browsefile == true)
+            ExcelService ExcelHelper = new ExcelService();
+            DataTable dt = ExcelHelper.GetDataTable();
+            if (dt != null)
             {
-                string TextFilePath = openfile.FileName;
-
-                Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
-                //Static File From Base Path...........
-                //Microsoft.Office.Interop.Excel.Workbook excelBook = excelApp.Workbooks.Open(AppDomain.CurrentDomain.BaseDirectory + "TestExcel.xlsx", 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-                //Dynamic File Using Uploader...........
-                Microsoft.Office.Interop.Excel.Workbook excelBook = excelApp.Workbooks.Open(TextFilePath, 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-                Microsoft.Office.Interop.Excel.Worksheet excelSheet = (Microsoft.Office.Interop.Excel.Worksheet)excelBook.Worksheets.get_Item(1); ;
-                Microsoft.Office.Interop.Excel.Range excelRange = excelSheet.UsedRange;
-
-                string strCellData = "";
-                double douCellData;
-                int rowCnt = 0;
-                int colCnt = 0;
-
-                DataTable dt = new DataTable();
-                for (colCnt = 1; colCnt <= excelRange.Columns.Count; colCnt++)
-                {
-                    string strColumn = "";
-                    strColumn = (string)(excelRange.Cells[1, colCnt] as Microsoft.Office.Interop.Excel.Range).Value2;
-                    dt.Columns.Add(strColumn, typeof(string));
-                }
-
-                for (rowCnt = 2; rowCnt <= excelRange.Rows.Count; rowCnt++)
-                {
-                    string strData = "";
-                    for (colCnt = 1; colCnt <= excelRange.Columns.Count; colCnt++)
-                    {
-                        try
-                        {
-                            strCellData = (string)(excelRange.Cells[rowCnt, colCnt] as Microsoft.Office.Interop.Excel.Range).Value2;
-                            strData += strCellData + "|";
-                        }
-                        catch (Exception ex)
-                        {
-                            douCellData = (excelRange.Cells[rowCnt, colCnt] as Microsoft.Office.Interop.Excel.Range).Value2;
-                            strData += douCellData.ToString() + "|";
-                        }
-                    }
-                    strData = strData.Remove(strData.Length - 1, 1);
-                    dt.Rows.Add(strData.Split('|'));
-                }
-
-                CallDataDataGrid.ItemsSource = dt.DefaultView;
-
-                excelBook.Close(true, null, null);
-                excelApp.Quit();
+                ExcelDataGrid.ItemsSource = dt.DefaultView;
             }
+            ExcelDataGrid.Visibility = Visibility.Visible;
         }
     }
 }
