@@ -54,6 +54,7 @@ namespace Class_Management.Views
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
             conn.Close();
+            delete_list.Clear();
         }
 
         private void SaveCallData_Click(object sender, RoutedEventArgs e)
@@ -95,6 +96,57 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        List<string> delete_list = new List<string>();
+
+        private void chk_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var chkbox = sender as CheckBox;
+                var dels = (DatabaseDataGrid.SelectedItem as DataRowView)["name"].ToString();
+                dels += ":" + (DatabaseDataGrid.SelectedItem as DataRowView)["contact_no"].ToString();
+                if (chkbox.IsChecked == true)
+                {
+                    delete_list.Add(dels);
+                }
+                else if (chkbox.IsChecked == false)
+                {
+                    delete_list.Remove(dels);
+                }
+                else { }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Delete_rows_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (delete_list.Count == 0)
+                {
+                    MessageBox.Show("Select row(s) to delete");
+                    return;
+                }
+                foreach (string ele in delete_list)
+                {
+                    string[] data = ele.Split(':');
+                    string sql = "DELETE FROM calldata WHERE name='" + data[0] + "' AND contact_no='" + data[1] + "';";
+                    SQLiteCommand command = new SQLiteCommand(sql, conn);
+                    command.ExecuteNonQuery();
+                }
+                delete_list.Clear();
+                FillDataGrid();
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.GetType().Name + " : " + ex.Message;
+                MessageBox.Show(msg);
             }
         }
 
