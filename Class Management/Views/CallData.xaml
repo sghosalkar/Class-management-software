@@ -7,6 +7,7 @@
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
+             Unloaded="UserControl_Unloaded"
              xmlns:IconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              d:DesignHeight="800" d:DesignWidth="1500">
     <UserControl.Resources>
@@ -67,8 +68,8 @@
                                 Grid.Column="0">
                         <Label HorizontalAlignment="Center" Foreground="#3F51B5" FontSize="25" Margin="0 20">Add New Entry</Label>
                         <TextBox x:Name="StudentName" Controls:TextBoxHelper.Watermark="Student Name" Controls:TextBoxHelper.UseFloatingWatermark="True" Margin="150 5" Height="45" Style="{StaticResource formtextbox}" />
-                        <TextBox x:Name="ContactNo" Controls:TextBoxHelper.Watermark="Contact Number" Controls:TextBoxHelper.UseFloatingWatermark="True" Margin="150 5" Height="45" Style="{StaticResource formtextbox}" />
-                        <Button x:Name="SaveCallData" Margin="200 10" Style="{StaticResource btn}">Save</Button>
+                        <TextBox x:Name="ContactNo" Controls:TextBoxHelper.Watermark="Contact Number" Controls:TextBoxHelper.UseFloatingWatermark="True" Margin="150 5" Height="45" Style="{StaticResource formtextbox}" MaxLength="10" />
+                        <Button x:Name="SaveCallData" Margin="200 10" Style="{StaticResource btn}" Click="SaveCallData_Click">Save</Button>
                         <Grid Margin="10" Height="50">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*" />
@@ -79,8 +80,24 @@
                             <Grid Grid.Column="0" Height="2" Background="DarkBlue"></Grid>
                             <Grid Grid.Column="2" Height="2" Background="DarkBlue"></Grid>
                         </Grid>
-                        <Button x:Name="ImportExcel" Margin="150 10" Height="40" Style="{StaticResource btn}">Import From Excel</Button>
+                        <Button x:Name="ImportExcel" Margin="150 10" Height="40" Style="{StaticResource btn}" Click="ImportExcel_Click">Import From Excel</Button>
                     </StackPanel>
+
+                    <Grid Grid.Column="1" Margin="20">
+                        <DataGrid x:Name="CallDataDataGrid" AutoGenerateColumns="True" 
+                                  CanUserAddRows="False"
+                                  RowHeight="30"
+                                  IsReadOnly="True"
+                                  CanUserSortColumns="True"
+                                  Style="{StaticResource AzureDataGrid}"
+                                  BorderBrush="Black" 
+                                  BorderThickness="2">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Student Name" Width="1*" Binding="{Binding name}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Contact Number" Width="1*" Binding="{Binding contact_no}"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
                 </Grid>
 
                 <Button x:Name="closeUC" Width="30" Height="30" 
