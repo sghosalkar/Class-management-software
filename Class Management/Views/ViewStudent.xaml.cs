@@ -74,7 +74,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
@@ -100,7 +100,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
@@ -124,7 +124,7 @@ namespace Class_Management.Views
                 }
                 if (f1 == 0)
                 {
-                    ErrorDialog("Select row(s) to delete");
+                    MessageBox.Show("Select row(s) to delete");
                 }
                 conn.Close();
                 delete_list.Clear();
@@ -134,7 +134,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
@@ -169,7 +169,7 @@ namespace Class_Management.Views
             }
             catch (Exception)
             {
-                //ErrorDialog(ex.GetType().Name);
+                //MessageBox.Show(ex.GetType().Name);
             }
         }
 
@@ -202,7 +202,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
@@ -227,7 +227,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 

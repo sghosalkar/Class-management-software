@@ -99,7 +99,7 @@ namespace Class_Management.Views
             }
             catch (Exception ex)
             {
-                ErrorDialog(ex.GetType().Name + " " + ex.Message + "fillteach");
+                MessageBox.Show(ex.GetType().Name + " " + ex.Message + "fillteach");
             }
         }
 
@@ -142,7 +142,7 @@ namespace Class_Management.Views
             }
             catch (Exception ex)
             {
-                ErrorDialog(ex.GetType().Name + " " + ex.Message + "filldatagrid");
+                MessageBox.Show(ex.GetType().Name + " " + ex.Message + "filldatagrid");
             }
         }
 
@@ -185,7 +185,7 @@ namespace Class_Management.Views
             }
             catch (Exception ex)
             {
-                ErrorDialog(ex.GetType().Name + " " + ex.Message + "celldrop");
+                MessageBox.Show(ex.GetType().Name + " " + ex.Message + "celldrop");
             }
             SetLecDuration(AllLecs, row);
             txtblock.Text = AllLecs;
@@ -239,7 +239,7 @@ namespace Class_Management.Views
             }
             catch (Exception ex)
             {
-                ErrorDialog(ex.GetType().Name + " " + ex.Message + "setlecduration");
+                MessageBox.Show(ex.GetType().Name + " " + ex.Message + "setlecduration");
             }
         }
 
@@ -345,11 +345,11 @@ namespace Class_Management.Views
                     command.ExecuteNonQuery();
                     command.Dispose();
                 }
-                ErrorDialog("Table" + ActiveTable.Substring(14) + " successfully set for " + DayComboBox.Text);
+                MessageBox.Show("Table" + ActiveTable.Substring(14) + " successfully set for " + DayComboBox.Text);
             }
             catch (Exception ex)
             {
-                ErrorDialog(ex.GetType().Name + "setselecteddayclick");
+                MessageBox.Show(ex.GetType().Name + "setselecteddayclick");
             }
         }
 
@@ -380,7 +380,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message + "chkchecked";
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
@@ -421,38 +421,9 @@ namespace Class_Management.Views
             }
             catch (Exception ex)
             {
-                ErrorDialog(ex.Message + "eraserclick");
+                MessageBox.Show(ex.Message + "eraserclick");
             }
         }
-
-        /*
-        public void FillSuggestions(string CurrentDay)
-        {
-            List<string> tchrs = new List<string>();
-            string sql = "SELECT batch_name, batch_time FROM " + ActiveTable;
-            using (SQLiteCommand command = new SQLiteCommand(sql, conn))
-            {
-                using (SQLiteDataReader dr = command.ExecuteReader())
-                {
-                    string batch, timing;
-                    while (dr.Read())
-                    {
-                        batch = dr.GetString(0);
-                        timing = dr.GetString(1);
-                        tchrs = GetMatchingTeachers(batch, timing, CurrentDay);
-                        string ttl = null;
-                        foreach (string ele in tchrs)
-                        {
-                            ttl += " " + ele;
-                        }
-                        DisplayInDataGridCell(batch, ttl);
-                    }
-                    dr.Close();
-                }
-                command.Dispose();
-            }
-        }
-        */
 
         private void DisplayInDataGridCell(string batch, string ttl)
         {
@@ -515,43 +486,6 @@ namespace Class_Management.Views
             }
             return child;
         }
-
-        /*
-        private List<string> GetMatchingTeachers(string batch, string timing, string CurrentDay)
-        {
-            List<string> tchrs = new List<string>();
-            int[] bTime = new int[2];
-            int[] tTime = new int[2];
-            bTime[0] = MinuteSpan(timing.Split('-').GetValue(0).ToString().Trim());
-            bTime[1] = MinuteSpan(timing.Split('-').GetValue(1).ToString().Trim());
-
-            string sql = "SELECT teacher_code, " + CurrentDay.Trim().ToLower() + " FROM teachertiming;";
-            using (SQLiteCommand command = new SQLiteCommand(sql, conn))
-            {
-                using (SQLiteDataReader dr = command.ExecuteReader())
-                {
-                    string TchrCode, TchrTiming;
-                    while (dr.Read())
-                    {
-                        TchrCode = dr.GetString(0);
-                        TchrTiming = dr.GetString(1);
-                        tTime[0] = MinuteSpan(TchrTiming.Split('-').GetValue(0).ToString().Trim());
-                        tTime[1] = MinuteSpan(TchrTiming.Split('-').GetValue(1).ToString().Trim());
-                        if((bTime[0] < tTime[1]) && (bTime[1] > tTime[0]))
-                        {
-                            if (((tTime[1] - bTime[0]) >= 60) || ((bTime[1] - tTime[0]) >= 60))
-                            {
-                                tchrs.Add(TchrCode);
-                            }                            
-                        }
-                    }
-                    dr.Close();
-                }
-                command.Dispose();
-            }
-            return tchrs;
-        }
-        */
 
         private int MinuteSpan(string timeBlock)
         {

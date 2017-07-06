@@ -99,7 +99,7 @@ namespace Class_Management.Views
             }
             catch (Exception ex)
             {
-                ErrorDialog(ex.GetType().Name + " " + ex.Message + "fillteach");
+                MessageBox.Show(ex.GetType().Name + " " + ex.Message + "fillteach");
             }
         }
 
@@ -118,7 +118,7 @@ namespace Class_Management.Views
             }
             catch (Exception)
             {
-                ErrorDialog("Something went wrong. Call 911");
+                MessageBox.Show("Something went wrong. Call 911");
             }
         }
 
@@ -162,7 +162,7 @@ namespace Class_Management.Views
             }
             catch (Exception ex)
             {
-                ErrorDialog(ex.GetType().Name + " " + ex.Message + "celldrop");
+                MessageBox.Show(ex.GetType().Name + " " + ex.Message + "celldrop");
             }
             txtblock.Text = AllLecs;
             txtblock.VerticalAlignment = VerticalAlignment.Center;
@@ -230,7 +230,7 @@ namespace Class_Management.Views
             }
             catch (Exception ex)
             {
-                ErrorDialog(ex.Message + "eraserclick");
+                MessageBox.Show(ex.Message + "eraserclick");
             }
         }
     }

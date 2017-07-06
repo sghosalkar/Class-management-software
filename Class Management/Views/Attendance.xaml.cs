@@ -85,7 +85,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
@@ -177,7 +177,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
@@ -202,7 +202,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 

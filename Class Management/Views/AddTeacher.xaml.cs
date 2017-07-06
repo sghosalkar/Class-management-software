@@ -50,13 +50,13 @@ namespace Class_Management.Views
                 if (teacher_name.Text == "" || teacher_contact_no.Text == "" || teacher_subject.Text == "" || teacher_code.Text == "")
                 {
                     string msg = "Enter Teacher Name, Contact Number, Subject and Teacher Code (Mandatory)";
-                    ErrorDialog(msg);
+                    MessageBox.Show(msg);
                     return;
                 }
                 Int64 temp;
                 if (!(Int64.TryParse(teacher_contact_no.Text, out temp)))
                 {
-                    ErrorDialog("Enter proper contact number");
+                    MessageBox.Show("Enter proper contact number");
                     return;
                 }
                 string sql;
@@ -92,7 +92,7 @@ namespace Class_Management.Views
                 FillDataGrid();
                 if (updateTeacher == null)
                 {
-                    //ErrorDialog("Saved");
+                    //MessageBox.Show("Saved");
                     MessageBox.Show("Saved");
                 }
                 else
@@ -105,12 +105,12 @@ namespace Class_Management.Views
             }
             catch (SQLiteException eg)
             {
-                ErrorDialog(eg.Message);
+                MessageBox.Show(eg.Message);
             }
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
@@ -141,7 +141,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
@@ -172,7 +172,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
@@ -196,7 +196,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 

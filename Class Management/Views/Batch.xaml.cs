@@ -59,7 +59,7 @@ namespace Class_Management.Views
                 string general_timing_to = to_h.Text + ":" + to_m.Text + ":" + to_ampm.Text;
                 if (new_batch_name.Text == "" || general_timing_from == "::" || general_timing_to == "::")
                 {
-                    ErrorDialog("Enter proper Batch name and Timing");
+                    MessageBox.Show("Enter proper Batch name and Timing");
                     return;
                 }
                 string selected_subjects = "";
@@ -105,7 +105,7 @@ namespace Class_Management.Views
             }
             catch (Exception ex)
             {
-                ErrorDialog(ex.GetType().Name);
+                MessageBox.Show(ex.GetType().Name);
             }
         }
 
@@ -144,7 +144,7 @@ namespace Class_Management.Views
             }
             catch (Exception ex)
             {
-                ErrorDialog(ex.GetType().Name);
+                MessageBox.Show(ex.GetType().Name);
             }
         }
 
@@ -168,7 +168,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
         private void FillComboBox(object sender, RoutedEventArgs e)
@@ -233,7 +233,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
@@ -260,7 +260,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
@@ -286,7 +286,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
@@ -310,7 +310,7 @@ namespace Class_Management.Views
                 }
                 if (f1 == 0)
                 {
-                    ErrorDialog("Select row(s) to delete");
+                    MessageBox.Show("Select row(s) to delete");
                 }
                 conn.Close();
                 delete_list.Clear();
@@ -320,7 +320,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
@@ -350,7 +350,7 @@ namespace Class_Management.Views
             }
             catch (Exception)
             {
-                //ErrorDialog(ex.GetType().Name);
+                //MessageBox.Show(ex.GetType().Name);
             }
         }
     }

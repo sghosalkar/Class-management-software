@@ -105,7 +105,7 @@ namespace Class_Management.Views
             }
             catch (Exception)
             {
-                ErrorDialog("Please check input again.");
+                MessageBox.Show("Please check input again.");
             }
         }
 
@@ -133,7 +133,7 @@ namespace Class_Management.Views
             }
             catch (Exception ex)
             {
-                ErrorDialog(ex.GetType() + ": " + ex.Message);
+                MessageBox.Show(ex.GetType() + ": " + ex.Message);
             }
         }
 
@@ -155,7 +155,7 @@ namespace Class_Management.Views
             }
             catch (Exception ex)
             {
-                ErrorDialog(ex.GetType() + ": " + ex.Message);
+                MessageBox.Show(ex.GetType() + ": " + ex.Message);
             }
         }
 
@@ -181,7 +181,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
@@ -204,7 +204,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
@@ -220,7 +220,7 @@ namespace Class_Management.Views
             {
                 if (deleteList.Count == 0)
                 {
-                    ErrorDialog("Select row(s) to delete");
+                    MessageBox.Show("Select row(s) to delete");
                     return;
                 }
                 foreach (string ele in deleteList)
@@ -237,7 +237,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
@@ -251,7 +251,7 @@ namespace Class_Management.Views
             }
             catch (Exception)
             {
-                //ErrorDialog(ex.GetType().Name);
+                //MessageBox.Show(ex.GetType().Name);
             }
         }
 
@@ -265,7 +265,7 @@ namespace Class_Management.Views
             }
             catch (Exception)
             {
-                //ErrorDialog(ex.GetType().Name);
+                //MessageBox.Show(ex.GetType().Name);
             }
         }
 
@@ -303,7 +303,7 @@ namespace Class_Management.Views
             }
             catch (Exception ex)
             {
-                ErrorDialog(ex.GetType().Name);
+                MessageBox.Show(ex.GetType().Name);
             }
         }
 

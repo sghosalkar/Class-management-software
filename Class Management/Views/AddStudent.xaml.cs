@@ -47,13 +47,13 @@ namespace Class_Management.Views
                 conn.Open();
                 if (student_name.Text == "" || contact_no1.Text == "" || reg_no.Text == "" || batch.Text == "")
                 {
-                    ErrorDialog("Student Name, Contact number, Registration Number and Batch are mandatory.");
+                    MessageBox.Show("Student Name, Contact number, Registration Number and Batch are mandatory.");
                     return;
                 }
                 Int64 temp;
                 if (!(Int64.TryParse(contact_no1.Text, out temp)))
                 {
-                    ErrorDialog("Enter proper contact number");
+                    MessageBox.Show("Enter proper contact number");
                     return;
                 }
                 string sql, sql2;
@@ -122,7 +122,7 @@ namespace Class_Management.Views
                 batch.Text = subjects.Text = other_details.Text = balance_fees.Text = "";
                 if (updateStudent == null)
                 {
-                    //ErrorDialog("Saved");
+                    //MessageBox.Show("Saved");
                     MessageBox.Show("Saved");
                 }
                 else
@@ -135,12 +135,12 @@ namespace Class_Management.Views
             }
             catch (SQLiteException)
             {
-                ErrorDialog("Please check input again (Reg no might already be in use)");
+                MessageBox.Show("Please check input again (Reg no might already be in use)");
             }
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
@@ -175,7 +175,7 @@ namespace Class_Management.Views
             }
             catch (Exception ex)
             {
-                ErrorDialog(ex.GetType().Name);
+                MessageBox.Show(ex.GetType().Name);
             }
         }
 
@@ -206,7 +206,7 @@ namespace Class_Management.Views
             catch (Exception ex)
             {
                 string msg = ex.GetType().Name + " : " + ex.Message;
-                ErrorDialog(msg);
+                MessageBox.Show(msg);
             }
         }
 
