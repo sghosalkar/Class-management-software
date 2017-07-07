@@ -59,7 +59,8 @@ namespace Class_Management.Views
 
         private void SaveCallData_Click(object sender, RoutedEventArgs e)
         {
-            if(!Int64.TryParse(ContactNo.Text, out long result))
+            long result;
+            if(!Int64.TryParse(ContactNo.Text, out result))
             {
                 MessageBox.Show("Enter proper contact number");
                 return;
