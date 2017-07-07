@@ -37,7 +37,16 @@ namespace Class_Management.Utilities
                 for (colCnt = 1; colCnt <= excelRange.Columns.Count; colCnt++)
                 {
                     string strColumn = "";
-                    strColumn = (string)(excelRange.Cells[1, colCnt] as Microsoft.Office.Interop.Excel.Range).Value2;
+                    double douColumn;
+                    try
+                    {
+                        strColumn = (string)(excelRange.Cells[1, colCnt] as Microsoft.Office.Interop.Excel.Range).Value2;
+                    }
+                    catch (Exception ex)
+                    {
+                        douColumn = (excelRange.Cells[1, colCnt] as Microsoft.Office.Interop.Excel.Range).Value2;
+                        strColumn = douColumn.ToString();
+                    }
                     dt.Columns.Add(strColumn, typeof(string));
                 }
 
