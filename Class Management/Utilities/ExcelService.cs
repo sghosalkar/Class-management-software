@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Class_Management.Utilities
 {
@@ -47,7 +48,15 @@ namespace Class_Management.Utilities
                         douColumn = (excelRange.Cells[1, colCnt] as Microsoft.Office.Interop.Excel.Range).Value2;
                         strColumn = douColumn.ToString();
                     }
-                    dt.Columns.Add(strColumn, typeof(string));
+                    try
+                    {
+                        dt.Columns.Add(strColumn, typeof(string));
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        return null;
+                    }
                 }
 
                 for (rowCnt = 2; rowCnt <= excelRange.Rows.Count; rowCnt++)
