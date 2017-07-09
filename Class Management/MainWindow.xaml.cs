@@ -71,8 +71,7 @@ namespace Class_Management
             else
             {
                 ShowFlyout(0);
-                MenuIcon.Kind = PackIconMaterialKind.Backburger;
-                MenuLabel.Content = "";
+                //MenuIcon.Kind = PackIconMaterialKind.Backburger;
             }
         }
 
@@ -98,8 +97,7 @@ namespace Class_Management
 
             if (closeMain)
             {
-                MenuIcon.Kind = PackIconMaterialKind.Menu;
-                MenuLabel.Content = "MENU";
+                //MenuIcon.Kind = PackIconMaterialKind.Menu;
                 HideFlyout(0);
             }
         }

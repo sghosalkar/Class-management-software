@@ -15,7 +15,7 @@
                       TitlebarHeight="35"
                       NonActiveWindowTitleBrush="Gray"
                       IconOverlayBehavior="Always"
-                      LeftWindowCommandsOverlayBehavior="Always"
+                      LeftWindowCommandsOverlayBehavior="Never"
                       ResizeMode="CanMinimize"
                       RightWindowCommandsOverlayBehavior="Always"
                       WindowStartupLocation="CenterScreen"
@@ -149,7 +149,7 @@
             <Button Click="ToggleMainFlyout" >
                 <IconPacks:PackIconMaterial x:Name="MenuIcon" Kind="Menu" Height="20" Width="20"/>
             </Button>
-            <Label x:Name="MenuLabel" Foreground="White" Background="Transparent" FontSize="14" Content="MENU" />
+            <Label Foreground="White" Background="Transparent" FontSize="14" Content="MENU" VerticalAlignment="Center" />
         </Controls:WindowCommands>
     </Controls:MetroWindow.LeftWindowCommands>
 
@@ -167,7 +167,7 @@
 
     <Controls:MetroWindow.Flyouts>
         <Controls:FlyoutsControl >
-            <Controls:Flyout x:Name="MainFlyout" IsModal="True" Position="Top" Height="80" CloseButtonVisibility="Collapsed">
+            <Controls:Flyout x:Name="MainFlyout" IsModal="True" Position="Top" Height="80" CloseButtonVisibility="Visible">
                 <StackPanel Orientation="Horizontal" x:Name="MainFlyoutPanel" Style="{StaticResource FlyoutStackpanel}">
                     <Button x:Name="Student" Content="Student" Style="{StaticResource FlyoutBtn}" />
                     <Button x:Name="Teacher" Content="Teacher" Style="{StaticResource FlyoutBtn}" />
@@ -178,49 +178,22 @@
                     <Button x:Name="CallData" Content="Call Data" Style="{StaticResource SubFlyoutBtn}" />
                 </StackPanel>
             </Controls:Flyout>
-            <Controls:Flyout x:Name="StudentFlyout" Position="Top" Theme="Accent" CloseButtonVisibility="Hidden" Height="80">
-                <Controls:Flyout.HeaderTemplate>
-                    <DataTemplate>
-                        <TextBlock Margin="50,25,0,0">Student</TextBlock>
-                    </DataTemplate>
-                </Controls:Flyout.HeaderTemplate>
+            <Controls:Flyout x:Name="StudentFlyout" Position="Top" Theme="Accent" CloseButtonVisibility="Visible" Height="80">
                 <StackPanel Orientation="Horizontal" Style="{StaticResource FlyoutStackpanel}">
                     <Button x:Name="AddStudent" Content="Add Student" Style="{StaticResource SubFlyoutBtn}" />
                     <Button x:Name="ViewStudent" Content="View Student" Style="{StaticResource SubFlyoutBtn}" />
                 </StackPanel>
             </Controls:Flyout>
-            <Controls:Flyout x:Name="TeacherFlyout" Position="Top" Theme="Accent" CloseButtonVisibility="Hidden" Height="80">
-                <Controls:Flyout.HeaderTemplate>
-                    <DataTemplate>
-                        <TextBlock Margin="50,25,0,0">Teacher</TextBlock>
-                    </DataTemplate>
-                </Controls:Flyout.HeaderTemplate>
+            <Controls:Flyout x:Name="TeacherFlyout" Position="Top" Theme="Accent" CloseButtonVisibility="Visible" Height="80">
                 <StackPanel Orientation="Horizontal" Style="{StaticResource FlyoutStackpanel}">
                     <Button x:Name="AddTeacher" Content="Add Teacher" Style="{StaticResource SubFlyoutBtn}" />
                     <Button x:Name="ViewTeacher" Content="View Teacher" Style="{StaticResource SubFlyoutBtn}" />
                 </StackPanel>
             </Controls:Flyout>
-            <Controls:Flyout x:Name="BatchFlyout" Position="Top" Theme="Accent" CloseButtonVisibility="Hidden" Height="80">
-                <Controls:Flyout.HeaderTemplate>
-                    <DataTemplate>
-                        <TextBlock Margin="50,25,0,0">Batch</TextBlock>
-                    </DataTemplate>
-                </Controls:Flyout.HeaderTemplate>
-                <StackPanel Orientation="Horizontal" Style="{StaticResource FlyoutStackpanel}">
-                    <Button x:Name="AddBatch" Content="Add Batch" Style="{StaticResource SubFlyoutBtn}" />
-                    <Button x:Name="ViewBatch" Content="View Batch" Style="{StaticResource SubFlyoutBtn}" />
-                </StackPanel>
-            </Controls:Flyout>
             <Controls:Flyout x:Name="TimetableFlyout" Position="Top" Theme="Accent" CloseButtonVisibility="Hidden" Height="80">
-                <Controls:Flyout.HeaderTemplate>
-                    <DataTemplate>
-                        <TextBlock Margin="50,25,0,0">Create</TextBlock>
-                    </DataTemplate>
-                </Controls:Flyout.HeaderTemplate>
                 <StackPanel Orientation="Horizontal" Style="{StaticResource FlyoutStackpanel}">
                     <Button x:Name="DailyTimetable" Content="Daily Timetable" Style="{StaticResource SubFlyoutBtn}" />
                     <Button x:Name="WeeklyTimetable1" Content="Weekly Timetable" Style="{StaticResource SubFlyoutBtn}" />
-                    <!--<Button x:Name="ManualTimetable" Content="Manual Timetable" Style="{StaticResource SubFlyoutBtn}" />-->
                 </StackPanel>
             </Controls:Flyout>
             <Controls:Flyout x:Name="ToolsFlyout" Header="Tools" Position="Right" Theme="Light" IsModal="True">
