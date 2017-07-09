@@ -29,6 +29,7 @@ namespace Class_Management
             this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.89);
             LoginFlyout.Height = this.Height;
             LoginFlyout.Width = this.Width;
+            LoginFlyout.Content = new Login(this);
             MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
         }
 
@@ -158,43 +159,6 @@ namespace Class_Management
             return (UserControl)Activator.CreateInstance(type, new object[] { this });
         }
 
-        private void ToggleTools(object sender, RoutedEventArgs e)
-        {
-            if (ToolsFlyout.IsOpen == true)
-            {
-                ToolsFlyout.IsOpen = false;
-            }
-            else
-            {
-                ToolsFlyout.IsOpen = true;
-            }
-        }
-
-        private void LoginFlyoutBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (sender == LoginBtn)
-            {
-                LoginFlyout.IsOpen = false;
-            }
-            else if (sender == WindowClose)
-            {
-                this.Close();
-            }
-        }
-
-        private void LoginFlyout_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                LoginFlyout.IsOpen = false;
-            }
-        }
-
-        private void NotificationFlyoutEvent(object sender, RoutedEventArgs e)
-        {
-            NotificationFlyout.IsOpen = true;
-        }
-
         private Button MagicallyCreateNotiButton(string msg)
         {
             Button NotiBtn = new Button();
@@ -208,9 +172,19 @@ namespace Class_Management
             return NotiBtn;
         }
 
-        private void NotiBtn_Click(object sender, RoutedEventArgs e)
+        private void ToggleTools(object sender, RoutedEventArgs e)
         {
+            if (ToolsFlyout.IsOpen == true)
+            {
+                ToolsFlyout.IsOpen = false;
+            }
+            else
+            {
+                ToolsFlyout.IsOpen = true;
+            }
         }
+
+        private void NotiBtn_Click(object sender, RoutedEventArgs e) { }
 
         private void ReminderCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {

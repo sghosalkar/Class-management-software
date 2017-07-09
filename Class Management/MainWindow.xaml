@@ -198,52 +198,8 @@
             </Controls:Flyout>
             <Controls:Flyout x:Name="ToolsFlyout" Header="Tools" Position="Right" Theme="Light" IsModal="True">
             </Controls:Flyout>
-            <Controls:Flyout x:Name="LoginFlyout" KeyDown="LoginFlyout_KeyDown" 
-                             Background="MediumSeaGreen" CloseButtonVisibility="Collapsed" 
+            <Controls:Flyout x:Name="LoginFlyout" Background="MediumSeaGreen" CloseButtonVisibility="Collapsed" 
                              IsModal="True" Position="Bottom" Theme="Light" IsOpen="True" >
-                <Viewbox>
-                    <Grid Height="915" Width="1590">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="3*" />
-                            <RowDefinition Height="1*" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*" />
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="1*" />
-                        </Grid.ColumnDefinitions>
-                        <IconPacks:PackIconMaterial x:Name="Account" Kind="AccountCircle" 
-                                                   Grid.Column="1" Grid.Row="1" Margin="0,80,0,0"
-                                                   HorizontalAlignment="Center" VerticalAlignment="Top"
-                                                   Height="150" Width="150" Foreground="White"/>
-                        <Label Content="Welcome to CMS" HorizontalAlignment="Center" VerticalAlignment="Top"
-                               Grid.Column="1" Grid.Row="1" Margin="0,260,0,0" FontSize="40" Foreground="White" />
-                        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1" 
-                                    Background="LightGray" Height="41" Width="291"
-                                    HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,350,0,0">
-                            <PasswordBox x:Name="Password" Controls:TextBoxHelper.Watermark="Password"
-                                         Controls:TextBoxHelper.UseFloatingWatermark="True"
-                                         BorderBrush="Transparent" BorderThickness="0"
-                                         Width="250" Height="40" VerticalContentAlignment="Center" />
-                            <Button x:Name="LoginBtn"  Width="40" Height="40" Click="LoginFlyoutBtn_Click"
-                                    Style="{StaticResource MetroFlatButton}" >
-                                <IconPacks:PackIconMaterial x:Name="LoginIcon" Kind="ArrowRight" Height="10" Width="10" />
-                            </Button>
-                        </StackPanel>
-                        <Button x:Name="WindowClose" Click="LoginFlyoutBtn_Click" 
-                                HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="2" Grid.Row="0"                                
-                                Height="50" Width="50" Margin="0,0,0,0" Style="{StaticResource TransparentBtn}" >
-                            <IconPacks:PackIconMaterial x:Name="WinClose" Kind="WindowClose" Height="17" Width="17" />
-                        </Button>
-                    </Grid>
-                </Viewbox>
-            </Controls:Flyout>
-
-            <Controls:Flyout x:Name="NotificationFlyout" Theme="Dark" Opacity="0.95" Width="300" Header="Notifications" 
-                             Position="Right" IsOpen="False"
-                             CloseButtonVisibility="Visible">
-                <StackPanel x:Name="NotificationStack" Orientation="Vertical" />
             </Controls:Flyout>
         </Controls:FlyoutsControl>
     </Controls:MetroWindow.Flyouts>

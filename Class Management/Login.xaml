@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="Class_Management.Login"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Class_Management"
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:IconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1500">
+
+    <UserControl.Resources>
+        <Style x:Key="TransparentBtn"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource MetroFlatButton}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="FontSize" Value="{StaticResource FlatButtonFontSize}" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="Margin" Value="0 10" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid KeyDown="LoginFlyout_KeyDown">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <IconPacks:PackIconMaterial x:Name="Account"  Kind="AccountCircle" Grid.Column="1" Grid.Row="1" Margin="0,80,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="150" Width="150" Foreground="White"/>
+        <Label Content="Welcome to CMS" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" Margin="0,260,0,0" FontSize="40" Foreground="White" />
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1" 
+                    Background="LightGray" Height="41" Width="291"
+                    HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,350,0,0">
+            <PasswordBox x:Name="Password" Controls:TextBoxHelper.Watermark="Password"
+                         Controls:TextBoxHelper.UseFloatingWatermark="True"
+                         BorderBrush="Transparent" BorderThickness="0"
+                         Width="250" Height="40" VerticalContentAlignment="Center" />
+            <Button x:Name="LoginBtn"  Width="40" Height="40" Click="LoginFlyoutBtn_Click"
+                    Style="{StaticResource MetroFlatButton}" >
+                <IconPacks:PackIconMaterial x:Name="LoginIcon" Kind="ArrowRight" Height="10" Width="10" />
+            </Button>
+        </StackPanel>
+        <Button x:Name="WindowClose" Click="LoginFlyoutBtn_Click" 
+                HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="2" Grid.Row="0"                                
+                Height="50" Width="50" Margin="0,0,0,0" Style="{StaticResource TransparentBtn}" >
+            <IconPacks:PackIconMaterial x:Name="WinClose" Kind="WindowClose" Height="17" Width="17" />
+        </Button>
+    </Grid>
+</UserControl>
