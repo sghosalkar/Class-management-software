@@ -167,7 +167,7 @@
 
     <Controls:MetroWindow.Flyouts>
         <Controls:FlyoutsControl >
-            <Controls:Flyout x:Name="MainFlyout" IsModal="True" Position="Top" Height="80">
+            <Controls:Flyout x:Name="MainFlyout" IsModal="True" Position="Top" Height="80" CloseButtonVisibility="Collapsed">
                 <StackPanel Orientation="Horizontal" x:Name="MainFlyoutPanel" Style="{StaticResource FlyoutStackpanel}">
                     <Button x:Name="Student" Content="Student" Style="{StaticResource FlyoutBtn}" />
                     <Button x:Name="Teacher" Content="Teacher" Style="{StaticResource FlyoutBtn}" />
@@ -223,54 +223,7 @@
                     <!--<Button x:Name="ManualTimetable" Content="Manual Timetable" Style="{StaticResource SubFlyoutBtn}" />-->
                 </StackPanel>
             </Controls:Flyout>
-            <Controls:Flyout x:Name="ToolsFlyout" Header="Tools" Position="Right" Theme="Dark" CloseButtonVisibility="Visible" Width="300" IsModal="True">
-                <StackPanel Orientation="Vertical">
-                    <!-- Subjects -->
-                    <Grid Margin="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50" />
-                            <RowDefinition Height="150" />
-                            <RowDefinition Height="50" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200" />
-                            <ColumnDefinition Width="auto" />
-                        </Grid.ColumnDefinitions>
-                        <Label x:Name="Subjects" Content="Subjects" FontSize="20" 
-                               Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
-                               HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0" />
-                        <ListBox x:Name="subject_list" Height="140" Width="250" Margin="0,10,0,0"
-                                 Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
-                                 ItemsSource="{Binding subjects}" DisplayMemberPath="subject" FontSize="15"
-                                 Style="{StaticResource VirtualisedMetroListBox}" SelectionChanged="subject_list_SelectionChanged">
-                        </ListBox>
-                        <Button x:Name="delete_subject"  Width="50" Height="25" 
-                                Grid.Column="1" Grid.Row="0" Visibility="Collapsed"
-                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,25,0,0" 
-                                Style="{StaticResource MetroFlatButton}" Click="change_subject_Click">
-                            <IconPacks:PackIconMaterial x:Name="DeleteSubject" Kind="Delete" Height="15" Width="15" />
-                        </Button>
-                        <TextBox x:Name="subject_textbox" Width="190" Height="25" Margin="0,10,0,0"
-                                 Grid.Column="0" Grid.Row="2" CharacterCasing="Upper"
-                                 HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <Button x:Name="add_subject"  Width="50" Height="25" 
-                                Grid.Column="1" Grid.Row="2"
-                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0" 
-                                Style="{StaticResource MetroFlatButton}" Click="change_subject_Click">
-                            <IconPacks:PackIconMaterial x:Name="AddSubject" Kind="Plus" Height="15" Width="15" />
-                        </Button>
-                    </Grid>
-                    <Grid Height="2" Background="Gray"/>
-
-                    <Label Content="Utility" FontSize="20" Margin="10" />
-                    <!-- Export excel -->
-                    <Button Style="{StaticResource TransparentBtn}" Margin="10 5" BorderBrush="DarkGray" BorderThickness="1">Export data</Button>
-
-                    <!-- Work Here Sautan-->
-                    <Grid Background="Beige">
-                        <!-- Here i mean -->
-                    </Grid>
-                </StackPanel>
+            <Controls:Flyout x:Name="ToolsFlyout" Header="Tools" Position="Right" Theme="Light" IsModal="True">
             </Controls:Flyout>
             <Controls:Flyout x:Name="LoginFlyout" KeyDown="LoginFlyout_KeyDown" 
                              Background="MediumSeaGreen" CloseButtonVisibility="Collapsed" 

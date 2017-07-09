@@ -45,13 +45,6 @@ namespace Class_Management.Views
             conn.Close();
         }
 
-        private void ErrorDialog(string msg)
-        {
-            MessageDialog md = new MessageDialog();
-            md.message_text.Text = msg;
-            DialogSpace.Children.Add(md);
-        }
-
         private void SaveIncomeExpense(object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;

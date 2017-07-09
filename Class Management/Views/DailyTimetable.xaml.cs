@@ -56,13 +56,6 @@ namespace Class_Management.Views
             (this.Parent as Grid).Children.Remove(this);
         }
 
-        private void ErrorDialog(string msg)
-        {
-            MessageDialog md = new MessageDialog();
-            md.message_text.Text = msg;
-            DialogSpace.Children.Add(md);
-        }
-
         private void Drag(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)

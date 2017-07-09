@@ -10,6 +10,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Windows.Input;
 using MahApps.Metro.IconPacks;
+using Class_Management.Views;
 
 namespace Class_Management
 {
@@ -23,10 +24,11 @@ namespace Class_Management
         public MainWindow()
         {
             InitializeComponent();
+
             this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.89);
             this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.89);
-            LoginFlyout.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.89);
-            LoginFlyout.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.89);
+            LoginFlyout.Height = this.Height;
+            LoginFlyout.Width = this.Width;
             MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
         }
 
@@ -36,16 +38,14 @@ namespace Class_Management
             mystory = (Storyboard)App.Current.Resources["sb"];
             mystory.Begin(this);
 
-            //conn.Open();
-            FillSubjects();
-            FillNotification();
+            ToolsFlyout.Width = this.Width;
+            ToolsFlyout.Content = new Tools();
             FillTodaysTimetable();
             ReminderCalendar.SelectedDate = DateTime.Today.Date;
         }
 
         private void mainWindow_Unloaded(object sender, RoutedEventArgs e)
         {
-            //conn.Close();
             Application.Current.Shutdown();
         }
 
@@ -172,76 +172,6 @@ namespace Class_Management
             }
         }
 
-        private void change_subject_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                conn.Open();
-                string sql;
-                var btn = sender as Button;
-                if (btn.Name == "add_subject")
-                {
-                    if (subject_textbox.Text == "")
-                    {
-                        string msg = "Enter proper Subject name.";
-                        ErrorDialog(msg);
-                        return;
-                    }
-                    sql = "INSERT INTO subjects(subject) VALUES('" + subject_textbox.Text + "');";
-                }
-                else
-                {
-                    sql = "DELETE FROM subjects WHERE subject='" + (subject_list.SelectedItem as DataRowView)["subject"].ToString() + "';";
-                }
-                SQLiteCommand command = new SQLiteCommand(sql, conn);
-                command.ExecuteNonQuery();
-                subject_textbox.Text = null;
-                FillSubjects();
-                conn.Close();
-            }
-            catch (SQLiteException)
-            {
-                string msg = "Check Input (The subject might already exist in the records)";
-                ErrorDialog(msg);
-            }
-            catch (NullReferenceException)
-            {
-                string msg = "Please check selection again.";
-                ErrorDialog(msg);
-            }
-            catch (Exception ae)
-            {
-                MessageBox.Show(ae.GetType().Name + " : " + ae.Message);
-            }
-        }
-
-        private void FillSubjects()
-        {
-            conn.Open();
-            string sql = "SELECT * FROM subjects;";
-            SQLiteCommand command = new SQLiteCommand(sql, conn);
-            command.ExecuteNonQuery();
-            SQLiteDataAdapter dataAdp = new SQLiteDataAdapter(command);
-            DataTable dt = new DataTable("subjects");
-            dataAdp.Fill(dt);
-            subject_list.ItemsSource = dt.DefaultView;
-            dataAdp.Update(dt);
-            conn.Close();
-        }
-
-        private void subject_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            delete_subject.Visibility = Visibility.Visible;
-        }
-
-        public async void ErrorDialog(string msg)
-        {
-            var dialog = Resources["ErrorDialog"] as BaseMetroDialog;
-            await this.ShowMetroDialogAsync(dialog);
-            var txtblock = dialog.FindChild<TextBlock>("message_text");
-            txtblock.Text = msg;
-        }
-
         private void LoginFlyoutBtn_Click(object sender, RoutedEventArgs e)
         {
             if (sender == LoginBtn)
@@ -267,55 +197,6 @@ namespace Class_Management
             NotificationFlyout.IsOpen = true;
         }
 
-        private void FillNotification()
-        {
-            conn.Open();
-            string sql = "", temp = null;
-            string[] notiList = { "subjects", "batch", "teacher", "student" };
-            foreach (string ele in notiList)
-            {
-                sql = "SELECT * FROM " + ele + ";";
-                using (SQLiteCommand command1 = new SQLiteCommand(sql, conn))
-                {
-                    using (SQLiteDataReader dr = command1.ExecuteReader())
-                    {
-                        dr.Read();
-                        try
-                        {
-                            temp = dr.GetString(0);
-                        }
-                        catch (Exception) { }
-                        if (temp == null)
-                        {
-                            CreateNotification(ele);
-                        }
-                        dr.Close();
-                    }
-                    command1.Dispose();
-                }
-            }
-            CreateNotification("subjects");
-            CreateNotification("batch");
-            CreateNotification("teacher");
-            CreateNotification("student");
-            conn.Close();
-        }
-
-        private void CreateNotification(string ele)
-        {
-            string msg = "";
-            if (ele == "subjects")
-            {
-                msg = "Add your first Subject";
-            }
-            else
-            {
-                msg = "Add your first " + ele.First().ToString().ToUpper() + ele.Substring(1);
-            }
-            Button NotiBtn = MagicallyCreateNotiButton(msg);
-            NotificationStack.Children.Add(NotiBtn);
-        }
-
         private Button MagicallyCreateNotiButton(string msg)
         {
             Button NotiBtn = new Button();
@@ -331,20 +212,6 @@ namespace Class_Management
 
         private void NotiBtn_Click(object sender, RoutedEventArgs e)
         {
-            Button sdr = sender as Button;
-            string msg = sdr.Content.ToString().Substring(15);
-            if (msg == "Subject")
-            {
-                ToolsFlyout.IsOpen = true;
-                NotificationFlyout.IsOpen = false;
-            }
-            else
-            {
-                var res = MagicallyCreateInstance("Add" + msg);
-                mainContent.Children.Clear();
-                mainContent.Children.Add(res);
-                NotificationFlyout.IsOpen = false;
-            }
         }
 
         private void ReminderCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)

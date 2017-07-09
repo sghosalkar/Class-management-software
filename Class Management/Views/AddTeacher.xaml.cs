@@ -145,13 +145,6 @@ namespace Class_Management.Views
             }
         }
 
-        private void ErrorDialog(string msg)
-        {
-            MessageDialog md = new MessageDialog();
-            md.message_text.Text = msg;
-            DialogSpace.Children.Add(md);
-        }
-
         private void FillSubjects()
         {
             try
