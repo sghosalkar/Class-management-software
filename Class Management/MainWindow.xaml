@@ -167,12 +167,7 @@
 
     <Controls:MetroWindow.Flyouts>
         <Controls:FlyoutsControl >
-            <Controls:Flyout x:Name="MainFlyout" Position="Top" IsModal="True" CloseButtonVisibility="Hidden" Height="80">
-                <Controls:Flyout.HeaderTemplate>
-                    <DataTemplate>
-                        <TextBlock Margin="50,25,0,0">Let's Get Started</TextBlock>
-                    </DataTemplate>
-                </Controls:Flyout.HeaderTemplate>
+            <Controls:Flyout x:Name="MainFlyout" IsModal="True" Position="Top" Height="80">
                 <StackPanel Orientation="Horizontal" x:Name="MainFlyoutPanel" Style="{StaticResource FlyoutStackpanel}">
                     <Button x:Name="Student" Content="Student" Style="{StaticResource FlyoutBtn}" />
                     <Button x:Name="Teacher" Content="Teacher" Style="{StaticResource FlyoutBtn}" />

@@ -43,7 +43,7 @@ namespace Class_Management.Utilities
                     {
                         strColumn = (string)(excelRange.Cells[1, colCnt] as Microsoft.Office.Interop.Excel.Range).Value2;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         douColumn = (excelRange.Cells[1, colCnt] as Microsoft.Office.Interop.Excel.Range).Value2;
                         strColumn = douColumn.ToString();
@@ -69,7 +69,7 @@ namespace Class_Management.Utilities
                             strCellData = (string)(excelRange.Cells[rowCnt, colCnt] as Microsoft.Office.Interop.Excel.Range).Value2;
                             strData += strCellData + "|";
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             douCellData = (excelRange.Cells[rowCnt, colCnt] as Microsoft.Office.Interop.Excel.Range).Value2;
                             strData += douCellData.ToString() + "|";
