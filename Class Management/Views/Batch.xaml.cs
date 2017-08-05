@@ -101,6 +101,7 @@ namespace Class_Management.Views
                 if (igotbatch != null)
                 {
                     igotbatch = null;
+                    save.Content = "Save";
                 }
             }
             catch (Exception ex)
@@ -340,6 +341,7 @@ namespace Class_Management.Views
             {
                 var selb = (batch_list.SelectedItem as DataRowView)["batch_name"].ToString();
                 stringcmode(selb);
+                save.Content = "Update";
             }
             catch (Exception)
             {

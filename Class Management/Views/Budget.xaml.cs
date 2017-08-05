@@ -91,9 +91,25 @@ namespace Class_Management.Views
                 command.Dispose();
                 MessageBox.Show("Saved");
                 FillDataGrids();
+                if (btnName == "income")
+                {
+                    incomeSourceTextBox.Text = "";
+                    incomeDatePicker.Text = "";
+                    incomeChequeNoTextBox.Text = "";
+                    incomeAmountTextBox.Text = "";
+                }
+                else
+                {
+                    expenseRecipientTextBox.Text = "";
+                    expenseDatePicker.Text = "";
+                    expenseChequeNoTextBox.Text = "";
+                    expenseAmountTextBox.Text = "";
+                }
                 if (igotid != null)
                 {
                     igotid = null;
+                    incomeSave.Content = "Save";
+                    expenseSave.Content = "Save";
                 }
             }
             catch (Exception)
@@ -242,7 +258,13 @@ namespace Class_Management.Views
             {
 
                 var selb = (incomeTable.SelectedItem as DataRowView)["id"].ToString();
+                if(igotid != null)
+                {
+                    MessageBox.Show("Please save ongoing update.");
+                    return;
+                }
                 Stringcmode(selb, "income");
+                incomeSave.Content = "Update";
             }
             catch (Exception)
             {
@@ -256,7 +278,13 @@ namespace Class_Management.Views
             {
 
                 var selb = (expenseTable.SelectedItem as DataRowView)["id"].ToString();
+                if (igotid != null)
+                {
+                    MessageBox.Show("Please save ongoing update.");
+                    return;
+                }
                 Stringcmode(selb, "expense");
+                expenseSave.Content = "Update";
             }
             catch (Exception)
             {
