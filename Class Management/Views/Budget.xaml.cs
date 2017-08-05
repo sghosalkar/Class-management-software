@@ -109,11 +109,12 @@ namespace Class_Management.Views
         }
 
         string incomeNamePattern = "";
+        string incomeDatePattern = "";
         private void FillIncomeTable()
         {
             try
             {
-                string sql = "SELECT * FROM income WHERE name LIKE '%" + incomeNamePattern + "%';";
+                string sql = "SELECT * FROM income WHERE name LIKE '%" + incomeNamePattern + "%' AND transaction_date LIKE '%" + incomeDatePattern + "%';";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 command.ExecuteNonQuery();
                 SQLiteDataAdapter dataAdp = new SQLiteDataAdapter(command);
@@ -131,11 +132,12 @@ namespace Class_Management.Views
         }
 
         string expenseNamePattern = "";
+        string expenseDatePattern = "";
         private void FillExpenseTable()
         {
             try
             {
-                string sql = "SELECT * FROM expense WHERE name LIKE '%" + expenseNamePattern + "%';";
+                string sql = "SELECT * FROM expense WHERE name LIKE '%" + expenseNamePattern + "%' AND transaction_date LIKE '%" + expenseDatePattern + "%';";
                 SQLiteCommand command = new SQLiteCommand(sql, conn);
                 command.ExecuteNonQuery();
                 SQLiteDataAdapter dataAdp = new SQLiteDataAdapter(command);
@@ -338,5 +340,48 @@ namespace Class_Management.Views
             }
             TotalExpense.Text = sum.ToString();
         }
+
+        private void incomeDisplayDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DatePicker dpicker = sender as DatePicker;
+            if(dpicker.SelectedDate == null)
+            {
+                incomeDatePattern = "";
+            }
+            else
+            {
+                string[] date = dpicker.Text.Split('/');
+                incomeDatePattern = date[0] + "/%/" + date[2];
+                //MessageBox.Show(incomeDatePattern);
+            }
+            FillIncomeTable();
+        }
+
+        private void expenseDisplayDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DatePicker dpicker = sender as DatePicker;
+            if (dpicker.SelectedDate == null)
+            {
+                expenseDatePattern = "";
+            }
+            else
+            {
+                string[] date = dpicker.Text.Split('/');
+                expenseDatePattern = date[0] + "/%/" + date[2];
+                //MessageBox.Show(expenseDatePattern);
+            }
+            FillExpenseTable();
+        }
+
+        private void incomeClearDate_Click(object sender, RoutedEventArgs e)
+        {
+            incomeDisplayDate.SelectedDate = null;
+        }
+
+        private void expenseClearDate_Click(object sender, RoutedEventArgs e)
+        {
+            expenseDisplayDate.SelectedDate = null;
+        }
     }
+    
 }

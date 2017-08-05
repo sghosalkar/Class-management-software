@@ -122,12 +122,29 @@
                             </DataGrid.Columns>
                         </DataGrid>
                         <TextBox x:Name="incomeSourceTextBox" Grid.Row="1" Grid.Column="0" Controls:TextBoxHelper.Watermark="Source" Style="{StaticResource formtextbox}"></TextBox>
-                        <DatePicker x:Name="incomeDatePicker" Grid.Row="1" Grid.Column="1" Style="{StaticResource formdatepicker}"></DatePicker>
+                        <DatePicker x:Name="incomeDatePicker" Grid.Row="1" Grid.Column="1" Style="{StaticResource formdatepicker}">
+                            <DatePicker.Resources>
+                                <Style TargetType="{x:Type DatePickerTextBox}" BasedOn="{StaticResource MetroDatePickerTextBox}">
+                                    <Setter Property="IsReadOnly" Value="True"/>
+                                </Style>
+                            </DatePicker.Resources>
+                        </DatePicker>
                         <TextBox x:Name="incomeChequeNoTextBox" Grid.Row="2" Grid.Column="0" Controls:TextBoxHelper.Watermark="Cheque No" Style="{StaticResource formtextbox}"></TextBox>
                         <TextBox x:Name="incomeAmountTextBox" Grid.Row="2" Grid.Column="1" Controls:TextBoxHelper.Watermark="Amount" Style="{StaticResource formtextbox}"></TextBox>
                         <Button x:Name="incomeSave" Grid.Row="2" Grid.Column="2" Style="{StaticResource formbtn}" Click="SaveIncomeExpense">Save</Button>
                         <Button x:Name="incomeDelete" Grid.Row="4" Grid.Column="2" Style="{StaticResource formbtn}" Click="DeleteIncomeExpense">Delete</Button>
                         <TextBox x:Name="incomeSearchBox" Grid.Row="4" Grid.Column="0" Controls:TextBoxHelper.Watermark="Search by Source" Controls:TextBoxHelper.ClearTextButton="True" Style="{StaticResource formtextbox}" TextChanged="IncomeSearchBox_TextChanged"></TextBox>
+                        <DatePicker x:Name="incomeDisplayDate" Grid.Row="4" Grid.Column="1" Margin="10 10 50 10" Style="{StaticResource formdatepicker}" SelectedDateChanged="incomeDisplayDate_SelectedDateChanged">
+                            <DatePicker.Resources>
+                                <Style TargetType="{x:Type DatePickerTextBox}" BasedOn="{StaticResource MetroDatePickerTextBox}">
+                                    <Setter Property="IsReadOnly" Value="True"/>
+                                </Style>
+                            </DatePicker.Resources>
+                        </DatePicker>
+                        <Button x:Name="incomeClearDate" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Margin="11" Width="38" Style="{StaticResource formbtn}" Click="incomeClearDate_Click">
+                            <IconPacks:PackIconMaterial Kind="WindowClose" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Button>
+
                         <Grid Grid.Row="3" Grid.ColumnSpan="3" Background="Green"/>
 
                         <StackPanel Orientation="Horizontal"
@@ -176,12 +193,29 @@
                             </DataGrid.Columns>
                         </DataGrid>
                         <TextBox x:Name="expenseRecipientTextBox" Grid.Row="1" Grid.Column="0" Controls:TextBoxHelper.Watermark="Recipient" Style="{StaticResource formtextbox}"></TextBox>
-                        <DatePicker x:Name="expenseDatePicker" Grid.Row="1" Grid.Column="1" Style="{StaticResource formdatepicker}"></DatePicker>
+                        <DatePicker x:Name="expenseDatePicker" Grid.Row="1" Grid.Column="1" Style="{StaticResource formdatepicker}">
+                            <DatePicker.Resources>
+                                <Style TargetType="{x:Type DatePickerTextBox}" BasedOn="{StaticResource MetroDatePickerTextBox}">
+                                    <Setter Property="IsReadOnly" Value="True"/>
+                                </Style>
+                            </DatePicker.Resources>
+                        </DatePicker>
                         <TextBox x:Name="expenseChequeNoTextBox" Grid.Row="2" Grid.Column="0" Controls:TextBoxHelper.Watermark="Cheque No" Style="{StaticResource formtextbox}"></TextBox>
                         <TextBox x:Name="expenseAmountTextBox" Grid.Row="2" Grid.Column="1" Controls:TextBoxHelper.Watermark="Amount" Style="{StaticResource formtextbox}"></TextBox>
                         <Button x:Name="expenseSave" Grid.Row="2" Grid.Column="2" Style="{StaticResource formbtn}" Click="SaveIncomeExpense">Save</Button>
                         <Button x:Name="expenseDelete" Grid.Row="4" Grid.Column="2" Style="{StaticResource formbtn}" Click="DeleteIncomeExpense">Delete</Button>
                         <TextBox x:Name="expenseSearchBox" Grid.Row="4" Grid.Column="0" Controls:TextBoxHelper.Watermark="Search by Recipient" Controls:TextBoxHelper.ClearTextButton="True" Style="{StaticResource formtextbox}" TextChanged="ExpenseSearchBox_TextChanged"></TextBox>
+                        <DatePicker x:Name="expenseDisplayDate" Grid.Row="4" Grid.Column="1" Margin="10 10 50 10" Style="{StaticResource formdatepicker}" SelectedDateChanged="expenseDisplayDate_SelectedDateChanged">
+                            <DatePicker.Resources>
+                                <Style TargetType="{x:Type DatePickerTextBox}" BasedOn="{StaticResource MetroDatePickerTextBox}">
+                                    <Setter Property="IsReadOnly" Value="True"/>
+                                </Style>
+                            </DatePicker.Resources>
+                        </DatePicker>
+                        <Button x:Name="expenseClearDate" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Margin="11" Width="38" Style="{StaticResource formbtn}" Click="expenseClearDate_Click">
+                            <IconPacks:PackIconMaterial Kind="WindowClose" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Button>
+                        
                         <Grid Grid.Row="3" Grid.ColumnSpan="3" Background="IndianRed"/>
 
                         <StackPanel Orientation="Horizontal"
